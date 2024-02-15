@@ -1,5 +1,5 @@
 ---
-title: "script commun"
+title: "Combine data"
 output: html_document
 date: "2024-02-15"
 ---
@@ -7,13 +7,15 @@ date: "2024-02-15"
 # Load packages
 
 ```{r}
-
+library(readr)
 
 ```
 
 # Import data
 
 ```{r}
-
+macrofaune_surface <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)
 
 ```
+
+# Arrange data
