@@ -1,5 +1,5 @@
 ---
-title: "Combine data"
+title: "Create metanetwork"
 output: html_document
 date: "2024-02-15"
 ---
@@ -8,14 +8,48 @@ date: "2024-02-15"
 
 ```{r}
 library(readr)
+library(dplyr)
 
 ```
 
 # Import data
 
 ```{r}
-macrofaune_surface <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)
+macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
 
 ```
 
 # Arrange data
+
+## macrofaune_surface
+
+```{r}
+# rename columns
+macrofaune_surface_0 <- macrofaune_surface_0 %>% 
+  rename(
+    block = bloc,
+    replicate = rep
+    )
+
+# homogeneise code
+macrofaune_surface_0$usage[macrofaune_surface_0$usage == 'C'] <- 'MC'
+macrofaune_surface_0$usage[macrofaune_surface_0$usage == 'F'] <- 'TP'
+
+macrofaune_surface_0$block[macrofaune_surface_0$block == '1'] <- 'B1'
+macrofaune_surface_0$block[macrofaune_surface_0$block == '2'] <- 'B2'
+macrofaune_surface_0$block[macrofaune_surface_0$block == '3'] <- 'B3'
+
+macrofaune_surface_0$habitat[macrofaune_surface_0$habitat == 'Cult' | macrofaune_surface_0$habitat == 'cult' ] <- 'C'
+macrofaune_surface_0$habitat[macrofaune_surface_0$habitat == 'Forest' | macrofaune_surface_0$habitat == 'LSA' ] <- 'T'
+
+macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '1'] <- 'R1'
+macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '2'] <- 'R2'
+macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '3'] <- 'R3'
+macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '4'] <- 'R4'
+macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '5'] <- 'R5'
+
+# create column full_uhbr
+macrofaune_surface <- macrofaune_surface_0
+macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
+```
+
