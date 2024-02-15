@@ -1,0 +1,19 @@
+---
+title: "script commun"
+output: html_document
+date: "2024-02-15"
+---
+
+# Load packages
+
+```{r}
+
+
+```
+
+# Import data
+
+```{r}
+
+
+```
