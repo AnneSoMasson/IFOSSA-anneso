@@ -53,3 +53,10 @@ macrofaune_surface <- macrofaune_surface_0
 macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
 ```
 
+# Check our data
+
+```{r}
+summary(macrofaune_surface)
+```
+
+
