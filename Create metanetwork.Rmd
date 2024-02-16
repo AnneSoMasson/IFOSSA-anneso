@@ -57,6 +57,7 @@ macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_sur
 
 ```{r}
 summary(macrofaune_surface)
+view(macrofaune_surface)
 ```
 
 
