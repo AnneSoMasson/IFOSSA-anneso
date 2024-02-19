@@ -87,13 +87,42 @@ macrofaune_volante$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_vo
 library(dplyr)
 library(tidyr)
 
-#fusionner les 2 tableaux 
-micro_arthropodes_0 <- micro_arthropodes_0 %>% rename(Sites=Num_prélevement)
-micro_arthropodes <- inner_join(micro_arthropodes_0, micro_arthropodes_1, by="Sites")
+
+# vérifier les données tri-mesofaune 
+str(micro_arthropodes_0)
+unique(micro_arthropodes_0$Nbr_ind_tri)
+unique(micro_arthropodes_0$Nbr_identifiés)
+
+##supprimer des lignes qui contient des remarques 
+micro_arthropodes_00 <- micro_arthropodes_0 %>% slice(-347:-349) 
+##remplacer les NA avec "0"
+micro_arthropodes_00<- micro_arthropodes_00 %>%
+  mutate(Nbr_identifiés = ifelse(is.na(Nbr_identifiés), 0, Nbr_identifiés),
+         Nbr_ind_tri = ifelse(is.na(Nbr_ind_tri), 0, Nbr_ind_tri))
+
+##crée une nv colonne Resultat de soustraction
+micro_arthropodes_00$Nbr_ind_tri <- as.numeric(micro_arthropodes_00$Nbr_ind_tri)
+micro_arthropodes_00$Nbr_identifiés <- as.numeric(micro_arthropodes_00$Nbr_identifiés) 
+
+micro_arthropodes <- transform(micro_arthropodes_00, Nbr_individus = Nbr_ind_tri - Nbr_identifiés)
+
+##préciser le resultat de nbr_individus juste pour les collemboles 
+
+micro_arthropodes <- micro_arthropodes %>%
+  mutate(Nbr_individus = ifelse(row_number() >= 217 & row_number() <= 274, Nbr_ind_tri - Nbr_identifiés, NA))
+
+
+##fusionner les 2 tableaux 
+
+micro_arthropodes <- micro_arthropodes %>% 
+  rename(Sites=Num_prélevement)
+micro_arthropodes_F <- inner_join(micro_arthropodes, micro_arthropodes_1, by="Sites")
 
 ##séparer la colonne "Sites" 
-micro_arthropodes <- separate(micro_arthropodes, Sites, into= c("usage","habitat") ,sep ="_")
-micro_arthropodes <- separate(micro_arthropodes, usage, into = c("Usage","bloc"), sep ="")
+micro_arthropodes_Fi <-micro_arthropodes_F
+mutate()
+
+
 ##creation des colonnes de chaque variable 
 
 
