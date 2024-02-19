@@ -16,6 +16,10 @@ library(dplyr)
 
 ```{r}
 macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
+macrofaune_volante_0 <- read_delim("~/IFOSSA-anneso/data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE) [,-1]
+library(readxl)
+micro_arthropodes_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
+micro_arthropodes_1 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
 
 ```
 
@@ -25,11 +29,7 @@ macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col
 
 ```{r}
 # rename columns
-macrofaune_surface_0 <- macrofaune_surface_0 %>% 
-  rename(
-    block = bloc,
-    replicate = rep
-    )
+macrofaune_surface_0 <- macrofaune_surface_0 %>%  rename( block = bloc, replicate = rep )
 
 # homogeneise code
 macrofaune_surface_0$usage[macrofaune_surface_0$usage == 'C'] <- 'MC'
@@ -53,8 +53,53 @@ macrofaune_surface <- macrofaune_surface_0
 macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
 ```
 
-# Check our data
 
+# macrofaune_volante 
+```{r}
+
+##homogeneise code
+
+macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'C'] <- 'MC'
+macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'F'] <- 'TP'
+
+macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '1'] <- 'B1'
+macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '2'] <- 'B2'
+macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '3'] <- 'B3'
+
+macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Cult' | macrofaune_volante_0$habitat == 'cult' ] <- 'C'
+macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Forest' | macrofaune_volante_0$habitat == 'LSA' ] <- 'T'
+
+macrofaune_volante_0$rep[macrofaune_volante_0$rep == '1'] <- 'R1'
+macrofaune_volante_0$rep[macrofaune_volante_0$rep == '2'] <- 'R2'
+macrofaune_volante_0$rep[macrofaune_volante_0$rep == '3'] <- 'R3'
+macrofaune_volante_0$rep[macrofaune_volante_0$rep == '4'] <- 'R4'
+macrofaune_volante_0$rep[macrofaune_volante_0$rep == '5'] <- 'R5'
+
+# create column full_uhbr
+macrofaune_volante <- macrofaune_volante_0
+macrofaune_volante$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$bloc, macrofaune_volante_0$rep, sep = "_")
+
+```
+
+# micro-arthropodes 
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+#fusionner les 2 tableaux 
+micro_arthropodes_0 <- micro_arthropodes_0 %>% rename(Sites=Num_prélevement)
+micro_arthropodes <- inner_join(micro_arthropodes_0, micro_arthropodes_1, by="Sites")
+
+##séparer la colonne "Sites" 
+micro_arthropodes <- separate(micro_arthropodes, Sites, into= c("usage","habitat") ,sep ="_")
+micro_arthropodes <- separate(micro_arthropodes, usage, into = c("Usage","bloc"), sep ="")
+##creation des colonnes de chaque variable 
+
+
+
+```
+# Check our data
 ```{r}
 summary(macrofaune_surface)
 view(macrofaune_surface)
