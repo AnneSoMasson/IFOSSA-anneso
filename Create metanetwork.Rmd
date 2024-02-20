@@ -119,7 +119,7 @@ micro_arthropodes <- micro_arthropodes %>%
 micro_arthropodes_F <- inner_join(micro_arthropodes, micro_arthropodes_1, by="Sites")
 
 ##séparer la colonne "Sites" 
-micro_arthropodes_Fi <-micro_arthropodes_Fi
+micro_arthropodes_Fi <-micro_arthropodes_F
 mutate()
 
 
