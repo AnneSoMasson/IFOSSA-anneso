@@ -205,7 +205,7 @@ nématodes_11<- nématodes_11[,-1] %>% select(full_uhbt, usage, habitat, block, 
 
 #fusionner les 2 tableurs 
 
-nématodes <- bind_rows (nématodes_00,nématodes_11)
+nématodes <- bind_rows (nématodes_00,nématodes_11) 
   
 ```
 
@@ -216,6 +216,7 @@ nématodes <- bind_rows (nématodes_00,nématodes_11)
 summary(macrofaune_surface)
 view(macrofaune_surface)
 dim(macrofaune_surface)
+print (nématodes)
 ```
 
 
