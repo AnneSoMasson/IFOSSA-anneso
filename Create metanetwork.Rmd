@@ -20,6 +20,9 @@ macrofaune_volante_0 <- read_delim("~/IFOSSA-anneso/data/1. pantrap_taxo2023-09-
 library(readxl)
 micro_arthropodes_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
 micro_arthropodes_1 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
+library(readxl)
+nématodes_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
+nématodes_1 <- read.table("data/ifossa.mars.txt" , header= TRUE )
 
 ```
 
@@ -128,7 +131,68 @@ mutate()
 
 
 ```
+
+# nématodes 
+```{r}
+##homogeneise code
+#Communautés_avril 
+nématodes_00 <- nématodes_0 %>%
+
+ mutate(usage = case_when(
+
+    grepl('[[:digit:]]C', Taxa) ~ "MC",
+
+    grepl('[[:digit:]]AF', Taxa) ~ "AF",
+
+    grepl('[[:digit:]]F', Taxa) ~ "TP"),
+
+        habitat = case_when(
+
+    grepl('C$', Taxa) ~ "C",
+
+    grepl('F$|A$', Taxa) ~ "T"),
+
+        block = paste0("B", parse_number(Taxa)))
+
+nématodes_00$full_uhbt <- paste(nématodes_00$usage, nématodes_00$habitat, nématodes_00$block, sep="_")
+
+nématodes_00 <- nématodes_00[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+
+#ifossa_mars 
+nématodes_11<- nématodes_1%>%
+
+  mutate(usage = case_when(
+
+    startsWith(Taxa, "C") ~ "MC",
+
+    startsWith(Taxa, "AF") ~ "AF",
+
+    startsWith(Taxa, "F") ~ "TP"),
+
+        habitat = case_when(
+
+    grepl('^C|^AF_C', Taxa) ~ "C",
+
+    grepl('^F|^AF_A', Taxa) ~ "T"),
+
+        block = paste0("B", parse_number(Taxa)))
+nématodes_11$full_uhbt <- paste(nématodes_11$usage, nématodes_11$habitat, nématodes_11$block, sep="_")
+
+nématodes_11<- nématodes_11[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+
+#fusionner les 2 tableurs 
+
+nématodes <- bind_rows (nématodes_00,nématodes_11)
+
+
+
+  
+  
+```
+
+
 # Check our data
+
 ```{r}
 summary(macrofaune_surface)
 view(macrofaune_surface)
