@@ -59,37 +59,36 @@ macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_sur
 
 # macrofaune_volante 
 ```{r}
+# rename columns
+macrofaune_volante_0 <- macrofaune_volante_0 %>%  rename( block = bloc, replicate = rep )
 
 ##homogeneise code
 
 macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'C'] <- 'MC'
 macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'F'] <- 'TP'
 
-macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '1'] <- 'B1'
-macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '2'] <- 'B2'
-macrofaune_volante_0$bloc[macrofaune_volante_0$bloc == '3'] <- 'B3'
+macrofaune_volante_0$block[macrofaune_volante_0$bloc == '1'] <- 'B1'
+macrofaune_volante_0$block[macrofaune_volante_0$bloc == '2'] <- 'B2'
+macrofaune_volante_0$block[macrofaune_volante_0$bloc == '3'] <- 'B3'
 
 macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Cult' | macrofaune_volante_0$habitat == 'cult' ] <- 'C'
 macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Forest' | macrofaune_volante_0$habitat == 'LSA' ] <- 'T'
 
-macrofaune_volante_0$rep[macrofaune_volante_0$rep == '1'] <- 'R1'
-macrofaune_volante_0$rep[macrofaune_volante_0$rep == '2'] <- 'R2'
-macrofaune_volante_0$rep[macrofaune_volante_0$rep == '3'] <- 'R3'
-macrofaune_volante_0$rep[macrofaune_volante_0$rep == '4'] <- 'R4'
-macrofaune_volante_0$rep[macrofaune_volante_0$rep == '5'] <- 'R5'
+macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '1'] <- 'R1'
+macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '2'] <- 'R2'
+macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '3'] <- 'R3'
+macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '4'] <- 'R4'
+macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '5'] <- 'R5'
 
 # create column full_uhbr
 macrofaune_volante <- macrofaune_volante_0
-macrofaune_volante$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$bloc, macrofaune_volante_0$rep, sep = "_")
+macrofaune_volante$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$block, macrofaune_volante_0$replicate, sep = "_")
 
 ```
 
 # micro-arthropodes 
 
 ```{r}
-library(dplyr)
-library(tidyr)
-
 
 # vérifier les données tri-mesofaune 
 str(micro_arthropodes_0)
@@ -114,20 +113,44 @@ micro_arthropodes <- transform(micro_arthropodes_00, Nbr_individus = Nbr_ind_tri
 micro_arthropodes <- micro_arthropodes %>%
   mutate(Nbr_individus = ifelse(row_number() >= 217 & row_number() <= 274, Nbr_ind_tri - Nbr_identifiés, NA))
 
-
 ##fusionner les 2 tableaux 
-
-micro_arthropodes <- micro_arthropodes %>% 
+micro_arthropodes_00<- micro_arthropodes_00 %>% 
   rename(Sites=Num_prélevement)
-micro_arthropodes_F <- inner_join(micro_arthropodes, micro_arthropodes_1, by="Sites")
 
-##séparer la colonne "Sites" 
-micro_arthropodes_Fi <-micro_arthropodes_
-mutate()
+micro_arthropodes <- bind_rows (micro_arthropodes_00,micro_arthropodes_1)
 
+###homogeneise code
+library(dplyr)
+library(tidyr)
+#j'ai séparé la colonne pour faciliter la manip 
+micro_arthropodes <- micro_arthropodes %>% 
+  separate(col=Sites, into=c("Sites1","Sites2"), sep="_", remove= FALSE)
 
-##creation des colonnes de chaque variable +
+# sites1(usage+Block)
+micro_arthropodes <- micro_arthropodes %>% 
+   mutate(usage = case_when(
 
+    startsWith(Sites1, "C") ~ "MC",
+
+    startsWith(Sites1, "AF") ~ "AF",
+
+    startsWith(Sites1, "F") ~ "TP"),
+
+block = paste0("B", parse_number(Sites1)))
+
+#sites(Habitat+replicate)
+micro_arthropodes <- micro_arthropodes %>% 
+  mutate(habitat = case_when(
+    
+    startsWith(Sites2, "C") ~ "C",
+
+    startsWith(Sites2, "LSA") ~ "T"),
+
+replicate = paste0("R", parse_number(Sites2)))
+
+##Full_name_ubhr
+
+micro_arthropodes$full_uhbr <- paste (micro_arthropodes$usage, micro_arthropodes$habitat, micro_arthropodes$block, micro_arthropodes$replicate, sep = "_")
 
 
 ```
@@ -183,10 +206,6 @@ nématodes_11<- nématodes_11[,-1] %>% select(full_uhbt, usage, habitat, block, 
 #fusionner les 2 tableurs 
 
 nématodes <- bind_rows (nématodes_00,nématodes_11)
-
-
-
-  
   
 ```
 
