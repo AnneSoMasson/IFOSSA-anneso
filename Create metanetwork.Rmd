@@ -9,7 +9,7 @@ date: "2024-02-15"
 ```{r}
 library(readr)
 library(dplyr)
-
+library(tidyr)
 ```
 
 # Import data
@@ -18,11 +18,11 @@ library(dplyr)
 macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
 macrofaune_volante_0 <- read_delim("~/IFOSSA-anneso/data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE) [,-1]
 library(readxl)
-micro_arthropodes_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
-micro_arthropodes_1 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
+micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
+micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
 library(readxl)
-nématodes_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
-nématodes_1 <- read.table("data/ifossa.mars.txt" , header= TRUE )
+nématodes_a_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
+nématodes_m_0 <- read.table("data/ifossa.mars.txt" , header= TRUE )
 
 ```
 
@@ -52,10 +52,9 @@ macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '4'] <- 'R4'
 macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '5'] <- 'R5'
 
 # create column full_uhbr
-macrofaune_surface <- macrofaune_surface_0
-macrofaune_surface$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
+macrofaune_surface_1 <- macrofaune_surface_0
+macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
 ```
-
 
 # macrofaune_volante 
 ```{r}
@@ -81,53 +80,55 @@ macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '4'] <- 'R4'
 macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '5'] <- 'R5'
 
 # create column full_uhbr
-macrofaune_volante <- macrofaune_volante_0
-macrofaune_volante$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$block, macrofaune_volante_0$replicate, sep = "_")
+macrofaune_volante_1 <- macrofaune_volante_0
+macrofaune_volante_1$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$block, macrofaune_volante_0$replicate, sep = "_")
 
 ```
 
 # micro-arthropodes 
 
 ```{r}
+# Arranger fichier mesofaune complète et BDD collembole
 
 # vérifier les données tri-mesofaune 
-str(micro_arthropodes_0)
-unique(micro_arthropodes_0$Nbr_ind_tri)
-unique(micro_arthropodes_0$Nbr_identifiés)
+str(micro_arthropodes_all_0)
+unique(micro_arthropodes_all_0$Nbr_ind_tri)
+unique(micro_arthropodes_all_0$Nbr_identifiés)
 
 ##supprimer des lignes qui contient des remarques 
-micro_arthropodes_00 <- micro_arthropodes_0 %>% slice(-347:-349) 
+micro_arthropodes_all_1 <- micro_arthropodes_all_0 %>% slice(-347:-349) 
 ##remplacer les NA avec "0"
-micro_arthropodes_00<- micro_arthropodes_00 %>%
+micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>%
   mutate(Nbr_identifiés = ifelse(is.na(Nbr_identifiés), 0, Nbr_identifiés),
          Nbr_ind_tri = ifelse(is.na(Nbr_ind_tri), 0, Nbr_ind_tri))
 
 ##crée une nv colonne Resultat de soustraction
-micro_arthropodes_00$Nbr_ind_tri <- as.numeric(micro_arthropodes_00$Nbr_ind_tri)
-micro_arthropodes_00$Nbr_identifiés <- as.numeric(micro_arthropodes_00$Nbr_identifiés) 
+micro_arthropodes_all_1$Nbr_ind_tri <- as.numeric(micro_arthropodes_all_1$Nbr_ind_tri)
+micro_arthropodes_all_1$Nbr_identifiés <- as.numeric(micro_arthropodes_all_1$Nbr_identifiés) 
 
-micro_arthropodes <- transform(micro_arthropodes_00, Nbr_individus = Nbr_ind_tri - Nbr_identifiés)
+micro_arthropodes_all_2 <- transform(micro_arthropodes_all_1, Nbr_individus = Nbr_ind_tri - Nbr_identifiés)
 
 ##préciser le resultat de nbr_individus juste pour les collemboles 
 
-micro_arthropodes <- micro_arthropodes %>%
-  mutate(Nbr_individus = ifelse(row_number() >= 217 & row_number() <= 274, Nbr_ind_tri - Nbr_identifiés, NA))
+# micro_arthropodes_all_3 <- micro_arthropodes_all_2 %>%
+#  mutate(Nbr_individus = ifelse(row_number() >= 217 & row_number() <= 274, Nbr_ind_tri - Nbr_identifiés, #NA))
 
 ##fusionner les 2 tableaux 
-micro_arthropodes_00<- micro_arthropodes_00 %>% 
+micro_arthropodes_all_2 <- micro_arthropodes_all_2 %>% 
   rename(Sites=Num_prélevement)
 
-micro_arthropodes <- bind_rows (micro_arthropodes_00,micro_arthropodes_1)
+micro_arthropodes_3 <- bind_rows (micro_arthropodes_all_2[-346,],micro_arthropodes_col_0)
+```
 
+```{r}
 ###homogeneise code
-library(dplyr)
-library(tidyr)
+
 #j'ai séparé la colonne pour faciliter la manip 
-micro_arthropodes <- micro_arthropodes %>% 
+micro_arthropodes_3 <- micro_arthropodes_3 %>% 
   separate(col=Sites, into=c("Sites1","Sites2"), sep="_", remove= FALSE)
 
 # sites1(usage+Block)
-micro_arthropodes <- micro_arthropodes %>% 
+micro_arthropodes_3 <- micro_arthropodes_3 %>% 
    mutate(usage = case_when(
 
     startsWith(Sites1, "C") ~ "MC",
@@ -139,7 +140,7 @@ micro_arthropodes <- micro_arthropodes %>%
 block = paste0("B", parse_number(Sites1)))
 
 #sites(Habitat+replicate)
-micro_arthropodes <- micro_arthropodes %>% 
+micro_arthropodes_3 <- micro_arthropodes_3 %>% 
   mutate(habitat = case_when(
     
     startsWith(Sites2, "C") ~ "C",
@@ -150,16 +151,14 @@ replicate = paste0("R", parse_number(Sites2)))
 
 ##Full_name_ubhr
 
-micro_arthropodes$full_uhbr <- paste (micro_arthropodes$usage, micro_arthropodes$habitat, micro_arthropodes$block, micro_arthropodes$replicate, sep = "_")
-
-
+micro_arthropodes_3$full_uhbr <- paste (micro_arthropodes_3$usage, micro_arthropodes_3$habitat, micro_arthropodes_3$block, micro_arthropodes_3$replicate, sep = "_")
 ```
 
 # nématodes 
 ```{r}
 ##homogeneise code
 #Communautés_avril 
-nématodes_00 <- nématodes_0 %>%
+nématodes_a_1 <- nématodes_a_0 %>%
 
  mutate(usage = case_when(
 
@@ -177,12 +176,12 @@ nématodes_00 <- nématodes_0 %>%
 
         block = paste0("B", parse_number(Taxa)))
 
-nématodes_00$full_uhbt <- paste(nématodes_00$usage, nématodes_00$habitat, nématodes_00$block, sep="_")
+nématodes_a_1$full_uhbt <- paste(nématodes_a_1$usage, nématodes_a_1$habitat, nématodes_a_1$block, sep="_")
 
-nématodes_00 <- nématodes_00[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+nématodes_a_1 <- nématodes_a_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
 
 #ifossa_mars 
-nématodes_11<- nématodes_1%>%
+nématodes_m_1 <- nématodes_m_0 %>%
 
   mutate(usage = case_when(
 
@@ -199,13 +198,13 @@ nématodes_11<- nématodes_1%>%
     grepl('^F|^AF_A', Taxa) ~ "T"),
 
         block = paste0("B", parse_number(Taxa)))
-nématodes_11$full_uhbt <- paste(nématodes_11$usage, nématodes_11$habitat, nématodes_11$block, sep="_")
+nématodes_m_1$full_uhbt <- paste(nématodes_m_1$usage, nématodes_m_1$habitat, nématodes_m_1$block, sep="_")
 
-nématodes_11<- nématodes_11[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+nématodes_m_1<- nématodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
 
 #fusionner les 2 tableurs 
 
-nématodes <- bind_rows (nématodes_00,nématodes_11) 
+nématodes_1 <- bind_rows (nématodes_a_1,nématodes_m_1) 
   
 ```
 
