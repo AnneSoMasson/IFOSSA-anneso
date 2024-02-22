@@ -17,6 +17,8 @@ library(tidyr)
 ```{r}
 macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
 macrofaune_volante_0 <- read_delim("~/IFOSSA-anneso/data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE) [,-1]
+library(readr) 
+macrofaune_foliaire_0 <- read_csv("data/clean_data_robinier_2023-09-16.csv", show_col_types =  FALSE)
 library(readxl)
 micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
 micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
@@ -56,8 +58,8 @@ macrofaune_surface_1 <- macrofaune_surface_0
 macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
 ```
 
-# macrofaune_volante 
-```{r}
+## macrofaune_volante 
+```{r }
 # rename columns
 macrofaune_volante_0 <- macrofaune_volante_0 %>%  rename( block = bloc, replicate = rep )
 
@@ -85,7 +87,37 @@ macrofaune_volante_1$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_
 
 ```
 
-# micro-arthropodes 
+## macrofaune_foliaire
+
+```{r}
+macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+   separate(col = usage_bloc , into = c("usage","bloc","rang","arbre"), sep = "_")
+  
+macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+   mutate(rang = gsub("rang", "R", rang)) 
+
+macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+  mutate(arbre = gsub("arbre", "", arbre))
+
+macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+  mutate(replicate = paste(rang, arbre ,sep="."))
+
+macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>%   rename( block = bloc )
+
+macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '1'] <- 'B1'
+macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '2'] <- 'B2'
+macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '3'] <- 'B3'
+##create column full_uhbr
+macrofaune_foliaire_1 <- macrofaune_foliaire_0
+macrofaune_foliaire_1$full_uhbr <- paste (macrofaune_foliaire_0$usage, macrofaune_foliaire_0$block, macrofaune_foliaire_0$replicate, sep = "_")
+
+
+```
+
+
+
+
+## micro-arthropodes 
 
 ```{r}
 # Arranger fichier mesofaune complète et BDD collembole
@@ -118,6 +150,8 @@ micro_arthropodes_all_2 <- micro_arthropodes_all_2 %>%
   rename(Sites=Num_prélevement)
 
 micro_arthropodes_3 <- bind_rows (micro_arthropodes_all_2[-346,],micro_arthropodes_col_0)
+
+# pb : dans best_id, on veut résultat de colonne Noms_espèces col
 ```
 
 ```{r}
@@ -152,6 +186,7 @@ replicate = paste0("R", parse_number(Sites2)))
 ##Full_name_ubhr
 
 micro_arthropodes_3$full_uhbr <- paste (micro_arthropodes_3$usage, micro_arthropodes_3$habitat, micro_arthropodes_3$block, micro_arthropodes_3$replicate, sep = "_")
+
 ```
 
 # nématodes 
@@ -200,12 +235,13 @@ nématodes_m_1 <- nématodes_m_0 %>%
         block = paste0("B", parse_number(Taxa)))
 nématodes_m_1$full_uhbt <- paste(nématodes_m_1$usage, nématodes_m_1$habitat, nématodes_m_1$block, sep="_")
 
-nématodes_m_1<- nématodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+nématodes_m_1<- nématodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything()) # je n'est poas inclu time 
 
 #fusionner les 2 tableurs 
 
 nématodes_1 <- bind_rows (nématodes_a_1,nématodes_m_1) 
-  
+# remplacer Na par 0
+# pivot_longer wider pour avoir le même format que les autres
 ```
 
 
@@ -217,5 +253,14 @@ view(macrofaune_surface)
 dim(macrofaune_surface)
 print (nématodes)
 ```
+
+# Combine data
+
+```{r}
+# data to use :
+# macrofaune :  macrofaune_surface_1[,c(1,2,3)]
+# pakage taxsize
+```
+
 
 
