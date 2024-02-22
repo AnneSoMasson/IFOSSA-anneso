@@ -25,7 +25,7 @@ nematodes_a_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
 nematodes_m_0 <- read.table("data/ifossa.mars.txt", header= TRUE )
 ```
 
-# Arrange data
+# Tidy data and homogeneize code
 
 ## macrofaune_surface
 
@@ -182,7 +182,7 @@ micro_arthropodes_3$full_uhbr <- paste (micro_arthropodes_3$usage, micro_arthrop
 # homogeneise code
 
 ## april
-nématodes_a_1 <- nématodes_a_0 %>%
+nematodes_a_1 <- nematodes_a_0 %>%
 
  mutate(usage = case_when(
 
@@ -200,12 +200,12 @@ nématodes_a_1 <- nématodes_a_0 %>%
 
         block = paste0("B", parse_number(Taxa)))
 
-nématodes_a_1$full_uhbt <- paste(nématodes_a_1$usage, nématodes_a_1$habitat, nématodes_a_1$block, sep="_")
+nematodes_a_1$full_uhbt <- paste(nematodes_a_1$usage, nematodes_a_1$habitat, nematodes_a_1$block, sep="_")
 
-nématodes_a_1 <- nématodes_a_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
+nematodes_a_1 <- nematodes_a_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
 
 ## march
-nématodes_m_1 <- nématodes_m_0 %>%
+nematodes_m_1 <- nematodes_m_0 %>%
 
   mutate(usage = case_when(
 
@@ -222,12 +222,12 @@ nématodes_m_1 <- nématodes_m_0 %>%
     grepl('^F|^AF_A', Taxa) ~ "T"),
 
         block = paste0("B", parse_number(Taxa)))
-nématodes_m_1$full_uhbt <- paste(nématodes_m_1$usage, nématodes_m_1$habitat, nématodes_m_1$block, sep="_")
+nematodes_m_1$full_uhbt <- paste(nematodes_m_1$usage, nematodes_m_1$habitat, nematodes_m_1$block, sep="_")
 
-nématodes_m_1<- nématodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything()) # je n'est poas inclu time 
+nematodes_m_1<- nematodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything()) # je n'est poas inclu time 
 
 # bind data
-nématodes_1 <- bind_rows (nématodes_a_1,nématodes_m_1)
+nematodes_1 <- bind_rows (nematodes_a_1,nematodes_m_1)
 
 # TO DO
 # 1) remplacer Na par 0
@@ -240,7 +240,7 @@ nématodes_1 <- bind_rows (nématodes_a_1,nématodes_m_1)
 summary(macrofaune_surface)
 view(macrofaune_surface)
 dim(macrofaune_surface)
-print (nématodes)
+print (nematodes)
 ```
 
 # Combine data
