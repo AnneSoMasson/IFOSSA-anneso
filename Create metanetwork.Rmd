@@ -66,9 +66,9 @@ macrofaune_volante_0 <- macrofaune_volante_0 %>%  rename( block = bloc, replicat
 macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'C'] <- 'MC'
 macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'F'] <- 'TP'
 
-macrofaune_volante_0$block[macrofaune_volante_0$bloc == '1'] <- 'B1'
-macrofaune_volante_0$block[macrofaune_volante_0$bloc == '2'] <- 'B2'
-macrofaune_volante_0$block[macrofaune_volante_0$bloc == '3'] <- 'B3'
+macrofaune_volante_0$block[macrofaune_volante_0$block == '1'] <- 'B1'
+macrofaune_volante_0$block[macrofaune_volante_0$block == '2'] <- 'B2'
+macrofaune_volante_0$block[macrofaune_volante_0$block == '3'] <- 'B3'
 
 macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Cult' | macrofaune_volante_0$habitat == 'cult' ] <- 'C'
 macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Forest' | macrofaune_volante_0$habitat == 'LSA' ] <- 'T'
@@ -139,8 +139,17 @@ micro_arthropodes_all_2 <- transform(micro_arthropodes_all_1, Nbr_individus_fina
 micro_arthropodes_all_2 <- micro_arthropodes_all_2 %>% 
   rename(Sites=Num_prélevement)
 
-micro_arthropodes_3 <- bind_rows (micro_arthropodes_all_2[-346,],micro_arthropodes_col_0)
-### pb : dans best_id, on veut résultat de colonne Noms_espèces des col ### TO DO
+micro_arthropodes_3 <- bind_rows(micro_arthropodes_all_2, micro_arthropodes_col_0)
+
+##best_id résultat de colonne Noms_espèces des col
+
+micro_arthropodes_3$best_ID <- replace(micro_arthropodes_3$best_ID,is.na(micro_arthropodes_3$best_ID),"")
+
+micro_arthropodes_3$Noms_espèces <- replace(micro_arthropodes_3$Noms_espèces,is.na(micro_arthropodes_3$Noms_espèces),"")
+
+micro_arthropodes_3 $espèces_ID <-
+  paste(micro_arthropodes_3$best_ID,micro_arthropodes_3$Noms_espèces)
+ ## on peux supprimer les colonnes best_ID noms_especes psq je lai remplacé par une nouvelle colonne espéces_ID  
 ```
 
 ```{r}
@@ -228,10 +237,17 @@ nematodes_m_1<- nematodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, 
 
 # bind data
 nematodes_1 <- bind_rows (nematodes_a_1,nematodes_m_1)
+#remplacer Na par 0
+for (col in names(nematodes_1)) {
+  nematodes_1[[col]] <- replace(nematodes_1[[col]], is.na(nematodes_1[[col]]), 0)}
 
-# TO DO
-# 1) remplacer Na par 0
-# 2) pivot_longer wider pour avoir le même format que les autres
+#  pivot_longer wider pour avoir le même format que les autres
+
+nematodes_1_F <- pivot_longer(nematodes_1, cols= c(Acrobeles,  Acrobeloides, Aporcelaimidae, Aprutides, Cervidellus, Chiloplacus, Eumonhystera, Anaplecetus, Plectus, Tylocephalus, Panagrolaimus, Rhabditidae, Rhabdolaimus, Prismatolaimus, Aphelenchus, Aphelenchoides, Diphtherophora, Mononchus, Microdorylaimus, Nygolaimidae, Discolaimus, Oxydirus, Eudorylaimus, Pratylenchus, Prodorylaimus, Helicotylenchus, Trichodorus, Tylenchorhynchus, Tylenchidae, Mylonchulus) ,  names_to =  "espéces_ID" , values_to = "Nbr_individus")
+
+# supprimer les doublons 
+nematodes_1_Final <- distinct(nematodes_1_F)
+
 ```
 
 # Check our data
@@ -247,6 +263,50 @@ print (nematodes)
 
 ```{r}
 # data to use
+# ranger le tableau 
+##macrofaune_surface_1
+macrofaune_surface_1 <- macrofaune_surface_1 [, c(ncol(macrofaune_surface_1), 1:(ncol(macrofaune_surface_1) - 1))]
+
+macrofaune_surface_1 <- macrofaune_surface_1 %>% 
+  select(id_sample, everything())
+
+macrofaune_surface_1 <- macrofaune_surface_1 %>% 
+  mutate(mass = if_else(is.na(mass), 0, mass))
+
+macrofaune_surface_1 <- macrofaune_surface_1 %>%  
+  select(-Year)
+
+##macrofaune_volante_1
+macrofaune_volante_1 <- macrofaune_volante_1 %>% 
+  select(-c(treatment, code, modalite, INat))
+
+macrofaune_volante_1 <- macrofaune_volante_1 [, c(ncol(macrofaune_volante_1), 1:(ncol(macrofaune_volante_1) - 1))]
+
+macrofaune_volante_1 <- macrofaune_volante_1 %>% 
+  select(id_sample, everything())
+
+##macrofaune_foliaire_1
+macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
+  select(-c(...1))
+
+macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 [, c(ncol(macrofaune_foliaire_1), 1:(ncol(macrofaune_foliaire_1) - 1))]
+
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
+  select(id_sample, everything())
+
+## micro_arthropodes_3
+micro_arthropodes_3 <-micro_arthropodes_3 %>% 
+select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces))
+
+micro_arthropodes_3 <- micro_arthropodes_3 [, c(ncol(micro_arthropodes_3), 1:(ncol(micro_arthropodes_3) - 1))]
+
+micro_arthropodes_3 <- micro_arthropodes_3 %>% 
+  select(espèces_ID, everything())
+
+##nematodes_1_Final 
+nematodes_1_Final 
+
 ## macrofaune : macrofaune_surface_1[,c(1,2,3)] # TO DO sélectionner les colonnes à utiliser pour chaque fichier
 
 # utiliser le package taxsize pour homogénéiser la taxonomie
