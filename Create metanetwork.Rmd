@@ -17,7 +17,7 @@ library(readxl)
 
 ```{r}
 macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
-#macrofaune_volante_0 <- read_delim("~/IFOSSA-anneso/data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE)[,-1] # doesn't work for me (anne-so)
+macrofaune_volante_0 <- read_delim("data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE)[,-1] # doesn't work for me (anne-so)
 macrofaune_foliaire_0 <- read_csv("data/clean_data_robinier_2023-09-16.csv", show_col_types =  FALSE)
 micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
 micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
