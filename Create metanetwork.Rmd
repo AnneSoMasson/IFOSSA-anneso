@@ -297,7 +297,7 @@ macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>%
 
 ## micro_arthropodes_3
 micro_arthropodes_3 <-micro_arthropodes_3 %>% 
-select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces))
+select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces, block, usage, replicate, habitat ))
 
 micro_arthropodes_3 <- micro_arthropodes_3 [, c(ncol(micro_arthropodes_3), 1:(ncol(micro_arthropodes_3) - 1))]
 
@@ -309,8 +309,10 @@ nematodes_1_Final
 
 ## macrofaune : macrofaune_surface_1[,c(1,2,3)] # TO DO sélectionner les colonnes à utiliser pour chaque fichier
 
-# utiliser le package taxsize pour homogénéiser la taxonomie
-```
+# utiliser le package taxize pour homogénéiser la taxonomie
+library(taxize)
+ ```
+
 
 
 
