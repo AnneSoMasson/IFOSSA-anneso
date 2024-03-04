@@ -246,7 +246,7 @@ for (col in names(nematodes_1)) {
 nematodes_1_F <- pivot_longer(nematodes_1, cols= c(Acrobeles,  Acrobeloides, Aporcelaimidae, Aprutides, Cervidellus, Chiloplacus, Eumonhystera, Anaplecetus, Plectus, Tylocephalus, Panagrolaimus, Rhabditidae, Rhabdolaimus, Prismatolaimus, Aphelenchus, Aphelenchoides, Diphtherophora, Mononchus, Microdorylaimus, Nygolaimidae, Discolaimus, Oxydirus, Eudorylaimus, Pratylenchus, Prodorylaimus, Helicotylenchus, Trichodorus, Tylenchorhynchus, Tylenchidae, Mylonchulus) ,  names_to =  "espéces_ID" , values_to = "Nbr_individus")
 
 # supprimer les doublons 
-nematodes_1_Final <- distinct(nematodes_1_F)
+nematodes_1_Final <- distinct(nematodes_1_F) 
 
 ```
 
@@ -257,16 +257,15 @@ summary(macrofaune_surface)
 view(macrofaune_surface)
 dim(macrofaune_surface)
 print (nematodes)
+write.csv()
 ```
 
 # Combine data
-
 ```{r}
 # data to use
 # ranger le tableau 
 ##macrofaune_surface_1
 macrofaune_surface_1 <- macrofaune_surface_1 [, c(ncol(macrofaune_surface_1), 1:(ncol(macrofaune_surface_1) - 1))]
-
 macrofaune_surface_1 <- macrofaune_surface_1 %>% 
   select(id_sample, everything())
 
@@ -275,42 +274,66 @@ macrofaune_surface_1 <- macrofaune_surface_1 %>%
 
 macrofaune_surface_1 <- macrofaune_surface_1 %>%  
   select(-Year)
+macrofaune_surface_1 <- macrofaune_surface_1 %>% 
+  select(-c(usage, block, treatment, replicate, habitat))
+macrofaune_surface_1 <- macrofaune_surface_1 %>% 
+  select(-c(Species, Family, Class, stade, mass, fullName))
 
 ##macrofaune_volante_1
 macrofaune_volante_1 <- macrofaune_volante_1 %>% 
-  select(-c(treatment, code, modalite, INat))
+  select(-c(treatment, code, modalite, INat,usage, block, replicate, habitat, month, fullName, stade, year ))
 
-macrofaune_volante_1 <- macrofaune_volante_1 [, c(ncol(macrofaune_volante_1), 1:(ncol(macrofaune_volante_1) - 1))]
+macrofaune_volante_1 <- relocate(macrofaune_volante_1, full_uhbr, .before = name)
+macrofaune_volante_1<- relocate(macrofaune_volante_1, name, .after = abundance)
+macrofaune_volante_1<- relocate(macrofaune_volante_1, rankName, .before = genusName)  
+                                
+#####macrofaune_volante_1 <- macrofaune_volante_1 [, c(ncol(macrofaune_volante_1), 1:(ncol(macrofaune_volante_1) - 1))]
 
 macrofaune_volante_1 <- macrofaune_volante_1 %>% 
   select(id_sample, everything())
 
 ##macrofaune_foliaire_1
 macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
-  select(-c(...1))
+  select(-c(...1, usage, replicate, rang, arbre, method, fullName, block, Year, Id_campaign, Valid.Name))
 
-macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
 macrofaune_foliaire_1 <- macrofaune_foliaire_1 [, c(ncol(macrofaune_foliaire_1), 1:(ncol(macrofaune_foliaire_1) - 1))]
 
 macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
-  select(id_sample, everything())
+  select(id_sample,full_uhbr, everything())
 
 ## micro_arthropodes_3
 micro_arthropodes_3 <-micro_arthropodes_3 %>% 
-select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces, block, usage, replicate, habitat ))
+select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces, block, usage, replicate, habitat, Noms_espèces ))
 
 micro_arthropodes_3 <- micro_arthropodes_3 [, c(ncol(micro_arthropodes_3), 1:(ncol(micro_arthropodes_3) - 1))]
 
 micro_arthropodes_3 <- micro_arthropodes_3 %>% 
-  select(espèces_ID, everything())
+  select(full_uhbr, espèces_ID, everything())
 
 ##nematodes_1_Final 
-nematodes_1_Final 
+nematodes_1_Final <-nematodes_1_Final %>% 
+  select(-c(usage, habitat, block))
 
-## macrofaune : macrofaune_surface_1[,c(1,2,3)] # TO DO sélectionner les colonnes à utiliser pour chaque fichier
+#full_data
+full_macrofaune <- rbind(macrofaune_volante_1,macrofaune_surface_1,macrofaune_foliaire_1)
+
+install.packages("openxlsx")
+library(openxlsx)
+write.xlsx(full_macrofaune, "C:\\Users\\assma\\OneDrive\\Documents\\IFOSSA-anneso\\full_macrofaune.xlsx")
+
 
 # utiliser le package taxize pour homogénéiser la taxonomie
 library(taxize)
+
+
+###classification() :pour classer les noms scientifiques des espèces
+
+classification("genusName ", db = "ncbi")
+
+full_macrofaune$classification(full_macrofaune$Nom_scientifique )
+
+```
+
  ```
 
 
