@@ -315,7 +315,13 @@ nematodes_1_Final <-nematodes_1_Final %>%
   select(-c(usage, habitat, block))
 
 #full_data
-full_macrofaune <- rbind(macrofaune_volante_1,macrofaune_surface_1,macrofaune_foliaire_1)
+full_macrofaune <- rbind(macrofaune_volante_1, macrofaune_surface_1, macrofaune_foliaire_1)
+full_macrofaune <-full_macrofaune %>% 
+mot_a_supprimer <- "arbre"
+
+full_macrofaune[full_macrofaune$Ligne %in% 5222, "full_uhbr"] <- gsub("mot_a_supprimer", "", full_macrofaune[full_macrofaune$Ligne %in% 5258, "full_uhbr"])
+
+ 
 
 install.packages("openxlsx")
 library(openxlsx)
@@ -326,11 +332,30 @@ write.xlsx(full_macrofaune, "C:\\Users\\assma\\OneDrive\\Documents\\IFOSSA-annes
 library(taxize)
 
 
+
 ###classification() :pour classer les noms scientifiques des espèces
 
 classification("genusName ", db = "ncbi")
 
 full_macrofaune$classification(full_macrofaune$Nom_scientifique )
+
+
+
+install.packages("C:/Users/assma/Downloads/GratinNavigatoR_1.0.0.tar.gz", repos=NULL, type='source', dependencies = TRUE)
+
+library(GratinNavigatoR)
+
+vignette("GratinNavigatoR")
+endpoint_url <- "http://129.88.204.79:7200/repositories/gratin"
+
+sources <- get.sources(endpoint = endpoint_url)
+
+print(sources)
+
+guilds_info <- get.interactions(sciName =  c( "Pratylenchus"), endpoint = endpoint_url)
+
+print(guilds_info)
+
 
 ```
 
