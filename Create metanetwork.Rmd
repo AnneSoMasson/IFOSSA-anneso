@@ -3,9 +3,7 @@ title: "Create metanetwork"
 output: html_document
 date: "2024-02-15"
 ---
-
 # Load packages
-
 ```{r}
 library(readr)
 library(dplyr)
@@ -24,11 +22,8 @@ micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.
 nematodes_a_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
 nematodes_m_0 <- read.table("data/ifossa.mars.txt", header= TRUE )
 ```
-
 # Tidy data and homogeneize code
-
 ## macrofaune_surface
-
 ```{r}
 # rename columns
 macrofaune_surface_0 <- macrofaune_surface_0 %>%  rename( block = bloc, replicate = rep )
@@ -53,10 +48,11 @@ macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '5'] <- 'R5'
 # create column full_uhbr
 macrofaune_surface_1 <- macrofaune_surface_0
 macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
+macrofaune_surface_1 <- macrofaune_surface_1 %>% 
+  select(full_uhbr, everything())
+
 ```
-
 ## macrofaune_volante
-
 ```{r }
 # rename columns
 macrofaune_volante_0 <- macrofaune_volante_0 %>%  rename( block = bloc, replicate = rep )
@@ -83,10 +79,10 @@ macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '5'] <- 'R5'
 
 macrofaune_volante_1 <- macrofaune_volante_0
 macrofaune_volante_1$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$block, macrofaune_volante_0$replicate, sep = "_")
+macrofaune_volante_1 <- macrofaune_volante_1 %>% 
+  select(full_uhbr, everything())
 ```
-
 ## macrofaune_foliaire
-
 ```{r}
 # homogeneise code
 macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
@@ -110,10 +106,10 @@ macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '3'] <- 'B3'
 # create column full_uhbr
 macrofaune_foliaire_1 <- macrofaune_foliaire_0
 macrofaune_foliaire_1$full_uhbr <- paste (macrofaune_foliaire_0$usage, macrofaune_foliaire_0$block, macrofaune_foliaire_0$replicate, sep = "_")
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
+  select(full_uhbr, everything())
 ```
-
 ## micro-arthropodes 
-
 ```{r}
 # tidy data
 ## vérifier les données tri-mesofaune 
@@ -185,8 +181,7 @@ replicate = paste0("R", parse_number(Sites2)))
 micro_arthropodes_3$full_uhbr <- paste (micro_arthropodes_3$usage, micro_arthropodes_3$habitat, micro_arthropodes_3$block, micro_arthropodes_3$replicate, sep = "_")
 ```
 
-# nematodes
-
+## nematodes
 ```{r}
 # homogeneise code
 
@@ -249,35 +244,14 @@ nematodes_1_F <- pivot_longer(nematodes_1, cols= c(Acrobeles,  Acrobeloides, Apo
 nematodes_1_Final <- distinct(nematodes_1_F) 
 
 ```
-
-# Check our data
-
-```{r}
-summary(macrofaune_surface)
-view(macrofaune_surface)
-dim(macrofaune_surface)
-print (nematodes)
-write.csv()
-```
-
 # Combine data
+
 ```{r}
 # data to use
 # ranger le tableau 
 ##macrofaune_surface_1
-macrofaune_surface_1 <- macrofaune_surface_1 [, c(ncol(macrofaune_surface_1), 1:(ncol(macrofaune_surface_1) - 1))]
-macrofaune_surface_1 <- macrofaune_surface_1 %>% 
-  select(id_sample, everything())
-
-macrofaune_surface_1 <- macrofaune_surface_1 %>% 
-  mutate(mass = if_else(is.na(mass), 0, mass))
-
 macrofaune_surface_1 <- macrofaune_surface_1 %>%  
-  select(-Year)
-macrofaune_surface_1 <- macrofaune_surface_1 %>% 
-  select(-c(usage, block, treatment, replicate, habitat))
-macrofaune_surface_1 <- macrofaune_surface_1 %>% 
-  select(-c(Species, Family, Class, stade, mass, fullName))
+  select(-c(Year, usage, block, treatment, replicate, habitat, Species, Family, Class, stade, mass, fullName, mass ))
 
 ##macrofaune_volante_1
 macrofaune_volante_1 <- macrofaune_volante_1 %>% 
@@ -286,17 +260,13 @@ macrofaune_volante_1 <- macrofaune_volante_1 %>%
 macrofaune_volante_1 <- relocate(macrofaune_volante_1, full_uhbr, .before = name)
 macrofaune_volante_1<- relocate(macrofaune_volante_1, name, .after = abundance)
 macrofaune_volante_1<- relocate(macrofaune_volante_1, rankName, .before = genusName)  
-                                
-#####macrofaune_volante_1 <- macrofaune_volante_1 [, c(ncol(macrofaune_volante_1), 1:(ncol(macrofaune_volante_1) - 1))]
-
+                            
 macrofaune_volante_1 <- macrofaune_volante_1 %>% 
   select(id_sample, everything())
 
 ##macrofaune_foliaire_1
 macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
   select(-c(...1, usage, replicate, rang, arbre, method, fullName, block, Year, Id_campaign, Valid.Name))
-
-macrofaune_foliaire_1 <- macrofaune_foliaire_1 [, c(ncol(macrofaune_foliaire_1), 1:(ncol(macrofaune_foliaire_1) - 1))]
 
 macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
   select(id_sample,full_uhbr, everything())
@@ -314,52 +284,13 @@ micro_arthropodes_3 <- micro_arthropodes_3 %>%
 nematodes_1_Final <-nematodes_1_Final %>% 
   select(-c(usage, habitat, block))
 
-#full_data
-full_macrofaune <- rbind(macrofaune_volante_1, macrofaune_surface_1, macrofaune_foliaire_1)
-full_macrofaune <-full_macrofaune %>% 
-mot_a_supprimer <- "arbre"
 
-full_macrofaune[full_macrofaune$Ligne %in% 5222, "full_uhbr"] <- gsub("mot_a_supprimer", "", full_macrofaune[full_macrofaune$Ligne %in% 5258, "full_uhbr"])
-
- 
-
-install.packages("openxlsx")
-library(openxlsx)
-write.xlsx(full_macrofaune, "C:\\Users\\assma\\OneDrive\\Documents\\IFOSSA-anneso\\full_macrofaune.xlsx")
-
-
-# utiliser le package taxize pour homogénéiser la taxonomie
-library(taxize)
-
-
-
-###classification() :pour classer les noms scientifiques des espèces
-
-classification("genusName ", db = "ncbi")
-
-full_macrofaune$classification(full_macrofaune$Nom_scientifique )
-
-
-
-install.packages("C:/Users/assma/Downloads/GratinNavigatoR_1.0.0.tar.gz", repos=NULL, type='source', dependencies = TRUE)
-
-library(GratinNavigatoR)
-
-vignette("GratinNavigatoR")
-endpoint_url <- "http://129.88.204.79:7200/repositories/gratin"
-
-sources <- get.sources(endpoint = endpoint_url)
-
-print(sources)
-
-guilds_info <- get.interactions(sciName =  c( "Pratylenchus"), endpoint = endpoint_url)
-
-print(guilds_info)
 
 
 ```
 
  ```
+
 
 
 
