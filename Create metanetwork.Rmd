@@ -3,295 +3,382 @@ title: "Create metanetwork"
 output: html_document
 date: "2024-02-15"
 ---
-# Load packages
-```{r}
+
+# 0. Load packages and import data
+
+```{r warning=FALSE}
 library(readr)
 library(dplyr)
 library(tidyr)
 library(readxl)
+library(stringr)
 ```
 
-# Import data
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
-macrofaune_volante_0 <- read_delim("data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE)[,-1] # doesn't work for me (anne-so)
-macrofaune_foliaire_0 <- read_csv("data/clean_data_robinier_2023-09-16.csv", show_col_types =  FALSE)
-micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")
+
+macrofaune_volante_0 <- read_csv("data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE)[,-1] # read_delim doesn't work for me (anne-so)
+
+macrofaune_foliaire_0 <- read_csv("data/clean_data_robinier_2023-09-16.csv", show_col_types =  FALSE)[,-1]
+
+micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")[,-c(11,12)]
 micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
+
 nematodes_a_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
 nematodes_m_0 <- read.table("data/ifossa.mars.txt", header= TRUE )
+
+bacteries_0 <- read_delim("data/OTU_Table_Bacterie.tsv")[,c(0:72)]
+
+champignons_0 <- read_delim("data/OTU_Table_Champignon.tsv")[,c(0:72)]
+
+protistes_0 <- read_delim("data/OTU_Table_Cercozoa.tsv")[,c(0:72)]
+
+metadata_mo_0 <- read_delim("data/mapping_brut.csv")
 ```
-# Tidy data and homogeneize code
+
+# 1. Tidy data
+
 ## macrofaune_surface
+
 ```{r}
 # rename columns
-macrofaune_surface_0 <- macrofaune_surface_0 %>%  rename( block = bloc, replicate = rep )
+macrofaune_surface_1 <- macrofaune_surface_0 %>%  rename(block = bloc, replicate = rep)
+
+# add column method and date
+macrofaune_surface_1 <- macrofaune_surface_1 %>% mutate(method = "barber_trap")
+macrofaune_surface_1 <- macrofaune_surface_1 %>% mutate(date = "XX/2023")
 
 # homogeneise code
-macrofaune_surface_0$usage[macrofaune_surface_0$usage == 'C'] <- 'MC'
-macrofaune_surface_0$usage[macrofaune_surface_0$usage == 'F'] <- 'TP'
+macrofaune_surface_1$usage[macrofaune_surface_1$usage == 'C'] <- 'MC'
+macrofaune_surface_1$usage[macrofaune_surface_1$usage == 'F'] <- 'TP'
 
-macrofaune_surface_0$block[macrofaune_surface_0$block == '1'] <- 'B1'
-macrofaune_surface_0$block[macrofaune_surface_0$block == '2'] <- 'B2'
-macrofaune_surface_0$block[macrofaune_surface_0$block == '3'] <- 'B3'
+macrofaune_surface_1$block[macrofaune_surface_1$block == '1'] <- 'B1'
+macrofaune_surface_1$block[macrofaune_surface_1$block == '2'] <- 'B2'
+macrofaune_surface_1$block[macrofaune_surface_1$block == '3'] <- 'B3'
 
-macrofaune_surface_0$habitat[macrofaune_surface_0$habitat == 'Cult' | macrofaune_surface_0$habitat == 'cult' ] <- 'C'
-macrofaune_surface_0$habitat[macrofaune_surface_0$habitat == 'Forest' | macrofaune_surface_0$habitat == 'LSA' ] <- 'T'
+macrofaune_surface_1$habitat[macrofaune_surface_1$habitat == 'Cult' | macrofaune_surface_1$habitat == 'cult' ] <- 'C'
+macrofaune_surface_1$habitat[macrofaune_surface_1$habitat == 'Forest' | macrofaune_surface_1$habitat == 'LSA' ] <- 'T'
 
-macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '1'] <- 'R1'
-macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '2'] <- 'R2'
-macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '3'] <- 'R3'
-macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '4'] <- 'R4'
-macrofaune_surface_0$replicate[macrofaune_surface_0$replicate == '5'] <- 'R5'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '1'] <- 'R1'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '2'] <- 'R2'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '3'] <- 'R3'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '4'] <- 'R4'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '5'] <- 'R5'
 
 # create column full_uhbr
-macrofaune_surface_1 <- macrofaune_surface_0
-macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_0$usage, macrofaune_surface_0$habitat, macrofaune_surface_0$block, macrofaune_surface_0$replicate, sep = "_")
-macrofaune_surface_1 <- macrofaune_surface_1 %>% 
-  select(full_uhbr, everything())
-
+macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_1$usage, macrofaune_surface_1$habitat, macrofaune_surface_1$block, macrofaune_surface_1$replicate, sep = "_")
 ```
+
 ## macrofaune_volante
+
 ```{r }
 # rename columns
-macrofaune_volante_0 <- macrofaune_volante_0 %>%  rename( block = bloc, replicate = rep )
+macrofaune_volante_1 <- macrofaune_volante_0 %>%  rename(block = bloc, replicate = rep)
+
+# add column method and date
+macrofaune_volante_1 <- macrofaune_volante_1 %>% mutate(method = "pan_trap")
+macrofaune_volante_1 <- macrofaune_volante_1 %>%
+  mutate(date = case_when(
+    grepl('03/23', month) ~ "03/2023",
+    grepl('04/23', month) ~ "04/2023"))
 
 # homogeneise code
+macrofaune_volante_1$usage[macrofaune_volante_1$usage == 'C'] <- 'MC'
+macrofaune_volante_1$usage[macrofaune_volante_1$usage == 'F'] <- 'TP'
 
-macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'C'] <- 'MC'
-macrofaune_volante_0$usage[macrofaune_volante_0$usage == 'F'] <- 'TP'
+macrofaune_volante_1$block[macrofaune_volante_1$block == '1'] <- 'B1'
+macrofaune_volante_1$block[macrofaune_volante_1$block == '2'] <- 'B2'
+macrofaune_volante_1$block[macrofaune_volante_1$block == '3'] <- 'B3'
 
-macrofaune_volante_0$block[macrofaune_volante_0$block == '1'] <- 'B1'
-macrofaune_volante_0$block[macrofaune_volante_0$block == '2'] <- 'B2'
-macrofaune_volante_0$block[macrofaune_volante_0$block == '3'] <- 'B3'
+macrofaune_volante_1$habitat[macrofaune_volante_1$habitat == 'Cult' | macrofaune_volante_1$habitat == 'cult' ] <- 'C'
+macrofaune_volante_1$habitat[macrofaune_volante_1$habitat == 'Forest' | macrofaune_volante_1$habitat == 'LSA' ] <- 'T'
 
-macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Cult' | macrofaune_volante_0$habitat == 'cult' ] <- 'C'
-macrofaune_volante_0$habitat[macrofaune_volante_0$habitat == 'Forest' | macrofaune_volante_0$habitat == 'LSA' ] <- 'T'
-
-macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '1'] <- 'R1'
-macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '2'] <- 'R2'
-macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '3'] <- 'R3'
-macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '4'] <- 'R4'
-macrofaune_volante_0$replicate[macrofaune_volante_0$replicate == '5'] <- 'R5'
+macrofaune_volante_1$replicate[macrofaune_volante_1$replicate == '1'] <- 'R1'
+macrofaune_volante_1$replicate[macrofaune_volante_1$replicate == '2'] <- 'R2'
+macrofaune_volante_1$replicate[macrofaune_volante_1$replicate == '3'] <- 'R3'
+macrofaune_volante_1$replicate[macrofaune_volante_1$replicate == '4'] <- 'R4'
+macrofaune_volante_1$replicate[macrofaune_volante_1$replicate == '5'] <- 'R5'
 
 # create column full_uhbr
-
-macrofaune_volante_1 <- macrofaune_volante_0
-macrofaune_volante_1$full_uhbr <- paste (macrofaune_volante_0$usage, macrofaune_volante_0$habitat, macrofaune_volante_0$block, macrofaune_volante_0$replicate, sep = "_")
-macrofaune_volante_1 <- macrofaune_volante_1 %>% 
-  select(full_uhbr, everything())
+macrofaune_volante_1$full_uhbr <- paste (macrofaune_volante_1$usage, macrofaune_volante_1$habitat, macrofaune_volante_1$block, macrofaune_volante_1$replicate, sep = "_")
 ```
+
 ## macrofaune_foliaire
+
 ```{r}
+# modify column method
+macrofaune_foliaire_1 <- macrofaune_foliaire_0
+macrofaune_foliaire_1$method[macrofaune_foliaire_0$method == 'rameau'] <- 'twig'
+macrofaune_foliaire_1$method[macrofaune_foliaire_1$method == 'dissection inflo'] <- 'inflorescence'
+
+# add column date and habitat
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% mutate(date = "XX/2023")
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% mutate(habitat = "T")
+
 # homogeneise code
-macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
-   separate(col = usage_bloc , into = c("usage","bloc","rang","arbre"), sep = "_")
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
+   separate(col = usage_bloc , into = c("usage","block","rang","arbre"), sep = "_")
+
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% mutate(across('rang', str_replace, 'arbre', ''))
   
-macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
    mutate(rang = gsub("rang", "R", rang)) 
 
-macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
   mutate(arbre = gsub("arbre", "", arbre))
 
-macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>% 
+macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
   mutate(replicate = paste(rang, arbre ,sep="."))
 
-macrofaune_foliaire_0 <- macrofaune_foliaire_0 %>%   rename( block = bloc )
-
-macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '1'] <- 'B1'
-macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '2'] <- 'B2'
-macrofaune_foliaire_0$block[macrofaune_foliaire_0$block == '3'] <- 'B3'
+macrofaune_foliaire_1$block[macrofaune_foliaire_1$block == '1'] <- 'B1'
+macrofaune_foliaire_1$block[macrofaune_foliaire_1$block == '2'] <- 'B2'
+macrofaune_foliaire_1$block[macrofaune_foliaire_1$block == '3'] <- 'B3'
 
 # create column full_uhbr
-macrofaune_foliaire_1 <- macrofaune_foliaire_0
-macrofaune_foliaire_1$full_uhbr <- paste (macrofaune_foliaire_0$usage, macrofaune_foliaire_0$block, macrofaune_foliaire_0$replicate, sep = "_")
-macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
-  select(full_uhbr, everything())
+macrofaune_foliaire_1$full_uhbr <- paste (macrofaune_foliaire_1$usage, macrofaune_foliaire_1$habitat, macrofaune_foliaire_1$block, macrofaune_foliaire_1$replicate, sep = "_")
 ```
-## micro-arthropodes 
+
+## nematodes
+
+### march
+
 ```{r}
-# tidy data
-## vérifier les données tri-mesofaune 
-str(micro_arthropodes_all_0)
-unique(micro_arthropodes_all_0$Nbr_ind_tri)
-unique(micro_arthropodes_all_0$Nbr_identifiés)
+# add columns date, method and replicate
+nematodes_m_1 <- nematodes_m_0 %>% mutate(date = "03/2023")
+nematodes_m_1 <- nematodes_m_1 %>% mutate(method = "baermann")
+nematodes_m_1 <- nematodes_m_1 %>% mutate(replicate = "R1")
 
-## supprimer des lignes qui contient des remarques 
-micro_arthropodes_all_1 <- micro_arthropodes_all_0 %>% slice(-347:-349)
+# homogeneise code
+nematodes_m_1 <- nematodes_m_1 %>%
+  mutate(usage = case_when(
+    startsWith(Taxa, "C") ~ "MC",
+    startsWith(Taxa, "AF") ~ "AF",
+    startsWith(Taxa, "F") ~ "TP"),
+        habitat = case_when(
+    grepl('^C|^AF_C', Taxa) ~ "C",
+    grepl('^F|^AF_A', Taxa) ~ "T"),
+        block = paste0("B", parse_number(Taxa)))
 
-## remplacer les NA par "0"
+# create column full_uhbr
+nematodes_m_1$full_uhbr <- paste(nematodes_m_1$usage, nematodes_m_1$habitat, nematodes_m_1$block, nematodes_m_1$replicate, sep="_")
+```
+
+### april
+
+```{r}
+# add columns date, method and replicate
+nematodes_a_1 <- nematodes_a_0 %>% mutate(date = "04/2023")
+nematodes_a_1 <- nematodes_a_1 %>% mutate(method = "baermann")
+nematodes_a_1 <- nematodes_a_1 %>% mutate(replicate = "R1")
+
+# homogeneise code
+nematodes_a_1 <- nematodes_a_1 %>%
+ mutate(usage = case_when(
+    grepl('[[:digit:]]C', Taxa) ~ "MC",
+    grepl('[[:digit:]]AF', Taxa) ~ "AF",
+    grepl('[[:digit:]]F', Taxa) ~ "TP"),
+        habitat = case_when(
+    grepl('C$', Taxa) ~ "C",
+    grepl('F$|A$', Taxa) ~ "T"),
+        block = paste0("B", parse_number(Taxa)))
+
+# create column full_uhbr
+nematodes_a_1$full_uhbr <- paste(nematodes_a_1$usage, nematodes_a_1$habitat, nematodes_a_1$block, nematodes_a_1$replicate, sep="_")
+```
+
+### all
+
+```{r}
+# bind and pivot data
+nematodes_1 <- bind_rows(nematodes_a_1, nematodes_m_1)
+nematodes_1 <- nematodes_1 %>% replace(is.na(.), 0)
+nematodes_1 <- nematodes_1 %>% select(Taxa, full_uhbr, usage, habitat, block, replicate, date, method, everything())
+nematodes_1 <- pivot_longer(nematodes_1, cols = c(9:38), names_to =  "taxa", values_to = "abundance")
+
+nematodes_1 <- nematodes_1 %>% rename(name=taxa)
+nematodes_1$abundance <- lapply(nematodes_1$abundance, round)
+```
+
+## micro-arthropodes
+
+```{r}
+# delete 3 last rows (they are not samples)
+micro_arthropodes_all_1 <- micro_arthropodes_all_0 %>% slice(-c(346:348))
+
+# remplace NA by 0 for abundance
 micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>%
   mutate(Nbr_identifiés = ifelse(is.na(Nbr_identifiés), 0, Nbr_identifiés),
          Nbr_ind_tri = ifelse(is.na(Nbr_ind_tri), 0, Nbr_ind_tri))
 
-## créer une nv colonne Nbr_individus_final
+# add column Nbr_individus_final = Nbr_ind_tri - Nbr_identifiés
+## Nbr_ind_tri is the total number of individuals
+## Nbr_identifiés is the number of collembola more precisely identified
+## Nbr_individus_final is needed because not all collembola have been identified
 micro_arthropodes_all_1$Nbr_ind_tri <- as.numeric(micro_arthropodes_all_1$Nbr_ind_tri)
 micro_arthropodes_all_1$Nbr_identifiés <- as.numeric(micro_arthropodes_all_1$Nbr_identifiés) 
 
-micro_arthropodes_all_2 <- transform(micro_arthropodes_all_1, Nbr_individus_final = Nbr_ind_tri - Nbr_identifiés)
+micro_arthropodes_all_1 <- transform(micro_arthropodes_all_1, Nbr_individus_final = Nbr_ind_tri - Nbr_identifiés)
 
-## fusionner les 2 fichiers 
-micro_arthropodes_all_2 <- micro_arthropodes_all_2 %>% 
+# add collembola identified
+micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>% 
   rename(Sites=Num_prélevement)
 
-micro_arthropodes_3 <- bind_rows(micro_arthropodes_all_2, micro_arthropodes_col_0)
+micro_arthropodes_1 <- bind_rows(micro_arthropodes_all_1, micro_arthropodes_col_0)
 
-##best_id résultat de colonne Noms_espèces des col
-
-micro_arthropodes_3$best_ID <- replace(micro_arthropodes_3$best_ID,is.na(micro_arthropodes_3$best_ID),"")
-
-micro_arthropodes_3$Noms_espèces <- replace(micro_arthropodes_3$Noms_espèces,is.na(micro_arthropodes_3$Noms_espèces),"")
-
-micro_arthropodes_3 $espèces_ID <-
-  paste(micro_arthropodes_3$best_ID,micro_arthropodes_3$Noms_espèces)
- ## on peux supprimer les colonnes best_ID noms_especes psq je lai remplacé par une nouvelle colonne espéces_ID  
+# add a unique column abundance
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(abundance = coalesce(Nbr_individus_final, Nbr_individus))
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(name = coalesce(Noms_espèces, best_ID))
 ```
 
 ```{r}
+# add columns date and method
+micro_arthropodes_2 <- micro_arthropodes_1 %>% mutate(date = "XX/2023")
+micro_arthropodes_2 <- micro_arthropodes_2 %>% mutate(method = "macfayden")
+
 # homogeneise code
-
-## j'ai séparé la colonne pour faciliter la manip 
-micro_arthropodes_3 <- micro_arthropodes_3 %>% 
-  separate(col=Sites, into=c("Sites1","Sites2"), sep="_", remove= FALSE)
-
-## sites1(usage+Block)
-micro_arthropodes_3 <- micro_arthropodes_3 %>% 
-   mutate(usage = case_when(
-
-    startsWith(Sites1, "C") ~ "MC",
-
-    startsWith(Sites1, "AF") ~ "AF",
-
-    startsWith(Sites1, "F") ~ "TP"),
-
-block = paste0("B", parse_number(Sites1)))
-
-## sites(Habitat+replicate)
-micro_arthropodes_3 <- micro_arthropodes_3 %>% 
-  mutate(habitat = case_when(
-    
-    startsWith(Sites2, "C") ~ "C",
-
-    startsWith(Sites2, "LSA") ~ "T"),
-
-replicate = paste0("R", parse_number(Sites2)))
-
-## Full_name_ubhr
-micro_arthropodes_3$full_uhbr <- paste (micro_arthropodes_3$usage, micro_arthropodes_3$habitat, micro_arthropodes_3$block, micro_arthropodes_3$replicate, sep = "_")
-```
-
-## nematodes
-```{r}
-# homogeneise code
-
-## april
-nematodes_a_1 <- nematodes_a_0 %>%
-
+micro_arthropodes_2 <- micro_arthropodes_2 %>%
  mutate(usage = case_when(
-
-    grepl('[[:digit:]]C', Taxa) ~ "MC",
-
-    grepl('[[:digit:]]AF', Taxa) ~ "AF",
-
-    grepl('[[:digit:]]F', Taxa) ~ "TP"),
-
+    grepl('C[[:digit:]]_', Sites) ~ "MC",
+    grepl('AF[[:digit:]]_', Sites) ~ "AF",
+    grepl('F[[:digit:]]_', Sites) ~ "TP"),
         habitat = case_when(
+    grepl('C[[:digit:]]_|AF[[:digit:]]_C', Sites) ~ "C",
+    grepl('F[[:digit:]]_|AF[[:digit:]]_LSA', Sites) ~ "T"),
+        block = case_when(
+    grepl('1_', Sites) ~ "B1",
+    grepl('2_', Sites) ~ "B2",
+    grepl('3_', Sites) ~ "B3"),
+        replicate = case_when(
+    grepl('_C1|_LSA1', Sites) ~ "R1",
+    grepl('_C2|_LSA2', Sites) ~ "R2",
+    grepl('_C3|_LSA3', Sites) ~ "R3",
+    grepl('_C4|_LSA4', Sites) ~ "R4",
+    grepl('_C5|_LSA5', Sites) ~ "R5"))
 
-    grepl('C$', Taxa) ~ "C",
-
-    grepl('F$|A$', Taxa) ~ "T"),
-
-        block = paste0("B", parse_number(Taxa)))
-
-nematodes_a_1$full_uhbt <- paste(nematodes_a_1$usage, nematodes_a_1$habitat, nematodes_a_1$block, sep="_")
-
-nematodes_a_1 <- nematodes_a_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything())
-
-## march
-nematodes_m_1 <- nematodes_m_0 %>%
-
-  mutate(usage = case_when(
-
-    startsWith(Taxa, "C") ~ "MC",
-
-    startsWith(Taxa, "AF") ~ "AF",
-
-    startsWith(Taxa, "F") ~ "TP"),
-
-        habitat = case_when(
-
-    grepl('^C|^AF_C', Taxa) ~ "C",
-
-    grepl('^F|^AF_A', Taxa) ~ "T"),
-
-        block = paste0("B", parse_number(Taxa)))
-nematodes_m_1$full_uhbt <- paste(nematodes_m_1$usage, nematodes_m_1$habitat, nematodes_m_1$block, sep="_")
-
-nematodes_m_1<- nematodes_m_1[,-1] %>% select(full_uhbt, usage, habitat, block, everything()) # je n'est poas inclu time 
-
-# bind data
-nematodes_1 <- bind_rows (nematodes_a_1,nematodes_m_1)
-#remplacer Na par 0
-for (col in names(nematodes_1)) {
-  nematodes_1[[col]] <- replace(nematodes_1[[col]], is.na(nematodes_1[[col]]), 0)}
-
-#  pivot_longer wider pour avoir le même format que les autres
-
-nematodes_1_F <- pivot_longer(nematodes_1, cols= c(Acrobeles,  Acrobeloides, Aporcelaimidae, Aprutides, Cervidellus, Chiloplacus, Eumonhystera, Anaplecetus, Plectus, Tylocephalus, Panagrolaimus, Rhabditidae, Rhabdolaimus, Prismatolaimus, Aphelenchus, Aphelenchoides, Diphtherophora, Mononchus, Microdorylaimus, Nygolaimidae, Discolaimus, Oxydirus, Eudorylaimus, Pratylenchus, Prodorylaimus, Helicotylenchus, Trichodorus, Tylenchorhynchus, Tylenchidae, Mylonchulus) ,  names_to =  "espéces_ID" , values_to = "Nbr_individus")
-
-# supprimer les doublons 
-nematodes_1_Final <- distinct(nematodes_1_F) 
-
+# create column full_uhbr
+micro_arthropodes_2$full_uhbr <- paste(micro_arthropodes_2$usage, micro_arthropodes_2$habitat, micro_arthropodes_2$block, micro_arthropodes_2$replicate, sep="_")
 ```
+
+## micro-organisms
+
+```{r}
+# rename columns
+metadata_mo_1 <- metadata_mo_0[c(1:60),] %>%  rename(block = Bloc, replicate = REP, habitat = HABITAT)
+
+# add column method and date
+metadata_mo_1 <- metadata_mo_1 %>% mutate(method = "metabarcoding")
+metadata_mo_1 <- metadata_mo_1 %>% mutate(date = "XX/2023")
+
+# homogeneise code
+metadata_mo_1$usage[metadata_mo_1$usage == 'C'] <- 'MC'
+metadata_mo_1$usage[metadata_mo_1$usage == 'F'] <- 'TP'
+
+metadata_mo_1$block <- paste0("B", parse_number(metadata_mo_1$block))
+
+metadata_mo_1$habitat[metadata_mo_1$habitat == 'Tree_line' | metadata_mo_1$habitat == 'Tree_plantation' ] <- 'T'
+metadata_mo_1$habitat[metadata_mo_1$habitat == 'Crop' ] <- 'C'
+
+metadata_mo_1$replicate <- paste0("R", parse_number(metadata_mo_1$replicate))
+
+# create column full_uhbr
+metadata_mo_1$full_uhbr <- paste (metadata_mo_1$usage, metadata_mo_1$habitat, metadata_mo_1$block, metadata_mo_1$replicate, sep = "_")
+```
+
+### bacteries
+
+```{r}
+bacteries_1 <- pivot_longer(bacteries_0, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+bacteries_1$Reference_ADNid <- str_replace(bacteries_1$Reference_ADNid, '_.+_.+', "")
+
+bacteries_1 <- left_join(bacteries_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+### champignons
+
+```{r}
+champignons_1 <- pivot_longer(champignons_0, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+champignons_1$Reference_ADNid <- str_replace(champignons_1$Reference_ADNid, '_.+_.+', "")
+
+champignons_1 <- left_join(champignons_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+### protists
+
+```{r}
+protistes_1 <- pivot_longer(protistes_0, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+protistes_1$Reference_ADNid <- str_replace(protistes_1$Reference_ADNid, '_.+_.+', "")
+
+protistes_1 <- left_join(protistes_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+# 2. Functionnal assignment
+
+```{r}
+# Select minimal data
+
+fun_macrofaune_surface_0 <- macrofaune_surface_1 %>% 
+  select(full_uhbr, name, fullName, genusName, familyName, orderName, className, phylumName, abundance, method, date) # stade and mass can be used for traits
+
+fun_macrofaune_volante_0 <- macrofaune_volante_1 %>% 
+  select(full_uhbr, name, fullName, genusName, familyName, orderName, className, phylumName, abundance, method, date) # INat can be used for ID and stade can be used for traits
+
+fun_macrofaune_foliaire_0 <- macrofaune_foliaire_1 %>% 
+  select(full_uhbr, name, fullName, genusName, familyName, orderName, className, phylumName, abundance, method, date) # Valid.Name (what is it?)
+
+#fun_nematodes_0 <- nematodes_1 %>% select(full_uhbr, TAXIZE, abundance, method, date) ### USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of taxa
+
+#fun_micro_arthropodes_0 <- micro_arthropodes_1 %>% select(full_uhbr, TAXIZE, abundance, method, date) ### USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name, higher.level and lower.level # stade can be used for traits
+
+fun_bacteries_0 <- bacteries_1 %>% 
+  select(full_uhbr, blast_taxonomy, abundance, method, date) # seed.id can be used for ID
+
+fun_champignons_0 <- champignons_1 %>% 
+  select(full_uhbr, blast_taxonomy, abundance, method, date) # seed.id can be used for ID
+
+fun_protistes_0 <- protistes_1 %>% 
+  select(full_uhbr, blast_taxonomy, abundance, method, date) # seed.id can be used for ID
+```
+
+```{r}
+# Homogeneise taxonomy
+
+### TO DO for macrofaune, nematodes and micro-arthropodes
+
+fun_bacteries_1 <- fun_bacteries_0 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+
+fun_champignons_1 <- fun_champignons_0
+fun_champignons_1$blast_taxonomy <- str_replace_all(fun_champignons_1$blast_taxonomy, '.__', "")
+
+fun_champignons_1 <- fun_champignons_1 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+
+fun_protistes_1 <- fun_protistes_0 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+```
+
+```{r}
 # Combine data
 
-```{r}
-# data to use
-# ranger le tableau 
-##macrofaune_surface_1
-macrofaune_surface_1 <- macrofaune_surface_1 %>%  
-  select(-c(Year, usage, block, treatment, replicate, habitat, Species, Family, Class, stade, mass, fullName, mass ))
+fun_inter_macrofaune <- bind_rows(fun_macrofaune_surface_0, fun_macrofaune_volante_0, fun_macrofaune_foliaire_0)
 
-##macrofaune_volante_1
-macrofaune_volante_1 <- macrofaune_volante_1 %>% 
-  select(-c(treatment, code, modalite, INat,usage, block, replicate, habitat, month, fullName, stade, year ))
+fun_inter_mo <- bind_rows(fun_bacteries_1, fun_champignons_1, fun_protistes_1)
 
-macrofaune_volante_1 <- relocate(macrofaune_volante_1, full_uhbr, .before = name)
-macrofaune_volante_1<- relocate(macrofaune_volante_1, name, .after = abundance)
-macrofaune_volante_1<- relocate(macrofaune_volante_1, rankName, .before = genusName)  
-                            
-macrofaune_volante_1 <- macrofaune_volante_1 %>% 
-  select(id_sample, everything())
+# add fun_nematodes, fun_micro_arthropodes
 
-##macrofaune_foliaire_1
-macrofaune_foliaire_1 <-macrofaune_foliaire_1 %>% 
-  select(-c(...1, usage, replicate, rang, arbre, method, fullName, block, Year, Id_campaign, Valid.Name))
-
-macrofaune_foliaire_1 <- macrofaune_foliaire_1 %>% 
-  select(id_sample,full_uhbr, everything())
-
-## micro_arthropodes_3
-micro_arthropodes_3 <-micro_arthropodes_3 %>% 
-select(-c(Sites, Sites1, Sites2, Nbr_individus, Nbr_identifiés, Nbr_ind_tri, Nbr_ind_montés.sur.lames, Observateur,...6, ...12, ...13, Remarques, best_ID, Noms_espèces, block, usage, replicate, habitat, Noms_espèces ))
-
-micro_arthropodes_3 <- micro_arthropodes_3 [, c(ncol(micro_arthropodes_3), 1:(ncol(micro_arthropodes_3) - 1))]
-
-micro_arthropodes_3 <- micro_arthropodes_3 %>% 
-  select(full_uhbr, espèces_ID, everything())
-
-##nematodes_1_Final 
-nematodes_1_Final <-nematodes_1_Final %>% 
-  select(-c(usage, habitat, block))
-
-
-
-
+fun_all <- bind_rows(fun_inter_macrofaune, fun_inter_mo, ...)
 ```
 
- ```
 
 
 
+
+
+
+
+`
 
 
