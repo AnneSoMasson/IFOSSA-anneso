@@ -336,7 +336,7 @@ cercozoa_1$Reference_ADNid <- str_replace(cercozoa_1$Reference_ADNid, '_.+_.+', 
 cercozoa_1 <- left_join(cercozoa_1, metadata_mo_1, by = "Reference_ADNid")
 ```
 
-# 2. Functionnal assignment
+# Prepare combined file
 
 ```{r}
 # Select minimal data
@@ -364,18 +364,15 @@ fun_cercozoa_0 <- cercozoa_1 %>%
   select(full_uhbr, blast_taxonomy, abundance, method, date) # seed.id can be used for ID
 ```
 
-
-
-
-
-
-
 ```{r}
 # Homogeneise taxonomy
 
-### fun_nematodes_0 USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name
+
 
 ### fun_micro_arthropodes_0 USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name, higher.level and lower.level
+
+
+### fun_nematodes_0 USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name
 
 fun_nematodes_1 <- fun_nematodes_0 %>%
   tibble(tax_name(fun_nematodes_0$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis")) %>% 
@@ -387,9 +384,6 @@ fun_nematodes_1 <- fun_nematodes_0 %>%
 
 
 test <- tbl_df(tax_name(fun_nematodes_0$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
-
-
-
 
 # already done for micro-organisms
 fun_bacteria_1 <- fun_bacteria_0 %>% 
@@ -407,23 +401,12 @@ fun_cercozoa_1 <- fun_cercozoa_0 %>%
 
 ```{r}
 # Combine data
-
-fun_inter_macrofaune <- bind_rows(fun_macrofaune_surface_0, fun_macrofaune_aerial_0, fun_macrofaune_foliar_0)
-
-fun_inter_mo <- bind_rows(fun_bacteria_1, fun_fungi_1, fun_cercozoa_1)
-
-# add fun_nematodes, fun_micro_arthropodes
-
-fun_all <- bind_rows(fun_inter_macrofaune, fun_inter_mo, ...)
+fun_all <- bind_rows(fun_macrofaune_surface_1, fun_macrofaune_aerial_1, fun_macrofaune_foliar_1, fun_nematodes_1, fun_micro_arthropodes_1, fun_bacteria_1, fun_fungi_1, fun_cercozoa_1)
 ```
 
+# 2. Functionnal assignment
 
+# 3. Redundancy analysis
 
-
-
-
-
-
-`
 
 
