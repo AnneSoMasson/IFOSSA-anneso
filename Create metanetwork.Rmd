@@ -13,6 +13,7 @@ library(tidyr)
 library(readxl)
 library(stringr)
 library(taxize)
+library(rgbif)
 ```
 
 ```{r message=FALSE, warning=FALSE}
@@ -366,27 +367,30 @@ fun_cercozoa_0 <- cercozoa_1 %>%
 
 ```{r}
 # Homogeneise taxonomy
-
-  
-
 ### fun_micro_arthropodes_0 USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name, higher.level and lower.level
 
-fun_micro_arthropodes_0 <- micro_arthropodes_all_1 %>%
-  tibble(tax_name(micro_arthropodes_all_1$best_ID, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis")) %>% 
-  unnest() %>% 
+library(taxize)
+ # Create dataframe to store taxonomic information
+ harmo_colnames <- c("name", "rankName", "fullName", 
+                     "genusName", "familyName", "orderName", "className", "phylumName")
+ taxo_micro_arth <- data.frame(matrix(data = NA, 
+                                 nrow = 0,  # Start with 0 rows
+                                 ncol = length(harmo_colnames),
+                                 dimnames = list(NULL, harmo_colnames)))
+ 
+fun_micro_arthropodes_1 <- fun_micro_arthropodes_0 %>%
+  tibble(tax_name(unique (fun_micro_arthropodes_0$name), get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "ncbi")) %>% 
+  unnest(fun_micro_arthropodes_1) %>% 
   filter(rank %in% c("kingdom", "phylum","class","order","family","genus")) %>% 
   select(name = kingdomName, phylumName, className, orderName, familyName, genusName)
 
-
   
-test <- tbl_df(tax_name("Pratylenchus", get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
-
-
+test <- tbl_df(tax_name("Acaridida", get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "ncbi"))
 
 ### fun_nematodes_0 USE TAXIZE before to have rankName, fullname, genusName, familyName, orderName, className and phylumName instead of name
 
 fun_nematodes_1 <- fun_nematodes_0 %>%
-  tibble(tax_name(fun_nematodes_0$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis")) %>% 
+  tibble(tax_name(unique( fun_nematodes_0$name), get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "ncbi")) %>% 
   unnest() %>% 
   filter(rank %in% c("kingdom", "phylum","class","order","family","genus")) %>% 
   select(-query) %>% 
@@ -394,9 +398,9 @@ fun_nematodes_1 <- fun_nematodes_0 %>%
   select(name = kingdomName, phylumName, className, orderName, familyName, genusName)
 
 
-test <- tbl_df(tax_name(fun_nematodes_0[1:5,]$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
+test_1 <- tbl_df(tax_name(fun_nematodes_0[1:5,]$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
 
-test <- tbl_df(tax_name("Pratylenchus", get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
+test_2 <- tbl_df(tax_name("Pratylenchus", get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
 
 # already done for micro-organisms
 fun_bacteria_1 <- fun_bacteria_0 %>% 
