@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Create tidy_data, tax_table and fun_table"
 output: html_document
@@ -602,3 +603,609 @@ write.csv(all_tax, "intermediate_files/all_tax_table.csv")
 
 
 
+=======
+---
+title: "Create tidy_data, tax_table and fun_table"
+output: html_document
+date: "2024-02-15"
+---
+
+# 0. Load packages and import data
+
+```{r warning=FALSE}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(stringr)
+library(taxize)
+library(rgbif)
+```
+
+suffix _0 = raw data
+
+```{r message=FALSE, warning=FALSE}
+macrofaune_surface_0 <- read_delim("data/1. barber_taxo2023-09-26.csv", show_col_types = FALSE)[,-1]
+
+macrofaune_aerial_0 <- read_csv("data/1. pantrap_taxo2023-09-08.csv", show_col_types = FALSE)[,-1]
+
+macrofaune_foliar_0 <- read_csv("data/clean_data_robinier_2023-09-16.csv", show_col_types =  FALSE)[,-1]
+
+micro_arthropodes_all_0 <- read_excel("data/NH_Tri_mesofaune - INRAE MONTPELLER_AM_MH.xlsx")[,-c(11,12)]
+micro_arthropodes_col_0 <- read_excel("data/BDD Collemboles - INRAE MONTPELLIER.xlsx")
+
+nematodes_a_0 <- read_excel("data/Communautés_avril vf.xlsx", sheet = "Feuil1")
+nematodes_m_0 <- read.table("data/ifossa.mars.txt", header= TRUE )
+
+bacteria_0 <- read_delim("data/OTU_Table_Bacterie.tsv")[,c(0:72)]
+
+fungi_0 <- read_delim("data/OTU_Table_Champignon.tsv")[,c(0:72)]
+
+cercozoa_0 <- read_delim("data/OTU_Table_Cercozoa.tsv")[,c(0:72)]
+
+metadata_mo_0 <- read_delim("data/mapping_brut.csv")
+```
+
+# 1. Tidy data
+
+suffix _1 = cleaned data
+
+## macrofaune_surface
+
+```{r}
+macrofaune_surface_1 <- macrofaune_surface_0
+
+# rename columns
+macrofaune_surface_1 <- macrofaune_surface_1 %>%  rename(block = bloc, replicate = rep)
+
+# add column method and date
+macrofaune_surface_1 <- macrofaune_surface_1 %>% mutate(method = "barber_trap")
+macrofaune_surface_1 <- macrofaune_surface_1 %>% mutate(date = "XX/2023")
+
+# homogeneise code
+macrofaune_surface_1$usage[macrofaune_surface_1$usage == 'C'] <- 'MC'
+macrofaune_surface_1$usage[macrofaune_surface_1$usage == 'F'] <- 'TP'
+
+macrofaune_surface_1$block[macrofaune_surface_1$block == '1'] <- 'B1'
+macrofaune_surface_1$block[macrofaune_surface_1$block == '2'] <- 'B2'
+macrofaune_surface_1$block[macrofaune_surface_1$block == '3'] <- 'B3'
+
+macrofaune_surface_1$habitat[macrofaune_surface_1$habitat == 'Cult' | macrofaune_surface_1$habitat == 'cult' ] <- 'C'
+macrofaune_surface_1$habitat[macrofaune_surface_1$habitat == 'Forest' | macrofaune_surface_1$habitat == 'LSA' ] <- 'T'
+
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '1'] <- 'R1'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '2'] <- 'R2'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '3'] <- 'R3'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '4'] <- 'R4'
+macrofaune_surface_1$replicate[macrofaune_surface_1$replicate == '5'] <- 'R5'
+
+# create column full_uhbr
+macrofaune_surface_1$full_uhbr <- paste(macrofaune_surface_1$usage, macrofaune_surface_1$habitat, macrofaune_surface_1$block, macrofaune_surface_1$replicate, sep = "_")
+```
+
+## macrofaune_aerial
+
+```{r }
+macrofaune_aerial_1 <- macrofaune_aerial_0
+
+# rename columns
+macrofaune_aerial_1 <- macrofaune_aerial_1 %>%  rename(block = bloc, replicate = rep)
+
+# add column method and date
+macrofaune_aerial_1 <- macrofaune_aerial_1 %>% mutate(method = "pan_trap")
+macrofaune_aerial_1 <- macrofaune_aerial_1 %>%
+  mutate(date = case_when(
+    grepl('03/23', month) ~ "03/2023",
+    grepl('04/23', month) ~ "04/2023"))
+
+# homogeneise code
+macrofaune_aerial_1$usage[macrofaune_aerial_1$usage == 'C'] <- 'MC'
+macrofaune_aerial_1$usage[macrofaune_aerial_1$usage == 'F'] <- 'TP'
+
+macrofaune_aerial_1$block[macrofaune_aerial_1$block == '1'] <- 'B1'
+macrofaune_aerial_1$block[macrofaune_aerial_1$block == '2'] <- 'B2'
+macrofaune_aerial_1$block[macrofaune_aerial_1$block == '3'] <- 'B3'
+
+macrofaune_aerial_1$habitat[macrofaune_aerial_1$habitat == 'Cult' | macrofaune_aerial_1$habitat == 'cult' ] <- 'C'
+macrofaune_aerial_1$habitat[macrofaune_aerial_1$habitat == 'Forest' | macrofaune_aerial_1$habitat == 'LSA' ] <- 'T'
+
+macrofaune_aerial_1$replicate[macrofaune_aerial_1$replicate == '1'] <- 'R1'
+macrofaune_aerial_1$replicate[macrofaune_aerial_1$replicate == '2'] <- 'R2'
+macrofaune_aerial_1$replicate[macrofaune_aerial_1$replicate == '3'] <- 'R3'
+macrofaune_aerial_1$replicate[macrofaune_aerial_1$replicate == '4'] <- 'R4'
+macrofaune_aerial_1$replicate[macrofaune_aerial_1$replicate == '5'] <- 'R5'
+
+# create column full_uhbr
+macrofaune_aerial_1$full_uhbr <- paste (macrofaune_aerial_1$usage, macrofaune_aerial_1$habitat, macrofaune_aerial_1$block, macrofaune_aerial_1$replicate, sep = "_")
+```
+
+## macrofaune_foliar
+
+```{r}
+macrofaune_foliar_1 <- macrofaune_foliar_0
+
+# modify column method
+macrofaune_foliar_1$method[macrofaune_foliar_0$method == 'rameau'] <- 'twig'
+macrofaune_foliar_1$method[macrofaune_foliar_1$method == 'dissection inflo'] <- 'inflorescence'
+
+# add column date and habitat
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% mutate(date = "XX/2023")
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% mutate(habitat = "T")
+
+# homogeneise code
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% 
+   separate(col = usage_bloc , into = c("usage","block","rang","arbre"), sep = "_")
+
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% mutate(across('rang', str_replace, 'arbre', ''))
+  
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% 
+   mutate(rang = gsub("rang", "R", rang)) 
+
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% 
+  mutate(arbre = gsub("arbre", "", arbre))
+
+macrofaune_foliar_1 <- macrofaune_foliar_1 %>% 
+  mutate(replicate = paste(rang, arbre ,sep="."))
+
+macrofaune_foliar_1$block[macrofaune_foliar_1$block == '1'] <- 'B1'
+macrofaune_foliar_1$block[macrofaune_foliar_1$block == '2'] <- 'B2'
+macrofaune_foliar_1$block[macrofaune_foliar_1$block == '3'] <- 'B3'
+
+# create column full_uhbr
+macrofaune_foliar_1$full_uhbr <- paste (macrofaune_foliar_1$usage, macrofaune_foliar_1$habitat, macrofaune_foliar_1$block, macrofaune_foliar_1$replicate, sep = "_")
+```
+
+## nematodes
+
+### march
+
+```{r}
+nematodes_m_1 <- nematodes_m_0
+
+# add columns date, method and replicate
+nematodes_m_1 <- nematodes_m_1 %>% mutate(date = "03/2023")
+nematodes_m_1 <- nematodes_m_1 %>% mutate(method = "baermann")
+nematodes_m_1 <- nematodes_m_1 %>% mutate(replicate = "R1")
+
+# homogeneise code
+nematodes_m_1 <- nematodes_m_1 %>%
+  mutate(usage = case_when(
+    startsWith(Taxa, "C") ~ "MC",
+    startsWith(Taxa, "AF") ~ "AF",
+    startsWith(Taxa, "F") ~ "TP"),
+        habitat = case_when(
+    grepl('^C|^AF_C', Taxa) ~ "C",
+    grepl('^F|^AF_A', Taxa) ~ "T"),
+        block = paste0("B", parse_number(Taxa)))
+
+# create column full_uhbr
+nematodes_m_1$full_uhbr <- paste(nematodes_m_1$usage, nematodes_m_1$habitat, nematodes_m_1$block, nematodes_m_1$replicate, sep="_")
+```
+
+### april
+
+```{r}
+nematodes_a_1 <- nematodes_a_0
+
+# add columns date, method and replicate
+nematodes_a_1 <- nematodes_a_1 %>% mutate(date = "04/2023")
+nematodes_a_1 <- nematodes_a_1 %>% mutate(method = "baermann")
+nematodes_a_1 <- nematodes_a_1 %>% mutate(replicate = "R1")
+
+# homogeneise code
+nematodes_a_1 <- nematodes_a_1 %>%
+ mutate(usage = case_when(
+    grepl('[[:digit:]]C', Taxa) ~ "MC",
+    grepl('[[:digit:]]AF', Taxa) ~ "AF",
+    grepl('[[:digit:]]F', Taxa) ~ "TP"),
+        habitat = case_when(
+    grepl('C$', Taxa) ~ "C",
+    grepl('F$|A$', Taxa) ~ "T"),
+        block = paste0("B", parse_number(Taxa)))
+
+# create column full_uhbr
+nematodes_a_1$full_uhbr <- paste(nematodes_a_1$usage, nematodes_a_1$habitat, nematodes_a_1$block, nematodes_a_1$replicate, sep="_")
+```
+
+### all
+
+```{r}
+# bind and pivot data
+nematodes_1 <- bind_rows(nematodes_a_1, nematodes_m_1)
+nematodes_1 <- nematodes_1 %>% replace(is.na(.), 0)
+nematodes_1 <- nematodes_1 %>% select(Taxa, full_uhbr, usage, habitat, block, replicate, date, method, everything())
+nematodes_1 <- pivot_longer(nematodes_1, cols = c(9:38), names_to =  "taxa", values_to = "abundance")
+
+nematodes_1 <- nematodes_1 %>% rename(name=taxa)
+nematodes_1$abundance <- lapply(nematodes_1$abundance, round)
+```
+
+## micro-arthropodes
+
+```{r}
+micro_arthropodes_all_1 <- micro_arthropodes_all_0
+
+# delete 3 last rows (they are not samples)
+micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>% slice(-c(346:348))
+
+# remplace NA by 0 for abundance
+micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>%
+  mutate(Nbr_identifiés = ifelse(is.na(Nbr_identifiés), 0, Nbr_identifiés),
+         Nbr_ind_tri = ifelse(is.na(Nbr_ind_tri), 0, Nbr_ind_tri))
+
+# add column Nbr_individus_final = Nbr_ind_tri - Nbr_identifiés
+## Nbr_ind_tri is the total number of individuals
+## Nbr_identifiés is the number of collembola more precisely identified
+## Nbr_individus_final is needed because not all collembola have been identified
+micro_arthropodes_all_1$Nbr_ind_tri <- as.numeric(micro_arthropodes_all_1$Nbr_ind_tri)
+micro_arthropodes_all_1$Nbr_identifiés <- as.numeric(micro_arthropodes_all_1$Nbr_identifiés) 
+
+micro_arthropodes_all_1 <- transform(micro_arthropodes_all_1, Nbr_individus_final = Nbr_ind_tri - Nbr_identifiés)
+
+# add collembola identified
+micro_arthropodes_all_1 <- micro_arthropodes_all_1 %>% 
+  rename(Sites=Num_prélevement)
+
+micro_arthropodes_1 <- bind_rows(micro_arthropodes_all_1, micro_arthropodes_col_0)
+
+# add a unique column abundance
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(abundance = coalesce(Nbr_individus_final, Nbr_individus))
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(name = coalesce(Noms_espèces, best_ID))
+
+# add columns date and method
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(date = "XX/2023")
+micro_arthropodes_1 <- micro_arthropodes_1 %>% mutate(method = "macfayden")
+
+# homogeneise code
+micro_arthropodes_1 <- micro_arthropodes_1 %>%
+ mutate(usage = case_when(
+    grepl('C[[:digit:]]_', Sites) ~ "MC",
+    grepl('AF[[:digit:]]_', Sites) ~ "AF",
+    grepl('F[[:digit:]]_', Sites) ~ "TP"),
+        habitat = case_when(
+    grepl('C[[:digit:]]_|AF[[:digit:]]_C', Sites) ~ "C",
+    grepl('F[[:digit:]]_|AF[[:digit:]]_LSA', Sites) ~ "T"),
+        block = case_when(
+    grepl('1_', Sites) ~ "B1",
+    grepl('2_', Sites) ~ "B2",
+    grepl('3_', Sites) ~ "B3"),
+        replicate = case_when(
+    grepl('_C1|_LSA1', Sites) ~ "R1",
+    grepl('_C2|_LSA2', Sites) ~ "R2",
+    grepl('_C3|_LSA3', Sites) ~ "R3",
+    grepl('_C4|_LSA4', Sites) ~ "R4",
+    grepl('_C5|_LSA5', Sites) ~ "R5"))
+
+# create column full_uhbr
+micro_arthropodes_1$full_uhbr <- paste(micro_arthropodes_1$usage, micro_arthropodes_1$habitat, micro_arthropodes_1$block, micro_arthropodes_1$replicate, sep="_")
+```
+
+## micro-organisms
+
+```{r}
+metadata_mo_1 <- metadata_mo_0
+
+# rename columns
+metadata_mo_1 <- metadata_mo_1[c(1:60),] %>%  rename(block = Bloc, replicate = REP, habitat = HABITAT)
+
+# add column method and date
+metadata_mo_1 <- metadata_mo_1 %>% mutate(method = "metabarcoding")
+metadata_mo_1 <- metadata_mo_1 %>% mutate(date = "XX/2023")
+
+# homogeneise code
+metadata_mo_1$usage[metadata_mo_1$usage == 'C'] <- 'MC'
+metadata_mo_1$usage[metadata_mo_1$usage == 'F'] <- 'TP'
+
+metadata_mo_1$block <- paste0("B", parse_number(metadata_mo_1$block))
+
+metadata_mo_1$habitat[metadata_mo_1$habitat == 'Tree_line' | metadata_mo_1$habitat == 'Tree_plantation' ] <- 'T'
+metadata_mo_1$habitat[metadata_mo_1$habitat == 'Crop' ] <- 'C'
+
+metadata_mo_1$replicate <- paste0("R", parse_number(metadata_mo_1$replicate))
+
+# create column full_uhbr
+metadata_mo_1$full_uhbr <- paste (metadata_mo_1$usage, metadata_mo_1$habitat, metadata_mo_1$block, metadata_mo_1$replicate, sep = "_")
+```
+
+### bacteria
+
+```{r}
+bacteria_1 <- bacteria_0
+
+bacteria_1 <- pivot_longer(bacteria_1, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+bacteria_1$Reference_ADNid <- str_replace(bacteria_1$Reference_ADNid, '_.+_.+', "")
+
+bacteria_1 <- left_join(bacteria_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+### fungi
+
+```{r}
+fungi_1 <- fungi_0
+
+fungi_1 <- pivot_longer(fungi_1, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+fungi_1$Reference_ADNid <- str_replace(fungi_1$Reference_ADNid, '_.+_.+', "")
+
+fungi_1 <- left_join(fungi_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+### protists
+
+```{r}
+cercozoa_1 <- cercozoa_0
+
+cercozoa_1 <- pivot_longer(cercozoa_1, cols = c(13:72), names_to =  "Reference_ADNid", values_to = "abundance", names_repair = "minimal")
+
+cercozoa_1$Reference_ADNid <- str_replace(cercozoa_1$Reference_ADNid, '_.+_.+', "")
+
+cercozoa_1 <- left_join(cercozoa_1, metadata_mo_1, by = "Reference_ADNid")
+```
+
+At this step, the files with cleaned data (suffix _1) are:
+  macrofaune_surface
+  macrofaune_aerial
+  macrofaune_foliar
+  micro_arthropodes
+  nematodes
+  bacteria
+  fungi
+  cercozoa
+
+# Export all_tidy_data
+
+```{r}
+# Select minimal data to export
+
+macrofaune_surface_exp <- macrofaune_surface_1 %>% 
+  select(full_uhbr, name, abundance, method, date)
+# stade and mass can be used for traits
+# fullName, genusName, familyName, orderName, className, phylumName will be regenerated in another tax_table
+
+macrofaune_aerial_exp <- macrofaune_aerial_1 %>% 
+  select(full_uhbr, name, abundance, method, date)
+# INat can be used for ID and stade can be used for traits
+# fullName, genusName, familyName, orderName, className, phylumName will be regenerated in another tax_table
+
+macrofaune_foliar_exp <- macrofaune_foliar_1 %>% 
+  select(full_uhbr, name, abundance, method, date)
+# Valid.Name (what is it?)
+# fullName, genusName, familyName, orderName, className, phylumName will be regenerated in another tax_table
+
+nematodes_exp <- nematodes_1 %>% select(full_uhbr, name, abundance, method, date)
+nematodes_exp$abundance = as.numeric(nematodes_exp$abundance)
+
+micro_arthropodes_exp <- micro_arthropodes_1 %>% select(full_uhbr, name, abundance, method, date)
+# stade can be used for traits
+# higher.level and lower.level will be regenerated in another tax_table
+
+bacteria_exp <- bacteria_1 %>% 
+  select(full_uhbr, seed_id, abundance, method, date)
+bacteria_exp <- bacteria_exp %>%  rename(name = seed_id)
+
+fungi_exp <- fungi_1 %>% 
+  select(full_uhbr, seed_id, abundance, method, date)
+fungi_exp <- fungi_exp %>%  rename(name = seed_id)
+
+cercozoa_exp <- cercozoa_1 %>% 
+  select(full_uhbr, seed_id, abundance, method, date)
+cercozoa_exp <- cercozoa_exp %>%  rename(name = seed_id)
+```
+
+```{r}
+all_exp <- bind_rows(macrofaune_surface_exp, macrofaune_aerial_exp, macrofaune_foliar_exp, nematodes_exp, micro_arthropodes_exp, bacteria_exp, fungi_exp, cercozoa_exp)
+#write.csv(all_exp, "intermediate_files/all_tidy_data.csv") # Very large file
+saveRDS(all_exp, "intermediate_files/all_tidy_data.rds")
+```
+
+# 2. Taxonomy table
+
+suffix _tax = taxonomy table
+
+To go faster while generating the taxonomy, use a NCBI entrez key.
+First, generate a key cf https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
+Then, set your environment by doing once:
+usethis::edit_r_environ()
+ENTREZ_KEY='youractualkey' # To write in the environment
+
+NB: Even with the key, error (400) appears but can be solved by using a loop.
+
+## macrofaune_surface
+
+```{r}
+macrofaune_surface_query <- macrofaune_surface_1 %>% distinct(name)
+temp <- gnr_resolve(macrofaune_surface_query$name, preferred_data_sources = c(1,3,4,11,12), best_match_only = T) # 1 = CLC, 3 = ITIS, 4 = NCBI, 11 = GBIF, 12 = EOL (https://resolver.globalnames.org/data_sources)
+diff <- setdiff(macrofaune_surface_query$name, temp$user_supplied_name) 
+print(diff)
+# Manual cleaning
+## Pezottetix not found because wrong spelling
+macrofaune_surface_query$name[macrofaune_surface_query$name == "Pezottetix"] <- "Pezotettix"
+# diff = 0 now
+
+fun_nematodes_1 <- fun_nematodes_0 %>%
+  tibble(tax_name(unique( fun_nematodes_0$name), get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "ncbi")) %>% 
+  unnest() %>% 
+  filter(rank %in% c("kingdom", "phylum","class","order","family","genus")) %>% 
+  select(-query) %>% 
+  spread(rank, name) %>% 
+  select(name = kingdomName, phylumName, className, orderName, familyName, genusName)
+
+
+test_1 <- tbl_df(tax_name(fun_nematodes_0[1:5,]$name, get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
+
+test_2 <- tbl_df(tax_name("Pratylenchus", get = c("kingdom", "phylum", "class", "order", "family", "genus"), db = "itis"))
+
+# already done for micro-organisms
+fun_bacteria_1 <- fun_bacteria_0 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+
+fun_fungi_1 <- fun_fungi_0
+fun_fungi_1$blast_taxonomy <- str_replace_all(fun_fungi_1$blast_taxonomy, '.__', "")
+
+fun_fungi_1 <- fun_fungi_1 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+
+fun_cercozoa_1 <- fun_cercozoa_0 %>% 
+   separate(col = blast_taxonomy , into = c("kingdomName","phylumName","className","orderName", "familyName", "genusName", "speciesName"), sep = ";")
+```
+
+```{r}
+macrofaune_surface_tax = NULL
+for (i in 1: nrow(macrofaune_surface_query)) {
+classes_i <- try(tax_name(sci = macrofaune_surface_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))
+if (class(classes_i)=="try-error") {
+Sys.sleep(10)
+classes_i <- try(tax_name(sci = macrofaune_surface_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))}
+macrofaune_surface_tax <- rbind(macrofaune_surface_tax, classes_i)
+}
+
+macrofaune_surface_tax <- macrofaune_surface_tax[,-1] %>% mutate(part = "macrofaune_surface")
+```
+
+## macrofaune_aerial
+
+```{r}
+macrofaune_aerial_query <- macrofaune_aerial_1 %>% distinct(name)
+temp <- gnr_resolve(macrofaune_aerial_query$name, preferred_data_sources = c(1,3,4,11,12), best_match_only = T) # 1 = CLC, 3 = ITIS, 4 = NCBI, 11 = GBIF, 12 = EOL (https://resolver.globalnames.org/data_sources)
+diff <- setdiff(macrofaune_aerial_query$name, temp$user_supplied_name) 
+print(diff)
+# Manual cleaning
+## Belytini not found because its a tribu of Belytinae
+macrofaune_aerial_query$name[macrofaune_aerial_query$name == "Belytini"] <- "Belytinae"
+# diff = 0 now
+```
+
+```{r}
+macrofaune_aerial_tax = NULL
+for (i in 1: nrow(macrofaune_aerial_query)) {
+classes_i <- try(tax_name(sci = macrofaune_aerial_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))
+if (class(classes_i)=="try-error") {
+Sys.sleep(10)
+classes_i <- try(tax_name(sci = macrofaune_aerial_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))}
+macrofaune_aerial_tax <- rbind(macrofaune_aerial_tax, classes_i)
+}
+
+macrofaune_aerial_tax <- macrofaune_aerial_tax[,-1] %>% mutate(part = "macrofaune_aerial")
+```
+
+## macrofaune_foliar
+
+```{r}
+macrofaune_foliar_query <- macrofaune_foliar_1 %>% distinct(name)
+temp <- gnr_resolve(macrofaune_foliar_query$name, preferred_data_sources = c(1,3,4,11,12), best_match_only = T) # 1 = CLC, 3 = ITIS, 4 = NCBI, 11 = GBIF, 12 = EOL (https://resolver.globalnames.org/data_sources)
+diff <- setdiff(macrofaune_foliar_query$name, temp$user_supplied_name) 
+print(diff)
+# Manual cleaning
+## Phonognathidae not found because wrong spelling
+macrofaune_foliar_query$name[macrofaune_foliar_query$name == "Phonognathidae"] <- "Phonognathinae"
+## vide should be removed
+macrofaune_foliar_query <- macrofaune_foliar_query[!(macrofaune_foliar_query$name %in% "vide"),]
+# diff = 0 now
+```
+
+```{r}
+macrofaune_foliar_tax = NULL
+for (i in 1: nrow(macrofaune_foliar_query)) {
+classes_i <- try(tax_name(sci = macrofaune_foliar_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))
+if (class(classes_i)=="try-error") {
+Sys.sleep(10)
+classes_i <- try(tax_name(sci = macrofaune_foliar_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))}
+macrofaune_foliar_tax <- rbind(macrofaune_foliar_tax, classes_i)
+}
+
+macrofaune_foliar_tax <- macrofaune_foliar_tax[,-1] %>% mutate(part = "macrofaune_foliar")
+```
+
+## nematodes
+
+```{r}
+nematodes_query <- nematodes_1 %>% distinct(name)
+temp <- gnr_resolve(nematodes_query$name, preferred_data_sources = c(1,3,4,11,12), best_match_only = T) # 1 = CLC, 3 = ITIS, 4 = NCBI, 11 = GBIF, 12 = EOL (https://resolver.globalnames.org/data_sources)
+diff <- setdiff(nematodes_query$name, temp$user_supplied_name) 
+print(diff)
+# Manual cleaning
+## Anaplecetus not found because wrong spelling
+nematodes_query$name[nematodes_query$name == "Anaplecetus"] <- "Anaplectus"
+# diff = 0 now
+```
+
+```{r}
+nematodes_tax = NULL
+for (i in 1: nrow(nematodes_query)) {
+classes_i <- try(tax_name(sci = nematodes_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))
+if (class(classes_i)=="try-error") {
+Sys.sleep(10)
+classes_i <- try(tax_name(sci = nematodes_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))}
+nematodes_tax <- rbind(nematodes_tax, classes_i)
+}
+
+nematodes_tax <- nematodes_tax[,-1] %>% mutate(part = "nematodes")
+```
+
+## micro-arthropodes
+
+```{r}
+micro_arthropodes_query <- micro_arthropodes_1 %>% distinct(name)
+temp <- gnr_resolve(micro_arthropodes_query$name, preferred_data_sources = c(1,3,4,11,12), best_match_only = T) # 1 = CLC, 3 = ITIS, 4 = NCBI, 11 = GBIF, 12 = EOL (https://resolver.globalnames.org/data_sources)
+diff <- setdiff(micro_arthropodes_query$name, temp$user_supplied_name) 
+print(diff)
+# Manual cleaning
+## NA should be removed
+micro_arthropodes_query <- micro_arthropodes_query[!(micro_arthropodes_query$name %in% "NA"),]
+micro_arthropodes_query <- data.frame(micro_arthropodes_query)
+micro_arthropodes_query <- micro_arthropodes_query %>%  rename(name = micro_arthropodes_query)
+# diff = 0 now
+```
+
+```{r}
+micro_arthropodes_tax = NULL
+for (i in 1: nrow(micro_arthropodes_query)) {
+classes_i <- try(tax_name(sci = micro_arthropodes_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))
+if (class(classes_i)=="try-error") {
+Sys.sleep(10)
+classes_i <- try(tax_name(sci = micro_arthropodes_query$name[i], get = c("kingdom", "phylum", "class", "order", "family", "genus", "species"), db = "ncbi", ask = FALSE))}
+micro_arthropodes_tax <- rbind(micro_arthropodes_tax, classes_i)
+}
+
+micro_arthropodes_tax <- micro_arthropodes_tax[,-1] %>% mutate(part = "micro_arthropodes")
+```
+
+## micro-organisms
+
+```{r}
+bacteria_query <- bacteria_1 %>% distinct(seed_id, blast_taxonomy)
+bacteria_query <- bacteria_query %>%  rename(query = seed_id)
+bacteria_query <- bacteria_query %>%  rename(name = blast_taxonomy)
+bacteria_tax <- bacteria_query %>% 
+   separate(col = name, into = c("kingdom","phylum","class","order", "family", "genus", "species"), sep = ";")
+bacteria_tax <- bacteria_tax %>% mutate(part = "bacteria")
+
+fungi_query <- fungi_1 %>% distinct(seed_id, blast_taxonomy)
+fungi_query <- fungi_query %>%  rename(query = seed_id)
+fungi_query <- fungi_query %>%  rename(name = blast_taxonomy)
+fungi_tax <- fungi_query %>% 
+   separate(col = name, into = c("kingdom","phylum","class","order", "family", "genus", "species"), sep = ";")
+fungi_tax[] <- lapply(fungi_tax, gsub, pattern='.__', replacement='')
+fungi_tax <- fungi_tax %>% mutate(part = "fungi")
+
+cercozoa_query <- cercozoa_1 %>% distinct(seed_id, blast_taxonomy)
+cercozoa_query <- cercozoa_query %>%  rename(query = seed_id)
+cercozoa_query <- cercozoa_query %>%  rename(name = blast_taxonomy)
+cercozoa_tax <- cercozoa_query %>% 
+   separate(col = name, into = c("kingdom","phylum","class","order", "family", "genus", "species"), sep = ";")
+cercozoa_tax <- cercozoa_tax %>% mutate(part = "cercozoa")
+```
+
+# Export all_tax_table
+
+```{r}
+all_tax <- bind_rows(macrofaune_surface_tax, macrofaune_aerial_tax, macrofaune_foliar_tax, nematodes_tax, micro_arthropodes_tax, bacteria_tax, fungi_tax, cercozoa_tax)
+write.csv(all_tax, "intermediate_files/all_tax_table.csv")
+```
+
+# 3. Functional table
+
+
+
+>>>>>>> 6ba45c53bee97461b869ba688e81ac495e09d81b
