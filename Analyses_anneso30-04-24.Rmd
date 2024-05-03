@@ -1,0 +1,307 @@
+---
+title: "Test analyses"
+output: html_document
+date: "2024-04-26"
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggVennDiagram)
+library(cowplot)
+
+order_usage = levels=c("MC","AF","TP")
+col_family = c("Elateridae"="#D81B60","Chrysomelidae"="#1E88E5","Carabidae"="#FFC107", "Acrididae"="#004D40")
+myfills_family <- scale_fill_manual(values = col_family)
+```
+
+
+# 4. Analyses
+
+## Prepare tidy_data and tax_table
+
+```{r}
+# Import tidy data
+tidy_data <- read.csv("intermediate_files/tidy_data_update25-04-24.csv")[,-1]
+tidy_data_macrofaune_surface <- tidy_data[ which(tidy_data$community=='macrofaune_surface'), ]
+
+# Import tax_table, subset macrofaune_surface and count the number of distinct taxa
+tax_table <- read.csv("intermediate_files/tax_table_update26-04-24.csv")[,-1]
+
+tax_table_macrofaune_surface <- tax_table[which(tax_table$community=='macrofaune_surface'),]
+
+numberoftaxa <- as.data.frame(t(sapply(tax_table_macrofaune_surface[,-9], function(x) n_distinct(x))))
+numberoftaxa # We have 23 orders, 63 families, 103 genus and 68 species. To have both representative and manageable data, we can try first at family level.
+```
+
+## Prepare fun_table (guilds)
+
+```{r}
+# Import fun_table (guilds at family level) and count the number of taxa and guilds
+fun_table_macrofaune_surface_info_guilds_family <- read.csv("intermediate_files/fun_table/macrofaune_surface_info_guilds_family.csv")[,-1]
+
+numberofquery_family <- n_distinct(fun_table_macrofaune_surface_info_guilds_family$matchName) # 3289 taxa assigned to families
+print(numberofquery_family)
+numberofguilds_family <- n_distinct(fun_table_macrofaune_surface_info_guilds_family$guildName) # 48 guilds
+print(numberofguilds_family)
+
+# Remarks based on assignements
+## herbivore > nectarivore > plant exudate feeder
+## herbivore > phloem sap feeder > saproxylophage
+## herbivore > granivore
+## herbivore > frugivore
+## herbivore // rhizovores
+#Est-ce que rhizovore et au même niveau qu'herbivore ?
+## Arkoola, Stigmina, Meira, Butleria, Bremiella, Venturia, Milesia = parasite + pathogen + plant pathogen (but not plant parasite or herbivore)
+#Pourquoi ?
+## Not all parasites are pathogens (eg. Acyrthosiphon pisum for plants and Aphidius ervi for animals are parasites but not pathogens)
+#Pourquoi ?
+## All predators are carnivores but not all carnivores are predators. Predators are only assigned at family level.
+#Pourquoi ? Cela pose problème dans l'analyse de la régulation des herbivores car les Carbidae sont assignés au herbivores mais pas aux prédateurs alors qu'ils sont majoritairements prédateurs au stade adulte (si je ne dis pas de bêtise).
+## Notiophilus and Trechus = carnivore + insectivore + predator + springtail feeder (+ acariphae pour Notiophilus)
+#Comment connaitre les niveaux pour éviter la redondance quand on filtre les données ?
+## parasite > zooparasite > entomoparasite
+## parasitoid (eg. Aphelinidae) =/= parasite (eg. Acyrthosiphon pisum)
+#Pourquoi ? Est-ce qu'un parasitoide n'est pas une forme de parasite ?
+
+fun_table_macrofaune_surface_info_guilds_familyonly <- fun_table_macrofaune_surface_info_guilds_family[fun_table_macrofaune_surface_info_guilds_family$queryName == fun_table_macrofaune_surface_info_guilds_family$matchName, ]
+
+numberofquery_familyonly <- n_distinct(fun_table_macrofaune_surface_info_guilds_familyonly$matchName) # 78 families
+print(numberofquery_familyonly)
+numberofguilds_familyonly <- n_distinct(fun_table_macrofaune_surface_info_guilds_familyonly$guildName) # 14 guilds
+print(numberofguilds_familyonly)
+```
+
+```{r}
+# Import fun_table (interactions)
+macrofaune_surface_info_interactions_family <- read.csv("intermediate_files/fun_table/macrofaune_surface_interactions_family.csv")
+
+# Count the number of interaction per taxa
+numberofinteractions_taxa <- aggregate(resourceName ~ matchName, data = macrofaune_surface_info_interactions_family, FUN = length)
+```
+
+## Link data
+
+```{r}
+# Prepare an object linking tidy_data, tax_table and fun_table
+## Separate modalities in different columns to use them as factors
+linked_data <- tidy_data_macrofaune_surface %>% separate_wider_delim(full_uhbr, "_", names = c("usage", "habitat", "block", "replicate"))
+```
+
+```{r}
+## Add a column family to the tidy_data thanks to the tax_table
+linked_data$family <- tax_table_macrofaune_surface$family[match(linked_data$name, tax_table_macrofaune_surface$query)]
+linked_data$family <- linked_data$family %>% replace_na('unassigned')
+
+### plot by usage
+count_data <- linked_data %>% group_by(usage) %>% count(family) %>% ungroup()
+
+count_data$family <- reorder(count_data$family, count_data$family, FUN=length)
+
+count_data$usage <- ordered(count_data$usage, order_usage)
+
+g_usage <- ggplot(count_data, aes(usage, n, fill=family)) + geom_bar(aes(), stat="identity", position="stack") + scale_fill_discrete(guide=guide_legend(reverse=TRUE))
+g_usage
+
+### plot by habitat
+count_data <- linked_data %>% group_by(habitat) %>% count(family) %>% ungroup()
+
+count_data$family <- reorder(count_data$family, count_data$family, FUN=length)
+
+g_habitat <- ggplot(count_data, aes(habitat, n, fill=family)) + geom_bar(aes(), stat="identity", position="stack") + scale_fill_discrete(guide=guide_legend(reverse=TRUE))
+g_habitat
+
+## Save graphs
+A <- g_usage + scale_x_discrete(name ="Usage") + scale_y_continuous(name ="Number of taxa in each family") + theme(legend.position="none")
+B <- g_habitat + scale_x_discrete(name ="Usage") + theme(axis.title.y = element_blank()) + theme(legend.position="none")
+L <- ggdraw(get_legend(g_usage))
+
+G <- plot_grid(A, B, L, rel_widths = c(1, 0.75, 2), nrow=1)
+ggsave("results/graph_number_of_taxa_in_each_family.png", width = 10, height = 5)
+
+# These graphs represent the number of taxa regardless their abundance.
+```
+
+```{r}
+# Make the lists of family per usage
+list_MC <- subset(linked_data, usage=='MC')
+list_MC <- unique(list_MC$family)
+list_AF <- subset(linked_data, usage=='AF')
+list_AF <- unique(list_AF$family)
+list_TP <- subset(linked_data, usage=='TP')
+list_TP <- unique(list_TP$family)
+x <- list(MC = list_MC, AF = list_AF, TP = list_TP)
+venn_usage <- ggVennDiagram(x)
+
+# Make the lists of family per habitat
+list_C <- subset(linked_data, habitat=='C')
+list_C <- unique(list_C$family)
+list_T <- subset(linked_data, habitat=='T')
+list_T <- unique(list_T$family)
+x <- list(C = list_C, T = list_T)
+venn_habitat <- ggVennDiagram(x)
+
+## Save diagrams
+A <- venn_usage + theme(legend.position="none")
+B <- venn_habitat
+V <-plot_grid(A, B) + theme(plot.background = element_rect(fill = "white"))
+ggsave("results/Venn_number_of_families.png", width = 10, height = 5)
+```
+
+```{r}
+## Add a column guild (herbivores or regulators) to the tidy_data thanks to the fun_table and plot graphs
+
+### herbivores
+fun_herbivore <- fun_table_macrofaune_surface_info_guilds_familyonly[which(fun_table_macrofaune_surface_info_guilds_familyonly$guildName=='herbivore'),]
+linked_data$guild_herbivore <- fun_herbivore$guildName[match(linked_data$family, fun_table_macrofaune_surface_info_guilds_familyonly$matchName)]
+
+count_data <- linked_data %>% drop_na(guild_herbivore) %>% group_by(usage, habitat) %>% count(family) %>% ungroup()
+
+count_data$family <- reorder(count_data$family, count_data$family, FUN=length)
+
+count_data$usage <- ordered(count_data$usage, order_usage)
+
+#### plot by usage
+g_herbivore_usage_taxacounteachfamily <- ggplot(count_data, aes(usage, n, fill=family)) + geom_col(position = "dodge") + scale_fill_discrete(guide=guide_legend(reverse=TRUE)) + scale_y_continuous(name ="Number of herbivorous taxa in each family") + myfills_family
+g_herbivore_usage_taxacounteachfamily
+
+count_data_total <- aggregate(n ~ usage, data = count_data, FUN = sum)
+g_herbivore_usage_totaltaxacount <- ggplot(count_data_total, aes(usage, n)) + geom_col() + scale_y_continuous(name ="Total number of herbivorous taxa")
+g_herbivore_usage_totaltaxacount
+
+#### plot by habitat
+g_herbivore_habitat_taxacounteachfamily <- ggplot(count_data, aes(habitat, n, fill=family)) + geom_col(position = "dodge") + scale_fill_discrete(guide=guide_legend(reverse=TRUE)) + scale_y_continuous(name ="Number of herbivorous taxa in each family") + myfills_family
+g_herbivore_habitat_taxacounteachfamily
+
+count_data_total <- aggregate(n ~ habitat, data = count_data, FUN = sum)
+g_herbivore_habitat_totaltaxacount <- ggplot(count_data_total, aes(habitat, n)) + geom_col() + scale_y_continuous(name ="Total number of herbivorous taxa")
+g_herbivore_habitat_totaltaxacount
+
+### regulators (predators or parasitoids) ### ADD CARNIVOROUS ?
+fun_regulator <- fun_table_macrofaune_surface_info_guilds_familyonly[which(fun_table_macrofaune_surface_info_guilds_familyonly$guildName=='predator' | fun_table_macrofaune_surface_info_guilds_familyonly$guildName=='parasitoid'),]
+linked_data$guild_regulator <- fun_regulator$guildName[match(linked_data$family, fun_table_macrofaune_surface_info_guilds_familyonly$matchName)]
+
+count_data <- linked_data %>% drop_na(guild_regulator) %>% group_by(usage, habitat) %>% count(family) %>% ungroup()
+
+count_data$family <- reorder(count_data$family, count_data$family, FUN=length)
+
+count_data$usage <- ordered(count_data$usage, order_usage)
+
+#### plot by usage
+g_regulator_usage_taxacounteachfamily <- ggplot(count_data, aes(usage, n, fill=family)) + geom_col(position = "dodge") + scale_fill_discrete(guide=guide_legend(reverse=TRUE)) + scale_y_continuous(name ="Number of regulatory taxa in each family") + myfills_family
+g_regulator_usage_taxacounteachfamily
+
+count_data_total <- aggregate(n ~ usage, data = count_data, FUN = sum)
+g_regulator_usage_totaltaxacount <- ggplot(count_data, aes(usage, n)) + geom_col() + scale_y_continuous(name ="Total number of regulatory taxa")
+g_regulator_usage_totaltaxacount
+
+#### plot by habitat
+g_regulator_habitat_taxacounteachfamily <- ggplot(count_data, aes(habitat, n, fill=family)) + geom_col(position = "dodge") + scale_fill_discrete(guide=guide_legend(reverse=TRUE)) + scale_y_continuous(name ="Number of regulatory taxa in each family") + myfills_family
+g_regulator_habitat_taxacounteachfamily
+
+count_data_total <- aggregate(n ~ habitat, data = count_data, FUN = sum)
+g_regulator_habitat_totaltaxacount <- ggplot(count_data, aes(habitat, n)) + geom_col() + scale_y_continuous(name ="Total number of regulatory taxa")
+g_regulator_habitat_totaltaxacount
+
+## Save graphs
+A <- g_herbivore_usage_totaltaxacount + theme(axis.title.x = element_blank())
+B <- g_herbivore_habitat_totaltaxacount + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+C <- g_herbivore_usage_taxacounteachfamily + theme(axis.title.x = element_blank()) + theme(legend.position="none")
+D <- g_herbivore_habitat_taxacounteachfamily + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+E <- g_regulator_usage_totaltaxacount + scale_x_discrete(name ="Usage")
+F <- g_regulator_habitat_totaltaxacount + scale_x_discrete(name ="Habitat") + theme(axis.title.y = element_blank())
+G <- g_regulator_usage_taxacounteachfamily + scale_x_discrete(name ="Usage") + theme(legend.position="none")
+H <- g_regulator_habitat_taxacounteachfamily + scale_x_discrete(name ="Habitat") + theme(axis.title.y = element_blank())
+
+G <- plot_grid(A, B, C, D, E, F, G, H, rel_widths = c(1, 0.6, 1.1, 1.15, 1, 0.6, 1.1, 1.15), nrow=2)
+
+ggsave("results/graph_number_of_taxa_herbivoresORregulators.png", width = 18, height = 7)
+
+# Data for the two barplots can be joined to make one.
+# Abundances can be taken into account in these types of graphs.
+# Remark : taxa of the same family can be herbivorous or predator.
+```
+
+```{r}
+# Make the lists of herbivore taxa per usage
+list_MC <- subset(linked_data, usage=='MC' & !is.na(guild_herbivore))
+list_MC <- unique(list_MC$name)
+list_AF <- subset(linked_data, usage=='AF' & !is.na(guild_herbivore))
+list_AF <- unique(list_AF$name)
+list_TP <- subset(linked_data, usage=='TP' & !is.na(guild_herbivore))
+list_TP <- unique(list_TP$name)
+x <- list(MC = list_MC, AF = list_AF, TP = list_TP)
+venn_usage_herbivore <- ggVennDiagram(x) + labs(title = "Herbivorous taxa")
+
+# Make the lists of herbivore taxa per habitat
+list_C <- subset(linked_data, habitat=='C' & !is.na(guild_herbivore))
+list_C <- unique(list_C$name)
+list_T <- subset(linked_data, habitat=='T' & !is.na(guild_herbivore))
+list_T <- unique(list_T$name)
+x <- list(C = list_C, T = list_T)
+venn_habitat_herbivore <- ggVennDiagram(x)
+
+# Make the lists of guild_regulator per usage
+list_MC <- subset(linked_data, usage=='MC' & !is.na(guild_regulator))
+list_MC <- unique(list_MC$name)
+list_AF <- subset(linked_data, usage=='AF' & !is.na(guild_regulator))
+list_AF <- unique(list_AF$name)
+list_TP <- subset(linked_data, usage=='TP' & !is.na(guild_regulator))
+list_TP <- unique(list_TP$name)
+x <- list(MC = list_MC, AF = list_AF, TP = list_TP)
+venn_usage_regulator <- ggVennDiagram(x) + labs(title = "Regulatory (predators and parasitoids) taxa")
+
+# Make the lists of regulator taxa per habitat
+list_C <- subset(linked_data, habitat=='C' & !is.na(guild_regulator))
+list_C <- unique(list_C$name)
+list_T <- subset(linked_data, habitat=='T' & !is.na(guild_regulator))
+list_T <- unique(list_T$name)
+x <- list(C = list_C, T = list_T)
+venn_habitat_regulator <- ggVennDiagram(x)
+
+## Save diagrams
+A <- venn_usage_herbivore + theme(legend.position="none")
+B <- venn_habitat_herbivore + theme(legend.position="none")
+C <- venn_usage_regulator + theme(legend.position="none")
+D <- venn_habitat_regulator
+
+V <-plot_grid(A, B, C, D, nrow = 2) + theme(plot.background = element_rect(fill = "white"))
+
+ggsave("results/Venn_number_of_herbivoresORregulators.png", width = 8, height = 8)
+```
+
+```{r}
+## Add a column interactions to the tidy_data thanks to the fun_table
+linked_data$nber_interactions <- numberofinteractions_taxa$resourceName[match(linked_data$name, numberofinteractions_taxa$matchName)]
+
+# plot by usage
+linked_data$usage <- ordered(linked_data$usage, order_usage)
+
+g_usage <- ggplot(linked_data, aes(usage, nber_interactions)) + geom_bar(aes(), stat="identity", position="stack")
+g_usage
+
+# plot by habitat
+g_habitat <- ggplot(linked_data, aes(habitat, nber_interactions)) + geom_bar(aes(), stat="identity", position="stack")
+g_habitat
+
+## Save graphs
+A <- g_usage + scale_x_discrete(name ="Usage") + scale_y_continuous(name ="Nomber of interactions by taxa at finest level")
+B <- g_habitat + scale_x_discrete(name ="Habitat") + theme(axis.title.y = element_blank())
+
+G <- plot_grid(A, B, rel_widths = c(1, 0.6), nrow=1)
+
+ggsave("results/graph_number_of_interactions.png", width = 5, height = 5)
+
+# These graphs represent the number of interactions by taxa identified at the finest level (linked_data$name) but don't take into account potential interactions at higher levels (all interactions in numberofinteractions_taxa).
+```
+
+```{r}
+macrofaune_surface_info_diets_family <- read.csv("intermediate_files/fun_table/macrofaune_surface_info_diets_family.csv")
+
+macrofaune_surface_info_groups_family <- read.csv("intermediate_files/fun_table/macrofaune_surface_info_groups_family.csv")
+```
+
+
+
+
