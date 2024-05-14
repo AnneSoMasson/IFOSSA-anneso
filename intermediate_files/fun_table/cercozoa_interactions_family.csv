@@ -1,0 +1,50 @@
+queryName;queryId;matchName;matchId;interactionId;interactionName;resourceId;resourceName;reference;graph
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomastigidae;"c(""NCBITaxon:45098"", ""NCBI:45098"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Thaumatomonadida;NA;Thaumatomonadidae;https://tree.opentreeoflife.org/opentree/ottol@4918143;RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphida;"c(""NCBITaxon:178369"", ""NCBI:178369"", ""https://tree.opentreeoflife.org/opentree/ottol@300618"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Euglyphida;NA;Paulinellidae;"c(""NCBITaxon:39715"", ""NCBI:39715"", ""https://tree.opentreeoflife.org/opentree/ottol@247674"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Trinematidae;"c(""NCBITaxon:178370"", ""NCBI:178370"", ""https://tree.opentreeoflife.org/opentree/ottol@875559"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
+Euglyphida;NA;Euglyphidae;"c(""NCBITaxon:39712"", ""NCBI:39712"", ""https://tree.opentreeoflife.org/opentree/ottol@247673"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:3208;Bryophyta;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:2696291;Ochrophyta;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:2157;Archaea;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:33682;Euglenozoa;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:2836;Bacillariophyta;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:2;Bacteria;NA;gratin:hedde_misc1
+Apusomonadidae;NA;Apusomonadidae;"c(""NCBITaxon:172820"", ""NCBI:172820"", ""https://tree.opentreeoflife.org/opentree/ottol@575898"")";RO:0002470;eats;NCBI:3041;Chlorophyta;NA;gratin:hedde_misc1
