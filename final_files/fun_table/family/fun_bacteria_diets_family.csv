@@ -1,0 +1,13 @@
+queryName;queryId;matchName;matchId;dietId;dietName;reference;graph
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000479;detritivorous;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000481;saprotrophic;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000500;phytosaprophagous;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000479;detritivorous;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000481;saprotrophic;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000500;phytosaprophagous;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000479;detritivorous;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000481;saprotrophic;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000500;phytosaprophagous;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000479;detritivorous;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000481;saprotrophic;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000500;phytosaprophagous;NA;onto:implicit
