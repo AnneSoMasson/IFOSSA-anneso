@@ -1,0 +1,145 @@
+"","db","query","kingdom","phylum","class","order","family","genus","species"
+"1","itis","Acaridida",NA,NA,NA,NA,"Galatheacarididae",NA,NA
+"2","ncbi","Acaridida",NA,NA,NA,NA,NA,NA,NA
+"3","itis","Gamasidae",NA,NA,NA,NA,NA,NA,NA
+"4","ncbi","Gamasidae",NA,NA,NA,NA,NA,NA,NA
+"5","itis","Oribatida","Animalia","Arthropoda","Euchelicerata","Sarcoptiformes",NA,NA,NA
+"6","ncbi","Oribatida","Metazoa","Arthropoda","Arachnida","Sarcoptiformes",NA,NA,NA
+"7","itis","Enchytraeidae","Animalia","Annelida","Clitellata",NA,"Enchytraeidae",NA,NA
+"8","ncbi","Enchytraeidae","Metazoa","Annelida","Clitellata","Enchytraeida","Enchytraeidae",NA,NA
+"9","itis","Gnaphosa alacris","Animalia","Arthropoda","Euchelicerata","Araneae","Gnaphosidae","Gnaphosa","Gnaphosa alacris"
+"10","ncbi","Gnaphosa alacris",NA,NA,NA,NA,NA,NA,NA
+"11","itis","Gnaphosidae","Animalia","Arthropoda","Euchelicerata","Araneae","Gnaphosidae",NA,NA
+"12","ncbi","Gnaphosidae","Metazoa","Arthropoda","Arachnida","Araneae","Gnaphosidae",NA,NA
+"13","itis","Linyphiidae","Animalia","Arthropoda","Euchelicerata","Araneae","Linyphiidae",NA,NA
+"14","ncbi","Linyphiidae","Metazoa","Arthropoda","Arachnida","Araneae","Linyphiidae",NA,NA
+"15","itis","Microctenonyx subitaneus","Animalia","Arthropoda","Euchelicerata","Araneae","Linyphiidae","Microctenonyx","Microctenonyx subitaneus"
+"16","ncbi","Microctenonyx subitaneus","Metazoa","Arthropoda","Arachnida","Araneae","Linyphiidae","Microctenonyx","Microctenonyx subitaneus"
+"17","itis","Asagena","Animalia","Arthropoda","Euchelicerata","Araneae","Theridiidae","Asagena",NA
+"18","ncbi","Asagena","Metazoa","Arthropoda","Arachnida","Araneae","Theridiidae","Asagena",NA
+"19","itis","Ozyptila","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae","Ozyptila",NA
+"20","ncbi","Ozyptila","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae","Ozyptila",NA
+"21","itis","Xysticus","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae","Xysticus",NA
+"22","ncbi","Xysticus","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae","Xysticus",NA
+"23","itis","Zodarion","Animalia","Arthropoda","Euchelicerata","Araneae","Zodariidae","Zodarion",NA
+"24","ncbi","Zodarion","Metazoa","Arthropoda","Arachnida","Araneae","Zodariidae","Zodarion",NA
+"25","itis","Geophilomorpha","Animalia","Arthropoda","Chilopoda","Geophilomorpha",NA,NA,NA
+"26","ncbi","Geophilomorpha","Metazoa","Arthropoda","Chilopoda","Geophilomorpha",NA,NA,NA
+"27","itis","Lithobiomorpha","Animalia","Arthropoda","Chilopoda","Lithobiomorpha",NA,NA,NA
+"28","ncbi","Lithobiomorpha","Metazoa","Arthropoda","Chilopoda","Lithobiomorpha",NA,NA,NA
+"29","itis","Anthicidae","Animalia","Arthropoda","Insecta","Coleoptera","Anthicidae",NA,NA
+"30","ncbi","Anthicidae","Metazoa","Arthropoda","Insecta","Coleoptera","Anthicidae",NA,NA
+"31","itis","Carabidae","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae",NA,NA
+"32","ncbi","Carabidae","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae",NA,NA
+"33","itis","Staphylinidae","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"34","ncbi","Staphylinidae","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"35","itis","Coleoptera","Animalia","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"36","ncbi","Coleoptera","Metazoa","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"37","itis","Collembola",NA,NA,NA,NA,NA,NA,NA
+"38","ncbi","Collembola","Metazoa","Arthropoda","Collembola",NA,NA,NA,NA
+"39","itis","Dermaptera","Animalia","Arthropoda","Insecta","Dermaptera",NA,NA,NA
+"40","ncbi","Dermaptera","Metazoa","Arthropoda","Insecta","Dermaptera",NA,NA,NA
+"41","itis","Diplopoda","Animalia","Arthropoda","Diplopoda",NA,NA,NA,NA
+"42","ncbi","Diplopoda","Metazoa","Arthropoda","Diplopoda",NA,NA,NA,NA
+"43","itis","Diptera","Animalia","Arthropoda","Insecta","Diptera",NA,NA,NA
+"44","ncbi","Diptera","Metazoa","Arthropoda","Insecta","Diptera",NA,NA,NA
+"45","itis","Aphidiidae",NA,NA,NA,NA,NA,NA,NA
+"46","ncbi","Aphidiidae","Metazoa","Arthropoda","Insecta","Hymenoptera","Braconidae",NA,NA
+"47","itis","Auchenorrhyncha","Animalia","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"48","ncbi","Auchenorrhyncha","Metazoa","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"49","itis","Pheidole pallidula","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole","Pheidole pallidula"
+"50","ncbi","Pheidole pallidula","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole","Pheidole pallidula"
+"51","itis","Solenopsis","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Solenopsis",NA
+"52","ncbi","Solenopsis",NA,NA,NA,NA,NA,NA,NA
+"53","itis","Tetramorium","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Tetramorium",NA
+"54","ncbi","Tetramorium","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Tetramorium",NA
+"55","itis","Hymenoptera","Animalia","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"56","ncbi","Hymenoptera","Metazoa","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"57","itis","Isopoda","Animalia","Arthropoda","Malacostraca","Isopoda",NA,NA,NA
+"58","ncbi","Isopoda","Metazoa","Arthropoda","Malacostraca","Isopoda",NA,NA,NA
+"59","itis","Pauropoda","Animalia","Arthropoda","Pauropoda",NA,NA,NA,NA
+"60","ncbi","Pauropoda","Metazoa","Arthropoda","Pauropoda",NA,NA,NA,NA
+"61","itis","Protura",NA,NA,NA,NA,NA,NA,NA
+"62","ncbi","Protura","Metazoa","Arthropoda","Protura",NA,NA,NA,NA
+"63","itis","Pseudoscorpiones","Animalia","Arthropoda","Euchelicerata","Pseudoscorpiones",NA,NA,NA
+"64","ncbi","Pseudoscorpiones","Metazoa","Arthropoda","Arachnida","Pseudoscorpiones",NA,NA,NA
+"65","itis","Psocoptera",NA,NA,NA,"Psocoptera",NA,NA,NA
+"66","ncbi","Psocoptera","Metazoa","Arthropoda","Insecta","Psocoptera",NA,NA,NA
+"67","itis","Symphyla","Animalia","Arthropoda","Symphyla",NA,NA,NA,NA
+"68","ncbi","Symphyla","Metazoa","Arthropoda","Symphyla",NA,NA,NA,NA
+"69","itis","Thysanoptera","Animalia","Arthropoda","Insecta","Thysanoptera",NA,NA,NA
+"70","ncbi","Thysanoptera","Metazoa","Arthropoda","Insecta","Thysanoptera",NA,NA,NA
+"71","itis","Pseudosinella sexoculata","Animalia","Arthropoda","Collembola","Collembola","Entomobryidae","Pseudosinella","Pseudosinella sexoculata"
+"72","ncbi","Pseudosinella sexoculata",NA,NA,NA,NA,NA,NA,NA
+"73","itis","Protaphorura armata",NA,NA,NA,NA,NA,NA,NA
+"74","ncbi","Protaphorura armata","Metazoa","Arthropoda","Collembola","Poduromorpha","Onychiuridae","Protaphorura","Protaphorura armata"
+"75","itis","Cryptopygus thermophilus","Animalia","Arthropoda","Collembola","Collembola","Isotomidae","Cryptopygus","Cryptopygus thermophilus"
+"76","ncbi","Cryptopygus thermophilus",NA,NA,NA,NA,NA,NA,NA
+"77","itis","Pseudosinella alba","Animalia","Arthropoda","Collembola","Collembola","Entomobryidae","Pseudosinella","Pseudosinella alba"
+"78","ncbi","Pseudosinella alba","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Pseudosinella","Pseudosinella alba"
+"79","itis","Brachystomella parvula","Animalia","Arthropoda","Collembola","Collembola","Brachystomellidae","Brachystomella","Brachystomella parvula"
+"80","ncbi","Brachystomella parvula","Metazoa","Arthropoda","Collembola","Poduromorpha","Brachystomellidae","Brachystomella","Brachystomella parvula"
+"81","itis","Mesaphorura sp",NA,NA,NA,NA,NA,NA,NA
+"82","ncbi","Mesaphorura sp",NA,NA,NA,NA,NA,NA,NA
+"83","itis","Entomobrya lanuginosa","Animalia","Arthropoda","Collembola","Collembola","Entomobryidae","Entomobrya","Entomobrya lanuginosa"
+"84","ncbi","Entomobrya lanuginosa","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Entomobrya","Entomobrya lanuginosa"
+"85","itis","Sminthurinus elegans","Animalia","Arthropoda","Collembola","Collembola","Katiannidae","Sminthurinus","Sminthurinus elegans"
+"86","ncbi","Sminthurinus elegans","Metazoa","Arthropoda","Collembola","Symphypleona","Katiannidae","Sminthurinus","Sminthurinus elegans"
+"87","itis","Sphaeridia pumilis",NA,NA,NA,NA,NA,NA,NA
+"88","ncbi","Sphaeridia pumilis","Metazoa","Arthropoda","Collembola","Symphypleona","Sminthuridae","Sphaeridia","Sphaeridia pumilis"
+"89","itis","Parisotoma notabilis",NA,NA,NA,NA,NA,NA,NA
+"90","ncbi","Parisotoma notabilis","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Parisotoma","Parisotoma notabilis"
+"91","itis","SYMPHYPLEONA","Animalia","Arthropoda","Collembola","Collembola",NA,NA,NA
+"92","ncbi","SYMPHYPLEONA","Metazoa","Arthropoda","Collembola","Symphypleona",NA,NA,NA
+"93","itis","Neelidae","Animalia","Arthropoda","Collembola","Collembola","Neelidae",NA,NA
+"94","ncbi","Neelidae","Metazoa","Arthropoda","Collembola","Neelipleona","Neelidae",NA,NA
+"95","itis","Heteromurus major",NA,NA,NA,NA,NA,NA,NA
+"96","ncbi","Heteromurus major","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Heteromurus","Heteromurus major"
+"97","itis","Pseudosinella decipiens",NA,NA,NA,NA,NA,NA,NA
+"98","ncbi","Pseudosinella decipiens",NA,NA,NA,NA,NA,NA,NA
+"99","itis","Pseudanorophorus isotoma",NA,NA,NA,NA,NA,NA,NA
+"100","ncbi","Pseudanorophorus isotoma",NA,NA,NA,NA,NA,NA,NA
+"101","itis","Lepidocyrtus lanuginosus","Animalia","Arthropoda","Collembola","Collembola","Entomobryidae","Lepidocyrtus","Lepidocyrtus lanuginosus"
+"102","ncbi","Lepidocyrtus lanuginosus","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Lepidocyrtus","Lepidocyrtus lanuginosus"
+"103","itis","Xenylla xavieri","Animalia","Arthropoda","Collembola","Collembola","Hypogastruridae","Xenylla","Xenylla xavieri"
+"104","ncbi","Xenylla xavieri",NA,NA,NA,NA,NA,NA,NA
+"105","itis","Pseudosinella octopunctata","Animalia","Arthropoda","Collembola","Collembola","Entomobryidae","Pseudosinella","Pseudosinella octopunctata"
+"106","ncbi","Pseudosinella octopunctata","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Entomobryidae","Pseudosinella","Pseudosinella octopunctata"
+"107","itis","Megalothorax minimus","Animalia","Arthropoda","Collembola","Collembola","Neelidae","Megalothorax","Megalothorax minimus"
+"108","ncbi","Megalothorax minimus","Metazoa","Arthropoda","Collembola","Neelipleona","Neelidae","Megalothorax","Megalothorax minimus"
+"109","itis","Arrhopalites gr.caecus",NA,NA,NA,NA,NA,NA,NA
+"110","ncbi","Arrhopalites gr.caecus",NA,NA,NA,NA,NA,NA,NA
+"111","itis","Isotoma viridis","Animalia","Arthropoda","Collembola","Collembola","Isotomidae","Isotoma","Isotoma viridis"
+"112","ncbi","Isotoma viridis","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Isotoma","Isotoma viridis"
+"113","itis","Seira sp",NA,NA,NA,NA,NA,NA,NA
+"114","ncbi","Seira sp",NA,NA,NA,NA,NA,NA,NA
+"115","itis","Isotomurus sp",NA,NA,NA,NA,NA,NA,NA
+"116","ncbi","Isotomurus sp",NA,NA,NA,NA,NA,NA,NA
+"117","itis","Proisotoma minuta","Animalia","Arthropoda","Collembola","Collembola","Isotomidae","Proisotoma","Proisotoma minuta"
+"118","ncbi","Proisotoma minuta","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Proisotoma","Proisotoma minuta"
+"119","itis","Tullbergidae",NA,NA,NA,NA,NA,NA,NA
+"120","ncbi","Tullbergidae",NA,NA,NA,NA,NA,NA,NA
+"121","itis","Sminthurinus aureus","Animalia","Arthropoda","Collembola","Collembola","Katiannidae","Sminthurinus","Sminthurinus aureus"
+"122","ncbi","Sminthurinus aureus","Metazoa","Arthropoda","Collembola","Symphypleona","Katiannidae","Sminthurinus","Sminthurinus aureus"
+"123","itis","Hypogastrura manubrialis","Animalia","Arthropoda","Collembola","Collembola","Hypogastruridae","Hypogastrura","Hypogastrura manubrialis"
+"124","ncbi","Hypogastrura manubrialis",NA,NA,NA,NA,NA,NA,NA
+"125","itis","Hypogastrura vernalis","Animalia","Arthropoda","Collembola","Collembola","Hypogastruridae","Hypogastrura","Hypogastrura vernalis"
+"126","ncbi","Hypogastrura vernalis","Metazoa","Arthropoda","Collembola","Poduromorpha","Hypogastruridae","Hypogastrura","Hypogastrura vernalis"
+"127","itis","Neanuridae","Animalia","Arthropoda","Collembola","Collembola","Neanuridae",NA,NA
+"128","ncbi","Neanuridae","Metazoa","Arthropoda","Collembola","Poduromorpha","Neanuridae",NA,NA
+"129","itis","Isotomiella paraminor",NA,NA,NA,NA,NA,NA,NA
+"130","ncbi","Isotomiella paraminor","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Isotomiella","Isotomiella paraminor"
+"131","itis","Isotomiella minor","Animalia","Arthropoda","Collembola","Collembola","Isotomidae","Isotomiella","Isotomiella minor"
+"132","ncbi","Isotomiella minor","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Isotomiella","Isotomiella minor"
+"133","itis","Sminthurides signatus",NA,NA,NA,NA,NA,NA,NA
+"134","ncbi","Sminthurides signatus","Metazoa","Arthropoda","Collembola","Symphypleona","Sminthurididae","Sminthurides","Sminthurides signatus"
+"135","itis","Desoria trispinata",NA,NA,NA,NA,NA,NA,NA
+"136","ncbi","Desoria trispinata","Metazoa","Arthropoda","Collembola","Entomobryomorpha","Isotomidae","Desoria","Desoria trispinata"
+"137","itis","Sminthurus viridis","Animalia","Arthropoda","Collembola","Collembola","Sminthuridae","Sminthurus","Sminthurus viridis"
+"138","ncbi","Sminthurus viridis","Metazoa","Arthropoda","Collembola","Symphypleona","Sminthuridae","Sminthurus","Sminthurus viridis"
+"139","itis","Entomobrya aff.multifasciata",NA,NA,NA,NA,NA,NA,NA
+"140","ncbi","Entomobrya aff.multifasciata",NA,NA,NA,NA,NA,NA,NA
+"141","itis","Isotomodes trisetosus","Animalia","Arthropoda","Collembola","Collembola","Isotomidae","Isotomodes","Isotomodes trisetosus"
+"142","ncbi","Isotomodes trisetosus",NA,NA,NA,NA,NA,NA,NA
+"143","itis","Ceratophysella gibbosa","Animalia","Arthropoda","Collembola","Collembola","Hypogastruridae","Ceratophysella","Ceratophysella gibbosa"
+"144","ncbi","Ceratophysella gibbosa","Metazoa","Arthropoda","Collembola","Poduromorpha","Hypogastruridae","Ceratophysella","Ceratophysella gibbosa"
