@@ -1,0 +1,437 @@
+"","db","query","kingdom","phylum","class","order","family","genus","species"
+"1","itis","Harpalus distinguendus",NA,NA,NA,NA,NA,NA,NA
+"2","ncbi","Harpalus distinguendus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus distinguendus"
+"3","itis","Hymenoptera","Animalia","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"4","ncbi","Hymenoptera","Metazoa","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"5","itis","Messor","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor",NA
+"6","ncbi","Messor","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor",NA
+"7","itis","Phaeocedus braccatus","Animalia","Arthropoda","Euchelicerata","Araneae","Gnaphosidae","Phaeocedus","Phaeocedus braccatus"
+"8","ncbi","Phaeocedus braccatus","Metazoa","Arthropoda","Arachnida","Araneae","Gnaphosidae","Phaeocedus","Phaeocedus braccatus"
+"9","itis","Oxytelini",NA,NA,NA,NA,NA,NA,NA
+"10","ncbi","Oxytelini",NA,NA,NA,NA,NA,NA,NA
+"11","itis","Oligota","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oligota",NA
+"12","ncbi","Oligota","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oligota",NA
+"13","itis","Linyphiidae","Animalia","Arthropoda","Euchelicerata","Araneae","Linyphiidae",NA,NA
+"14","ncbi","Linyphiidae","Metazoa","Arthropoda","Arachnida","Araneae","Linyphiidae",NA,NA
+"15","itis","Oxypoda","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxypoda",NA
+"16","ncbi","Oxypoda","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Oxypoda",NA
+"17","itis","Carpophilus","Animalia","Arthropoda","Insecta","Coleoptera","Nitidulidae","Carpophilus",NA
+"18","ncbi","Carpophilus","Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Carpophilus",NA
+"19","itis","Araneae","Animalia","Arthropoda","Euchelicerata","Araneae",NA,NA,NA
+"20","ncbi","Araneae","Metazoa","Arthropoda","Arachnida","Araneae",NA,NA,NA
+"21","itis","Coleoptera","Animalia","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"22","ncbi","Coleoptera","Metazoa","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"23","itis","Staphylinidae","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"24","ncbi","Staphylinidae","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"25","itis","Leptaleus rodriguesi",NA,NA,NA,NA,NA,NA,NA
+"26","ncbi","Leptaleus rodriguesi","Metazoa","Arthropoda","Insecta","Coleoptera","Anthicidae","Leptaleus","Leptaleus rodriguesi"
+"27","itis","Atheta","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Atheta",NA
+"28","ncbi","Atheta","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Atheta",NA
+"29","itis","Aleocharinae","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"30","ncbi","Aleocharinae","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"31","itis","Pheidole pallidula","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole","Pheidole pallidula"
+"32","ncbi","Pheidole pallidula","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole","Pheidole pallidula"
+"33","itis","Psocoptera",NA,NA,NA,"Psocoptera",NA,NA,NA
+"34","ncbi","Psocoptera","Metazoa","Arthropoda","Insecta","Psocoptera",NA,NA,NA
+"35","itis","Coprochara","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Aleochara",NA
+"36","ncbi","Coprochara",NA,NA,NA,NA,NA,NA,NA
+"37","itis","Alaobia scapularis",NA,NA,NA,NA,NA,NA,NA
+"38","ncbi","Alaobia scapularis","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Alaobia","Alaobia scapularis"
+"39","itis","Cicadellidae","Animalia","Arthropoda","Insecta","Hemiptera","Cicadellidae",NA,NA
+"40","ncbi","Cicadellidae","Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae",NA,NA
+"41","itis","Philonthina",NA,NA,NA,NA,NA,NA,NA
+"42","ncbi","Philonthina",NA,NA,NA,NA,NA,NA,NA
+"43","itis","Harpalus dispar",NA,NA,NA,NA,NA,NA,NA
+"44","ncbi","Harpalus dispar","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus dispar"
+"45","itis","Atomaria","Animalia","Arthropoda","Insecta","Coleoptera","Cryptophagidae","Atomaria",NA
+"46","ncbi","Atomaria","Metazoa","Arthropoda","Insecta","Coleoptera","Cryptophagidae","Atomaria",NA
+"47","itis","Phalangiinae",NA,NA,NA,NA,NA,NA,NA
+"48","ncbi","Phalangiinae","Metazoa","Arthropoda","Arachnida","Opiliones","Phalangiidae",NA,NA
+"49","itis","Aphodius","Animalia","Arthropoda","Insecta","Coleoptera","Scarabaeidae","Aphodius",NA
+"50","ncbi","Aphodius",NA,NA,NA,NA,NA,NA,NA
+"51","itis","Chrysomelidae","Animalia","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"52","ncbi","Chrysomelidae","Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"53","itis","Calathus fuscipes","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","Calathus","Calathus fuscipes"
+"54","ncbi","Calathus fuscipes","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Calathus","Calathus fuscipes"
+"55","itis","Enchytraeidae","Animalia","Annelida","Clitellata",NA,"Enchytraeidae",NA,NA
+"56","ncbi","Enchytraeidae","Metazoa","Annelida","Clitellata","Enchytraeida","Enchytraeidae",NA,NA
+"57","itis","Gnaphosoidea",NA,NA,NA,NA,NA,NA,NA
+"58","ncbi","Gnaphosoidea",NA,NA,NA,NA,NA,NA,NA
+"59","itis","Athous","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor","Messor oertzeni"
+"60","ncbi","Athous","Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Athous",NA
+"61","itis","Lathrobiina",NA,NA,NA,NA,NA,NA,NA
+"62","ncbi","Lathrobiina",NA,NA,NA,NA,NA,NA,NA
+"63","itis","Julidae","Animalia","Arthropoda","Diplopoda","Julida","Julidae",NA,NA
+"64","ncbi","Julidae","Metazoa","Arthropoda","Diplopoda","Julida","Julidae",NA,NA
+"65","itis","Nitidulidae","Animalia","Arthropoda","Insecta","Coleoptera","Nitidulidae",NA,NA
+"66","ncbi","Nitidulidae","Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae",NA,NA
+"67","itis","Lycosidae","Animalia","Arthropoda","Euchelicerata","Araneae","Lycosidae",NA,NA
+"68","ncbi","Lycosidae","Metazoa","Arthropoda","Arachnida","Araneae","Lycosidae",NA,NA
+"69","itis","Diptera","Animalia","Arthropoda","Insecta","Diptera",NA,NA,NA
+"70","ncbi","Diptera","Metazoa","Arthropoda","Insecta","Diptera",NA,NA,NA
+"71","itis","Zodarion","Animalia","Arthropoda","Euchelicerata","Araneae","Zodariidae","Zodarion",NA
+"72","ncbi","Zodarion","Metazoa","Arthropoda","Arachnida","Araneae","Zodariidae","Zodarion",NA
+"73","itis","Gastropoda","Animalia","Mollusca","Gastropoda",NA,NA,NA,NA
+"74","ncbi","Gastropoda","Metazoa","Mollusca","Gastropoda",NA,NA,NA,NA
+"75","itis","Epuraea ocularis","Animalia","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea ocularis"
+"76","ncbi","Epuraea ocularis","Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea","Epuraea ocularis"
+"77","itis","Hirticomus",NA,NA,NA,NA,NA,NA,NA
+"78","ncbi","Hirticomus",NA,NA,NA,NA,NA,NA,NA
+"79","itis","Tachyporus",NA,NA,NA,NA,NA,NA,NA
+"80","ncbi","Tachyporus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Tachyporus",NA
+"81","itis","Armadillidium vulgare","Animalia","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium","Armadillidium vulgare"
+"82","ncbi","Armadillidium vulgare","Metazoa","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium","Armadillidium vulgare"
+"83","itis","Deroceras","Animalia","Mollusca","Gastropoda","Helicida","Limacidae","Deroceras",NA
+"84","ncbi","Deroceras","Metazoa","Mollusca","Gastropoda","Stylommatophora","Agriolimacidae","Deroceras",NA
+"85","itis","Rhyzobius","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius",NA
+"86","ncbi","Rhyzobius","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius",NA
+"87","itis","Gnaphosidae","Animalia","Arthropoda","Euchelicerata","Araneae","Gnaphosidae",NA,NA
+"88","ncbi","Gnaphosidae","Metazoa","Arthropoda","Arachnida","Araneae","Gnaphosidae",NA,NA
+"89","itis","Microlestes","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","Microlestes",NA
+"90","ncbi","Microlestes","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Microlestes",NA
+"91","itis","Licinus punctatulus",NA,NA,NA,NA,NA,NA,NA
+"92","ncbi","Licinus punctatulus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Licinus","Licinus punctatulus"
+"93","itis","Solenopsis","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Solenopsis",NA
+"94","ncbi","Solenopsis",NA,NA,NA,NA,NA,NA,NA
+"95","itis","Astenus",NA,NA,NA,NA,NA,NA,NA
+"96","ncbi","Astenus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Astenus",NA
+"97","itis","Harpalus attenuatus",NA,NA,NA,NA,NA,NA,NA
+"98","ncbi","Harpalus attenuatus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus attenuatus"
+"99","itis","Cryptophagidae","Animalia","Arthropoda","Insecta","Coleoptera","Cryptophagidae",NA,NA
+"100","ncbi","Cryptophagidae","Metazoa","Arthropoda","Insecta","Coleoptera","Cryptophagidae",NA,NA
+"101","itis","Salticidae","Animalia","Arthropoda","Euchelicerata","Araneae","Salticidae",NA,NA
+"102","ncbi","Salticidae","Metazoa","Arthropoda","Arachnida","Araneae","Salticidae",NA,NA
+"103","itis","Aphidoidea","Animalia","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"104","ncbi","Aphidoidea","Metazoa","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"105","itis","Pyrrhocoris apterus",NA,NA,NA,NA,NA,NA,NA
+"106","ncbi","Pyrrhocoris apterus","Metazoa","Arthropoda","Insecta","Hemiptera","Pyrrhocoridae","Pyrrhocoris","Pyrrhocoris apterus"
+"107","itis","Apion","Animalia","Arthropoda","Insecta","Coleoptera","Apionidae","Apion",NA
+"108","ncbi","Apion","Metazoa","Arthropoda","Insecta","Coleoptera","Apionidae","Apion",NA
+"109","itis","Arionidae","Animalia","Mollusca","Gastropoda","Helicida","Arionidae",NA,NA
+"110","ncbi","Arionidae","Metazoa","Mollusca","Gastropoda","Stylommatophora","Arionidae",NA,NA
+"111","itis","Asagena","Animalia","Arthropoda","Euchelicerata","Araneae","Theridiidae","Asagena",NA
+"112","ncbi","Asagena","Metazoa","Arthropoda","Arachnida","Araneae","Theridiidae","Asagena",NA
+"113","itis","Lepidoptera","Animalia","Arthropoda","Insecta","Lepidoptera",NA,NA,NA
+"114","ncbi","Lepidoptera","Metazoa","Arthropoda","Insecta","Lepidoptera",NA,NA,NA
+"115","itis","Histeridae","Animalia","Arthropoda","Insecta","Coleoptera","Histeridae",NA,NA
+"116","ncbi","Histeridae","Metazoa","Arthropoda","Insecta","Coleoptera","Histeridae",NA,NA
+"117","itis","Arion","Animalia","Mollusca","Gastropoda","Helicida","Arionidae","Arion",NA
+"118","ncbi","Arion","Metazoa","Mollusca","Gastropoda","Stylommatophora","Arionidae","Arion",NA
+"119","itis","Thomisidae","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae",NA,NA
+"120","ncbi","Thomisidae","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae",NA,NA
+"121","itis","Dermestidae","Animalia","Arthropoda","Insecta","Coleoptera","Dermestidae",NA,NA
+"122","ncbi","Dermestidae","Metazoa","Arthropoda","Insecta","Coleoptera","Dermestidae",NA,NA
+"123","itis","Thysanoptera","Animalia","Arthropoda","Insecta","Thysanoptera",NA,NA,NA
+"124","ncbi","Thysanoptera","Metazoa","Arthropoda","Insecta","Thysanoptera",NA,NA,NA
+"125","itis","Pisaura mirabilis","Animalia","Arthropoda","Euchelicerata","Araneae","Pisauridae","Pisaura","Pisaura mirabilis"
+"126","ncbi","Pisaura mirabilis","Metazoa","Arthropoda","Arachnida","Araneae","Pisauridae","Pisaura","Pisaura mirabilis"
+"127","itis","Plagiolepis pygmaea","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Plagiolepis","Plagiolepis pygmaea"
+"128","ncbi","Plagiolepis pygmaea","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Plagiolepis","Plagiolepis pygmaea"
+"129","itis","Hemiptera","Animalia","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"130","ncbi","Hemiptera","Metazoa","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"131","itis","Phalangioidea","Animalia","Arthropoda","Euchelicerata","Opiliones",NA,NA,NA
+"132","ncbi","Phalangioidea","Metazoa","Arthropoda","Arachnida","Opiliones",NA,NA,NA
+"133","itis","Acari",NA,NA,NA,NA,NA,NA,NA
+"134","ncbi","Acari","Metazoa","Arthropoda","Arachnida",NA,NA,NA,NA
+"135","itis","Elateridae","Animalia","Arthropoda","Insecta","Coleoptera","Elateridae",NA,NA
+"136","ncbi","Elateridae","Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae",NA,NA
+"137","itis","Synema globosum","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae","Synema","Synema globosum"
+"138","ncbi","Synema globosum","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae","Synema","Synema globosum"
+"139","itis","Calathus melanocephalus","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","Calathus","Calathus melanocephalus"
+"140","ncbi","Calathus melanocephalus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Calathus","Calathus melanocephalus"
+"141","itis","Corticariinae","Animalia","Arthropoda","Insecta","Coleoptera","Latridiidae",NA,NA
+"142","ncbi","Corticariinae",NA,NA,NA,NA,NA,NA,NA
+"143","itis","Polyphaga","Animalia","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"144","ncbi","Polyphaga",NA,NA,NA,NA,NA,NA,NA
+"145","itis","Psylloidea","Animalia","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"146","ncbi","Psylloidea","Metazoa","Arthropoda","Insecta","Hemiptera",NA,NA,NA
+"147","itis","Xysticus","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae","Xysticus",NA
+"148","ncbi","Xysticus","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae","Xysticus",NA
+"149","itis","Porcellio laevis","Animalia","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Porcellio","Porcellio laevis"
+"150","ncbi","Porcellio laevis","Metazoa","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Porcellio","Porcellio laevis"
+"151","itis","Alopecosa albofasciata","Animalia","Arthropoda","Euchelicerata","Araneae","Lycosidae","Alopecosa","Alopecosa albofasciata"
+"152","ncbi","Alopecosa albofasciata","Metazoa","Arthropoda","Arachnida","Araneae","Lycosidae","Alopecosa","Alopecosa albofasciata"
+"153","itis","Isopoda","Animalia","Arthropoda","Malacostraca","Isopoda",NA,NA,NA
+"154","ncbi","Isopoda","Metazoa","Arthropoda","Malacostraca","Isopoda",NA,NA,NA
+"155","itis","Stygnocoris","Animalia","Arthropoda","Insecta","Hemiptera","Rhyparochromidae","Stygnocoris",NA
+"156","ncbi","Stygnocoris","Metazoa","Arthropoda","Insecta","Hemiptera","Rhyparochromidae","Stygnocoris",NA
+"157","itis","Harpalus affinis","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus affinis"
+"158","ncbi","Harpalus affinis","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus affinis"
+"159","itis","Rhyzobius litura","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius","Rhyzobius litura"
+"160","ncbi","Rhyzobius litura","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius","Rhyzobius litura"
+"161","itis","Corylophidae","Animalia","Arthropoda","Insecta","Coleoptera","Corylophidae",NA,NA
+"162","ncbi","Corylophidae","Metazoa","Arthropoda","Insecta","Coleoptera","Corylophidae",NA,NA
+"163","itis","Cercidia prominens","Animalia","Arthropoda","Euchelicerata","Araneae","Araneidae","Cercidia","Cercidia prominens"
+"164","ncbi","Cercidia prominens","Metazoa","Arthropoda","Arachnida","Araneae","Araneidae","Cercidia","Cercidia prominens"
+"165","itis","Anotylus","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Anotylus",NA
+"166","ncbi","Anotylus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Anotylus",NA
+"167","itis","Anthicinae","Animalia","Arthropoda","Insecta","Coleoptera","Anthicidae",NA,NA
+"168","ncbi","Anthicinae",NA,NA,NA,NA,NA,NA,NA
+"169","itis","Tapinoma","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Tapinoma",NA
+"170","ncbi","Tapinoma","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Tapinoma",NA
+"171","itis","Haploembia","Animalia","Arthropoda","Insecta","Embioptera","Oligotomidae","Haploembia",NA
+"172","ncbi","Haploembia","Metazoa","Arthropoda","Insecta","Embioptera","Oligotomidae","Haploembia",NA
+"173","itis","Onthophagus","Animalia","Arthropoda","Insecta","Coleoptera","Scarabaeidae","Onthophagus",NA
+"174","ncbi","Onthophagus","Metazoa","Arthropoda","Insecta","Coleoptera","Scarabaeidae","Onthophagus",NA
+"175","itis","Poecilus sericeus",NA,NA,NA,NA,NA,NA,NA
+"176","ncbi","Poecilus sericeus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Poecilus","Poecilus sericeus"
+"177","itis","thripidae","Animalia","Arthropoda","Insecta","Thysanoptera","Thripidae",NA,NA
+"178","ncbi","thripidae","Metazoa","Arthropoda","Insecta","Thysanoptera","Thripidae",NA,NA
+"179","itis","Cataglyphis pallidula",NA,NA,NA,NA,NA,NA,NA
+"180","ncbi","Cataglyphis pallidula",NA,NA,NA,NA,NA,NA,NA
+"181","itis","Coccinella septempunctata","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae","Coccinella","Coccinella septempunctata"
+"182","ncbi","Coccinella septempunctata","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Coccinella","Coccinella septempunctata"
+"183","itis","Coccinellidae","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae",NA,NA
+"184","ncbi","Coccinellidae","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae",NA,NA
+"185","itis","Brachinus crepitans",NA,NA,NA,NA,NA,NA,NA
+"186","ncbi","Brachinus crepitans","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Brachinus","Brachinus crepitans"
+"187","itis","Apidae","Animalia","Arthropoda","Insecta","Hymenoptera","Apidae",NA,NA
+"188","ncbi","Apidae","Metazoa","Arthropoda","Insecta","Hymenoptera","Apidae",NA,NA
+"189","itis","Anchicera",NA,NA,NA,NA,NA,"Anchicera",NA
+"190","ncbi","Anchicera",NA,NA,NA,NA,NA,NA,NA
+"192","itis","Cucujoidea","Animalia","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"193","ncbi","Cucujoidea","Metazoa","Arthropoda","Insecta","Coleoptera",NA,NA,NA
+"194","itis","Anthicidae","Animalia","Arthropoda","Insecta","Coleoptera","Anthicidae",NA,NA
+"195","ncbi","Anthicidae","Metazoa","Arthropoda","Insecta","Coleoptera","Anthicidae",NA,NA
+"196","itis","Geophilomorpha","Animalia","Arthropoda","Chilopoda","Geophilomorpha",NA,NA,NA
+"197","ncbi","Geophilomorpha","Metazoa","Arthropoda","Chilopoda","Geophilomorpha",NA,NA,NA
+"198","itis","Latridiidae","Animalia","Arthropoda","Insecta","Coleoptera","Latridiidae",NA,NA
+"199","ncbi","Latridiidae","Metazoa","Arthropoda","Insecta","Coleoptera","Latridiidae",NA,NA
+"200","itis","Erigone","Animalia","Arthropoda","Euchelicerata","Araneae","Linyphiidae","Erigone",NA
+"201","ncbi","Erigone","Metazoa","Arthropoda","Arachnida","Araneae","Linyphiidae","Erigone",NA
+"202","itis","Armadillidium","Animalia","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium",NA
+"203","ncbi","Armadillidium","Metazoa","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium",NA
+"204","itis","Rhyzobius chrysomeloides","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius","Rhyzobius chrysomeloides"
+"205","ncbi","Rhyzobius chrysomeloides","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Rhyzobius","Rhyzobius chrysomeloides"
+"206","itis","Euborellia moesta",NA,NA,NA,NA,NA,NA,NA
+"207","ncbi","Euborellia moesta","Metazoa","Arthropoda","Insecta","Dermaptera","Anisolabididae","Euborellia","Euborellia moesta"
+"208","itis","Typhlocybinae",NA,NA,NA,NA,NA,NA,NA
+"209","ncbi","Typhlocybinae","Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae",NA,NA
+"210","itis","Plagiolepis","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Plagiolepis",NA
+"211","ncbi","Plagiolepis","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Plagiolepis",NA
+"212","itis","Alopecosa","Animalia","Arthropoda","Euchelicerata","Araneae","Lycosidae","Alopecosa",NA
+"213","ncbi","Alopecosa","Metazoa","Arthropoda","Arachnida","Araneae","Lycosidae","Alopecosa",NA
+"214","itis","Formicidae","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae",NA,NA
+"215","ncbi","Formicidae","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae",NA,NA
+"216","itis","Apoidea","Animalia","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"217","ncbi","Apoidea","Metazoa","Arthropoda","Insecta","Hymenoptera",NA,NA,NA
+"218","itis","Eucinetus haemorrhoidalis",NA,NA,NA,NA,NA,NA,NA
+"219","ncbi","Eucinetus haemorrhoidalis","Metazoa","Arthropoda","Insecta","Coleoptera","Eucinetidae","Eucinetus","Eucinetus haemorrhoidalis"
+"220","itis","Tychius medicaginis",NA,NA,NA,NA,NA,NA,NA
+"221","ncbi","Tychius medicaginis","Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Tychius","Tychius medicaginis"
+"222","itis","Himacerus mirmicoides",NA,NA,NA,NA,NA,NA,NA
+"223","ncbi","Himacerus mirmicoides","Metazoa","Arthropoda","Insecta","Hemiptera","Nabidae","Himacerus","Himacerus mirmicoides"
+"224","itis","Harpalus serripes",NA,NA,NA,NA,NA,NA,NA
+"225","ncbi","Harpalus serripes","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus serripes"
+"226","itis","Pangus scaritides",NA,NA,NA,NA,NA,NA,NA
+"227","ncbi","Pangus scaritides",NA,NA,NA,NA,NA,NA,NA
+"228","itis","Harpalus decipiens",NA,NA,NA,NA,NA,NA,NA
+"229","ncbi","Harpalus decipiens","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus decipiens"
+"230","itis","Insecta","Animalia","Arthropoda","Insecta",NA,NA,NA,NA
+"231","ncbi","Insecta","Metazoa","Arthropoda","Insecta",NA,NA,NA,NA
+"232","itis","Agriolimacidae","Animalia","Mollusca","Gastropoda","Helicida","Agriolimacidae",NA,NA
+"233","ncbi","Agriolimacidae","Metazoa","Mollusca","Gastropoda","Stylommatophora","Agriolimacidae",NA,NA
+"234","itis","Dermaptera","Animalia","Arthropoda","Insecta","Dermaptera",NA,NA,NA
+"235","ncbi","Dermaptera","Metazoa","Arthropoda","Insecta","Dermaptera",NA,NA,NA
+"236","itis","Sepedophilus",NA,NA,NA,NA,NA,NA,NA
+"237","ncbi","Sepedophilus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Sepedophilus",NA
+"238","itis","Odiellus troguloides",NA,NA,NA,NA,NA,NA,NA
+"239","ncbi","Odiellus troguloides","Metazoa","Arthropoda","Arachnida","Opiliones","Phalangiidae","Odiellus","Odiellus troguloides"
+"240","itis","Opiliones","Animalia","Arthropoda","Euchelicerata","Opiliones",NA,NA,NA
+"241","ncbi","Opiliones","Metazoa","Arthropoda","Arachnida","Opiliones",NA,NA,NA
+"242","itis","Orthoptera","Animalia","Arthropoda","Insecta","Orthoptera",NA,NA,NA
+"243","ncbi","Orthoptera","Metazoa","Arthropoda","Insecta","Orthoptera",NA,NA,NA
+"244","itis","Priocnemis propinqua",NA,NA,NA,NA,NA,NA,NA
+"245","ncbi","Priocnemis propinqua",NA,NA,NA,NA,NA,NA,NA
+"246","itis","Harpalus luteicornis",NA,NA,NA,NA,NA,NA,NA
+"247","ncbi","Harpalus luteicornis","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus luteicornis"
+"248","itis","Scymnus frontalis",NA,NA,NA,NA,NA,NA,NA
+"249","ncbi","Scymnus frontalis","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Scymnus","Scymnus frontalis"
+"250","itis","Gastrophysa","Animalia","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Gastrophysa",NA
+"251","ncbi","Gastrophysa","Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae","Gastrophysa",NA
+"252","itis","Camarota",NA,NA,NA,NA,NA,NA,NA
+"253","ncbi","Camarota","Metazoa","Arthropoda","Insecta","Diptera","Chloropidae","Camarota",NA
+"254","itis","Nomisia","Animalia","Arthropoda","Euchelicerata","Araneae","Gnaphosidae","Nomisia",NA
+"255","ncbi","Nomisia","Metazoa","Arthropoda","Arachnida","Araneae","Gnaphosidae","Nomisia",NA
+"256","itis","Deltocephalinae",NA,NA,NA,NA,NA,NA,NA
+"257","ncbi","Deltocephalinae","Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae",NA,NA
+"258","itis","Alticini","Animalia","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"259","ncbi","Alticini","Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"260","itis","Cataglyphis piliscapa",NA,NA,NA,NA,NA,NA,NA
+"261","ncbi","Cataglyphis piliscapa","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Cataglyphis","Cataglyphis piliscapa"
+"262","itis","Hippodamia variegata","Animalia","Arthropoda","Insecta","Coleoptera","Coccinellidae","Hippodamia","Hippodamia variegata"
+"263","ncbi","Hippodamia variegata","Metazoa","Arthropoda","Insecta","Coleoptera","Coccinellidae","Hippodamia","Hippodamia variegata"
+"264","itis","Chalcoscirtus","Animalia","Arthropoda","Euchelicerata","Araneae","Salticidae","Chalcoscirtus",NA
+"265","ncbi","Chalcoscirtus","Metazoa","Arthropoda","Arachnida","Araneae","Salticidae","Chalcoscirtus",NA
+"266","itis","Hypurus bertrandi","Animalia","Arthropoda","Insecta","Coleoptera","Curculionidae","Hypurus","Hypurus bertrandi"
+"267","ncbi","Hypurus bertrandi",NA,NA,NA,NA,NA,NA,NA
+"268","itis","Chorthippus brunneus",NA,NA,NA,NA,NA,NA,NA
+"269","ncbi","Chorthippus brunneus","Metazoa","Arthropoda","Insecta","Orthoptera","Acrididae","Chorthippus","Chorthippus brunneus"
+"270","itis","Xantholinus","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Xantholinus",NA
+"271","ncbi","Xantholinus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Xantholinus",NA
+"272","itis","Omocestus rufipes",NA,NA,NA,NA,NA,NA,NA
+"273","ncbi","Omocestus rufipes","Metazoa","Arthropoda","Insecta","Orthoptera","Acrididae","Omocestus","Omocestus rufipes"
+"274","itis","Philodromidae","Animalia","Arthropoda","Euchelicerata","Araneae","Philodromidae",NA,NA
+"275","ncbi","Philodromidae","Metazoa","Arthropoda","Arachnida","Araneae","Philodromidae",NA,NA
+"276","itis","Phalangium","Animalia","Arthropoda","Euchelicerata","Opiliones","Phalangiidae","Phalangium",NA
+"277","ncbi","Phalangium","Metazoa","Arthropoda","Arachnida","Opiliones","Phalangiidae","Phalangium",NA
+"278","itis","Pseudoophonus rufipes",NA,NA,NA,NA,NA,NA,NA
+"279","ncbi","Pseudoophonus rufipes","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus rufipes"
+"280","itis","Agalliina",NA,NA,NA,NA,NA,NA,NA
+"281","ncbi","Agalliina",NA,NA,NA,NA,NA,NA,NA
+"282","itis","Paralimnina",NA,NA,NA,NA,NA,NA,NA
+"283","ncbi","Paralimnina",NA,NA,NA,NA,NA,NA,NA
+"284","itis","Tachyporinae","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"285","ncbi","Tachyporinae","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"286","itis","Harpalus atratus",NA,NA,NA,NA,NA,NA,NA
+"287","ncbi","Harpalus atratus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Harpalus","Harpalus atratus"
+"288","itis","Armadillidium arcangelii","Animalia","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium","Armadillidium arcangelii"
+"289","ncbi","Armadillidium arcangelii","Metazoa","Arthropoda","Malacostraca","Isopoda","Armadillidiidae","Armadillidium","Armadillidium arcangelii"
+"290","itis","Drasterius","Animalia","Arthropoda","Insecta","Coleoptera","Elateridae","Drasterius",NA
+"291","ncbi","Drasterius","Metazoa","Arthropoda","Insecta","Coleoptera","Elateridae","Drasterius",NA
+"292","itis","Omophlus",NA,NA,NA,NA,NA,NA,NA
+"293","ncbi","Omophlus","Metazoa","Arthropoda","Insecta","Coleoptera","Tenebrionidae","Omophlus",NA
+"294","itis","Trechus quadristriatus","Animalia","Arthropoda","Insecta","Coleoptera","Carabidae","Trechus","Trechus quadristriatus"
+"295","ncbi","Trechus quadristriatus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Trechus","Trechus quadristriatus"
+"296","itis","Parmulini","Animalia","Arthropoda","Insecta","Coleoptera","Corylophidae",NA,NA
+"297","ncbi","Parmulini",NA,NA,NA,NA,NA,NA,NA
+"298","itis","Amara montivaga",NA,NA,NA,NA,NA,NA,NA
+"299","ncbi","Amara montivaga","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Amara","Amara montivaga"
+"300","itis","Dermestes","Animalia","Arthropoda","Insecta","Coleoptera","Dermestidae","Dermestes",NA
+"301","ncbi","Dermestes","Metazoa","Arthropoda","Insecta","Coleoptera","Dermestidae","Dermestes",NA
+"302","itis","Cryptocephalinae","Animalia","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"303","ncbi","Cryptocephalinae","Metazoa","Arthropoda","Insecta","Coleoptera","Chrysomelidae",NA,NA
+"304","itis","Athetini","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"305","ncbi","Athetini","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"306","itis","Aleochara","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Aleochara",NA
+"307","ncbi","Aleochara","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Aleochara",NA
+"308","itis","Nitidulini",NA,NA,NA,NA,NA,NA,NA
+"309","ncbi","Nitidulini",NA,NA,NA,NA,NA,NA,NA
+"310","itis","Pezotettix giornae",NA,NA,NA,NA,NA,NA,NA
+"311","ncbi","Pezotettix giornae","Metazoa","Arthropoda","Insecta","Orthoptera","Acrididae","Pezotettix","Pezotettix giornae"
+"312","itis","Diplopoda","Animalia","Arthropoda","Diplopoda",NA,NA,NA,NA
+"313","ncbi","Diplopoda","Metazoa","Arthropoda","Diplopoda",NA,NA,NA,NA
+"314","itis","Messor structor","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor","Messor structor"
+"315","ncbi","Messor structor","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor","Messor structor"
+"316","itis","Pseudoscorpiones","Animalia","Arthropoda","Euchelicerata","Pseudoscorpiones",NA,NA,NA
+"317","ncbi","Pseudoscorpiones","Metazoa","Arthropoda","Arachnida","Pseudoscorpiones",NA,NA,NA
+"318","itis","Entelegynae",NA,NA,NA,NA,NA,NA,NA
+"319","ncbi","Entelegynae","Metazoa","Arthropoda","Arachnida","Araneae",NA,NA,NA
+"320","itis","Camponotus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus",NA
+"321","ncbi","Camponotus","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus",NA
+"322","itis","Pachytychius","Animalia","Arthropoda","Insecta","Coleoptera","Curculionidae","Pachytychius",NA
+"323","ncbi","Pachytychius","Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Pachytychius",NA
+"324","itis","Macrosiphini",NA,NA,NA,NA,NA,NA,NA
+"325","ncbi","Macrosiphini","Metazoa","Arthropoda","Insecta","Hemiptera","Aphididae",NA,NA
+"326","itis","Malvaevora",NA,NA,NA,NA,NA,NA,NA
+"327","ncbi","Malvaevora","Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae","Malvaevora",NA
+"328","itis","Himacerus","Animalia","Arthropoda","Insecta","Hemiptera","Nabidae","Himacerus",NA
+"329","ncbi","Himacerus",NA,NA,NA,NA,NA,NA,NA
+"330","itis","Loboptera canariensis",NA,NA,NA,NA,NA,NA,NA
+"331","ncbi","Loboptera canariensis","Metazoa","Arthropoda","Insecta","Blattodea","Blattellidae","Loboptera","Loboptera canariensis"
+"332","itis","Stelidota geminata","Animalia","Arthropoda","Insecta","Coleoptera","Nitidulidae","Stelidota","Stelidota geminata"
+"333","ncbi","Stelidota geminata","Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Stelidota","Stelidota geminata"
+"334","itis","Ophonus cribricollis",NA,NA,NA,NA,NA,NA,NA
+"335","ncbi","Ophonus cribricollis","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Ophonus","Ophonus cribricollis"
+"336","itis","Plinthisus","Animalia","Arthropoda","Insecta","Hemiptera","Rhyparochromidae","Plinthisus",NA
+"337","ncbi","Plinthisus","Metazoa","Arthropoda","Insecta","Hemiptera","Rhyparochromidae","Plinthisus",NA
+"338","itis","Zyras","Animalia","Arthropoda","Insecta","Coleoptera","Staphylinidae","Zyras",NA
+"339","ncbi","Zyras","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Zyras",NA
+"340","itis","Entiminae",NA,NA,NA,NA,NA,NA,NA
+"341","ncbi","Entiminae","Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae",NA,NA
+"342","itis","Kalama tricornis","Animalia","Arthropoda","Insecta","Hemiptera","Tingidae","Kalama","Kalama tricornis"
+"343","ncbi","Kalama tricornis","Metazoa","Arthropoda","Insecta","Hemiptera","Tingidae","Kalama","Kalama tricornis"
+"344","itis","Xantholinini",NA,NA,NA,NA,NA,NA,NA
+"345","ncbi","Xantholinini","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"346","itis","Tachys bistriatus",NA,NA,NA,NA,NA,NA,NA
+"347","ncbi","Tachys bistriatus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Paratachys","Paratachys bistriatus"
+"348","itis","Lycosoidea",NA,NA,NA,NA,NA,NA,NA
+"349","ncbi","Lycosoidea","Metazoa","Arthropoda","Arachnida","Araneae",NA,NA,NA
+"350","itis","Epuraea","Animalia","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea",NA
+"351","ncbi","Epuraea","Metazoa","Arthropoda","Insecta","Coleoptera","Nitidulidae","Epuraea",NA
+"352","itis","Berytidae","Animalia","Arthropoda","Insecta","Hemiptera","Berytidae",NA,NA
+"353","ncbi","Berytidae","Metazoa","Arthropoda","Insecta","Hemiptera","Berytidae",NA,NA
+"354","itis","Geotomini",NA,NA,NA,NA,NA,NA,NA
+"355","ncbi","Geotomini",NA,NA,NA,NA,NA,NA,NA
+"356","itis","Lasius","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Lasius",NA
+"357","ncbi","Lasius",NA,NA,NA,NA,NA,NA,NA
+"358","itis","Lucasius pallidus","Animalia","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Lucasius","Lucasius pallidus"
+"359","ncbi","Lucasius pallidus","Metazoa","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Lucasius","Lucasius pallidus"
+"360","itis","Camponotus piceus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus","Camponotus piceus"
+"361","ncbi","Camponotus piceus","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus","Camponotus piceus"
+"362","itis","Thomisinae",NA,NA,NA,NA,NA,NA,NA
+"363","ncbi","Thomisinae",NA,NA,NA,NA,NA,NA,NA
+"364","itis","Basalys",NA,NA,NA,NA,NA,NA,NA
+"365","ncbi","Basalys","Metazoa","Arthropoda","Insecta","Hymenoptera","Diapriidae","Basalys",NA
+"366","itis","Pteromalini",NA,NA,NA,NA,NA,NA,NA
+"367","ncbi","Pteromalini",NA,NA,NA,NA,NA,NA,NA
+"368","itis","Myrmicinae","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae",NA,NA
+"369","ncbi","Myrmicinae","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae",NA,NA
+"370","itis","Ocypus",NA,NA,NA,NA,NA,NA,NA
+"371","ncbi","Ocypus","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae","Ocypus",NA
+"372","itis","Pezotettix",NA,NA,NA,NA,NA,NA,NA
+"373","ncbi","Pezotettix","Metazoa","Arthropoda","Insecta","Orthoptera","Acrididae","Pezotettix",NA
+"374","itis","Pheidole","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole",NA
+"375","ncbi","Pheidole","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Pheidole",NA
+"376","itis","Runcinia grammica","Animalia","Arthropoda","Euchelicerata","Araneae","Thomisidae","Runcinia","Runcinia grammica"
+"377","ncbi","Runcinia grammica","Metazoa","Arthropoda","Arachnida","Araneae","Thomisidae","Runcinia","Runcinia grammica"
+"378","itis","Curculionidae","Animalia","Arthropoda","Insecta","Coleoptera","Curculionidae",NA,NA
+"379","ncbi","Curculionidae","Metazoa","Arthropoda","Insecta","Coleoptera","Curculionidae",NA,NA
+"380","itis","Olibrus",NA,NA,NA,NA,NA,NA,NA
+"381","ncbi","Olibrus","Metazoa","Arthropoda","Insecta","Coleoptera","Phalacridae","Olibrus",NA
+"382","itis","Camponotus fallax","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus","Camponotus fallax"
+"383","ncbi","Camponotus fallax","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Camponotus","Camponotus fallax"
+"384","itis","Lucasius","Animalia","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Lucasius",NA
+"385","ncbi","Lucasius","Metazoa","Arthropoda","Malacostraca","Isopoda","Porcellionidae","Lucasius",NA
+"386","itis","Hogna radiata","Animalia","Arthropoda","Euchelicerata","Araneae","Lycosidae","Hogna","Hogna radiata"
+"387","ncbi","Hogna radiata","Metazoa","Arthropoda","Arachnida","Araneae","Lycosidae","Hogna","Hogna radiata"
+"388","itis","Saitis","Animalia","Arthropoda","Euchelicerata","Araneae","Salticidae","Saitis",NA
+"389","ncbi","Saitis","Metazoa","Arthropoda","Arachnida","Araneae","Salticidae","Saitis",NA
+"390","itis","Macroscytus brunneus",NA,NA,NA,NA,NA,NA,NA
+"391","ncbi","Macroscytus brunneus","Metazoa","Arthropoda","Insecta","Hemiptera","Cydnidae","Macroscytus","Macroscytus brunneus"
+"392","itis","Trichoptera","Animalia","Arthropoda","Insecta","Trichoptera",NA,NA,NA
+"393","ncbi","Trichoptera","Metazoa","Arthropoda","Insecta","Trichoptera",NA,NA,NA
+"394","itis","Aphrodes",NA,NA,NA,NA,NA,NA,NA
+"395","ncbi","Aphrodes","Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae","Aphrodes",NA
+"396","itis","Athysanini",NA,NA,NA,NA,NA,NA,NA
+"397","ncbi","Athysanini","Metazoa","Arthropoda","Insecta","Hemiptera","Cicadellidae",NA,NA
+"398","itis","Staphylinini",NA,NA,NA,NA,NA,NA,NA
+"399","ncbi","Staphylinini","Metazoa","Arthropoda","Insecta","Coleoptera","Staphylinidae",NA,NA
+"400","itis","Carterus fulvipes",NA,NA,NA,NA,NA,NA,NA
+"401","ncbi","Carterus fulvipes","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Carterus","Carterus fulvipes"
+"402","itis","Guanchia pubescens",NA,NA,NA,NA,NA,NA,NA
+"403","ncbi","Guanchia pubescens","Metazoa","Arthropoda","Insecta","Dermaptera","Forficulidae","Guanchia","Guanchia pubescens"
+"404","itis","Ceraphronidae","Animalia","Arthropoda","Insecta","Hymenoptera","Ceraphronidae",NA,NA
+"405","ncbi","Ceraphronidae","Metazoa","Arthropoda","Insecta","Hymenoptera","Ceraphronidae",NA,NA
+"406","itis","Enicopus","Animalia","Arthropoda","Insecta","Hymenoptera","Braconidae","Wilkinsonellus","Wilkinsonellus henicopus"
+"407","ncbi","Enicopus","Metazoa","Arthropoda","Insecta","Coleoptera","Melyridae","Enicopus",NA
+"408","itis","Euophrys sulphurea","Animalia","Arthropoda","Euchelicerata","Araneae","Salticidae","Euophrys","Euophrys sulphurea"
+"409","ncbi","Euophrys sulphurea",NA,NA,NA,NA,NA,NA,NA
+"410","itis","Calathus ambiguus",NA,NA,NA,NA,NA,NA,NA
+"411","ncbi","Calathus ambiguus","Metazoa","Arthropoda","Insecta","Coleoptera","Carabidae","Calathus","Calathus ambiguus"
+"412","itis","Phalangiidae","Animalia","Arthropoda","Euchelicerata","Opiliones","Phalangiidae",NA,NA
+"413","ncbi","Phalangiidae","Metazoa","Arthropoda","Arachnida","Opiliones","Phalangiidae",NA,NA
+"414","itis","Nala lividipes","Animalia","Arthropoda","Insecta","Dermaptera","Labiduridae","Nala","Nala lividipes"
+"415","ncbi","Nala lividipes","Metazoa","Arthropoda","Insecta","Dermaptera","Labiduridae","Nala","Nala lividipes"
+"416","itis","Dysdera","Animalia","Arthropoda","Euchelicerata","Araneae","Dysderidae","Dysdera",NA
+"417","ncbi","Dysdera","Metazoa","Arthropoda","Arachnida","Araneae","Dysderidae","Dysdera",NA
+"418","itis","Tachydromiinae","Animalia","Arthropoda","Insecta","Diptera","Hybotidae",NA,NA
+"419","ncbi","Tachydromiinae","Metazoa","Arthropoda","Insecta","Diptera","Hybotidae",NA,NA
+"420","itis","Onthophagini","Animalia","Arthropoda","Insecta","Coleoptera","Scarabaeidae",NA,NA
+"421","ncbi","Onthophagini","Metazoa","Arthropoda","Insecta","Coleoptera","Scarabaeidae",NA,NA
+"422","itis","Salticinae",NA,NA,NA,NA,NA,NA,NA
+"423","ncbi","Salticinae","Metazoa","Arthropoda","Arachnida","Araneae","Salticidae",NA,NA
+"424","itis","Thanatus","Animalia","Arthropoda","Euchelicerata","Araneae","Philodromidae","Thanatus",NA
+"425","ncbi","Thanatus","Metazoa","Arthropoda","Arachnida","Araneae","Philodromidae","Thanatus",NA
+"426","itis","Lepismatidae","Animalia","Arthropoda","Insecta","Zygentoma","Lepismatidae",NA,NA
+"427","ncbi","Lepismatidae","Metazoa","Arthropoda","Insecta","Zygentoma","Lepismatidae",NA,NA
+"428","itis","Messor barbarus","Animalia","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor","Messor barbarus"
+"429","ncbi","Messor barbarus","Metazoa","Arthropoda","Insecta","Hymenoptera","Formicidae","Messor","Messor barbarus"
+"430","itis","Rhipicephalus","Animalia","Arthropoda","Euchelicerata","Ixodida","Ixodidae","Rhipicephalus",NA
+"431","ncbi","Rhipicephalus",NA,NA,NA,NA,NA,NA,NA
+"432","itis","Chlaenius decipiens",NA,NA,NA,NA,NA,NA,NA
+"433","ncbi","Chlaenius decipiens",NA,NA,NA,NA,NA,NA,NA
+"434","itis","Rhyssemina",NA,NA,NA,NA,NA,NA,NA
+"435","ncbi","Rhyssemina",NA,NA,NA,NA,NA,NA,NA
+"436","itis","Thomisoidea",NA,NA,NA,NA,NA,NA,NA
+"437","ncbi","Thomisoidea",NA,NA,NA,NA,NA,NA,NA
