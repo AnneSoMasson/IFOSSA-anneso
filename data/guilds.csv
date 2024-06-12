@@ -1,0 +1,87 @@
+,Guild,Ancestors
+0,fungivore,heterotroph|microbivore|microphytophage
+1,herbivore,heterotroph
+2,symbiotroph,heterotroph
+3,endophyte,heterotroph|symbiotroph
+4,suspension feeder,heterotroph
+5,decomposer,heterotroph
+6,detritivore,heterotroph|decomposer
+7,saprotroph,heterotroph|decomposer
+8,folivore,heterotroph|herbivore
+9,rhizovore,heterotroph|herbivore
+10,parasitoid,heterotroph
+11,carnivore,heterotroph
+12,predator,heterotroph|carnivore
+13,scavenger,heterotroph|carnivore
+14,insectivore,heterotroph|carnivore|predator
+15,bacterivore,heterotroph|microbivore|microphytophage
+16,photoheterotroph,heterotroph
+17,frugivore,heterotroph|herbivore
+18,palynivore,heterotroph|herbivore
+19,nectarivore,heterotroph|herbivore
+20,granivore,heterotroph|herbivore
+21,xylophage,heterotroph|herbivore
+22,gumnivore,heterotroph|herbivore
+23,parasite,heterotroph|symbiotroph
+24,internal parasite,heterotroph|symbiotroph|parasite
+25,external parasite,heterotroph|symbiotroph|parasite
+26,filter feeder,heterotroph|suspension feeder
+27,sanguivore,heterotroph|carnivore
+28,leaf miner,heterotroph|herbivore|folivore
+29,coprophage,heterotroph|decomposer|detritivore
+30,geophage,heterotroph|decomposer
+31,exudativore,heterotroph
+32,saproxylophage,heterotroph|decomposer|detritivore|phytosaprophage
+33,malacophage,heterotroph|carnivore|predator
+34,oophage,heterotroph|carnivore|predator
+35,myrmecophage,heterotroph|carnivore|predator|insectivore
+36,nematophage,heterotroph|carnivore|predator
+37,honeydew feeder,heterotroph|exudativore
+38,phloem sap feeder,heterotroph|herbivore
+39,plant parasite,heterotroph|symbiotroph|parasite
+40,phytosaprophage,heterotroph|decomposer|detritivore
+41,bryophage,heterotroph|herbivore
+42,ophiophage,heterotroph|carnivore|predator
+43,aphidophage,heterotroph|carnivore|predator|insectivore
+44,scraper,heterotroph
+45,fluid feeder,heterotroph
+46,piercer and sucker,heterotroph|fluid feeder|sucker
+47,sucker,heterotroph|fluid feeder
+48,shredder,heterotroph
+49,active suspension feeder,heterotroph|suspension feeder
+50,passive suspension feeder,heterotroph|suspension feeder
+51,collector gatherer,heterotroph
+52,collector filterer,heterotroph|suspension feeder
+53,acariphage,heterotroph|carnivore|predator
+54,zooparasite,heterotroph|symbiotroph|parasite
+55,entomoparasite,heterotroph|symbiotroph|parasite|zooparasite
+56,springtail feeder,heterotroph|carnivore|predator
+57,microbivore,heterotroph
+58,omnivore,heterotroph|carnivore|predator
+59,protistivore,heterotroph|microbivore
+60,plant exudate feeder,heterotroph|exudativore
+61,wood saprotroph,heterotroph|decomposer|saprotroph
+62,mycoparasite,heterotroph|symbiotroph|parasite
+63,litter saprotroph,heterotroph|decomposer|saprotroph
+64,dung saprotroph,heterotroph|decomposer|saprotroph
+65,soil saprotroph,heterotroph|decomposer|saprotroph
+66,bryophyte parasite,heterotroph|symbiotroph|parasite
+67,lichen parasite,heterotroph|symbiotroph|parasite
+68,protist parasite,heterotroph|symbiotroph|parasite
+69,true omnivore,heterotroph|herbivore
+70,mycotroph,heterotroph|symbiotroph
+71,mycoheterotroph,heterotroph|symbiotroph|parasite|mycoparasite
+72,lichenivore,heterotroph
+73,pathogen,heterotroph|symbiotroph|parasite
+74,animal pathogen,heterotroph|symbiotroph|parasite|pathogen
+75,plant pathogen,heterotroph|symbiotroph|parasite|pathogen
+76,leaf saprotroph,heterotroph|decomposer|saprotroph|litter saprotroph
+77,macrodetritivore,heterotroph|decomposer|detritivore
+78,microdetritivore,heterotroph|decomposer|detritivore
+79,litter feeder,heterotroph|decomposer|detritivore|phytosaprophage
+80,microalgivore,heterotroph|microbivore|microphytophage
+81,browser,heterotroph
+82,grazer,heterotroph
+83,protozoan feeder,heterotroph|microbivore|protistivore
+84,microphytophage,heterotroph|microbivore
+85,lichenized fungus,heterotroph|symbiotroph
