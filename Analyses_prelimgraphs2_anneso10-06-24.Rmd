@@ -1,0 +1,454 @@
+---
+title: "NA"
+output: html_document
+date: "2024-04-26"
+---
+
+# 4. Analyses
+
+## Prepare libraries and level orders
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggVennDiagram)
+library(cowplot)
+library(scales)
+library(stringr)
+
+order_landuse_habitat = c("MC_C", "AF_C", "AF_T", "TP_T")
+order_taxa_level = c("kingdom", "phylum", "class", "order", "family", "genus", "species")
+order_community = c("macrofauna_surface", "macrofauna_aerial", "macrofauna_foliar", "micro_arthropodes", "nematodes", "bacteria", "fungi", "protists")
+```
+
+
+## Prepare tidy_data and tax_table
+
+### Example with macrofauna_surface
+
+```{r}
+# Import tidy data
+tidy_data <- read.csv("final_files/tidy_data/tidy_data_update21-05-24.csv")[,-1]
+tidy_data_macrofauna_surface <- tidy_data[ which(tidy_data$community=='macrofauna_surface'), ]
+
+# Import tax_table, subset macrofauna_surface and count the number of distinct taxa
+tax_table <- read.csv("final_files/tax_table/tax_table_update21-05-24.csv")[,-1]
+
+tax_table_macrofauna_surface <- tax_table[which(tax_table$community=='macrofauna_surface'),]
+
+numberoftaxa <- as.data.frame(t(sapply(tax_table_macrofauna_surface[,-9], function(x) n_distinct(x))))
+numberoftaxa # We have 23 orders, 63 families, 103 genus and 68 species. D'après les résultats de pourcentage d'assignations, le niveau taxonomique de la famille est correct (> 70% dans la plupart des cas)
+```
+
+### All
+
+```{r}
+# Import tidy data
+tidy_data <- read.csv("final_files/tidy_data/tidy_data_update21-05-24.csv")[,-1]
+tidy_data <- tidy_data[ which(tidy_data$date=='04/2023'), ]
+#### I ADDED A DATE FILTER HERE ####
+
+# Import tax_table and count the number of distinct taxa
+tax_table <- read.csv("final_files/tax_table/tax_table_update21-05-24.csv")[,-1]
+
+numberoftaxa <- as.data.frame(t(sapply(tax_table[,-9], function(x) n_distinct(x))))
+numberoftaxa # In total, we have 7 kingdoms, 60 phyla, 171 classes, 410 orders, 733 families, 1709 genus and 2712 species
+```
+
+## Prepare fun_table (guilds)
+
+### Example with macrofauna_surface
+
+```{r}
+# Import fun_table (guilds at family level) and count the number of taxa and guilds
+fun_table_macrofauna_surface_guilds_family <- read.csv("final_files/fun_table/family/fun_macrofauna_surface_guilds_family_update29-05-24.csv")[,-1]
+
+numberofqueryName <- n_distinct(fun_table_macrofauna_surface_guilds_family$queryName)
+numberofqueryName # 50 taxa names (50 families) in the Gratin output
+
+numberofmatchName <- n_distinct(fun_table_macrofauna_surface_guilds_family$matchName)
+numberofmatchName # 1847 taxa matching theses families in the Gratin output
+
+numberofguildName <- n_distinct(fun_table_macrofauna_surface_guilds_family$guildName)
+numberofguildName # 47 guilds assigned to these taxa
+
+# Create a file to keep assignments of family only
+fun_table_macrofauna_surface_guilds_familyonly <- fun_table_macrofauna_surface_guilds_family[fun_table_macrofauna_surface_guilds_family$queryName == fun_table_macrofauna_surface_guilds_family$matchName, ]
+
+numberofmatchName_familyonly <- n_distinct(fun_table_macrofauna_surface_guilds_familyonly$matchName)
+numberofmatchName_familyonly # 47 families in the Gratin output
+
+numberofguildName_familyonly <- n_distinct(fun_table_macrofauna_surface_guilds_familyonly$guildName)
+numberofguildName_familyonly # 17 guilds assigned to these taxa
+```
+
+```{r}
+# Import fun_table (interactions)
+fun_table_macrofauna_surface_interactions_family <- read.csv("final_files/fun_table/family/fun_macrofauna_surface_interactions_family_update29-05-24.csv")
+
+# Count the number of interaction per taxa
+numberofinteractionspertaxa <- aggregate(resourceName ~ matchName, data = fun_table_macrofauna_surface_interactions_family, FUN = length)
+numberofinteractionspertaxa
+```
+
+### All
+
+#### Guilds
+
+```{r}
+# Import fun_tables (guilds at family level) and bind them
+fun_table_macrofauna_surface_guilds_family <- read.csv("final_files/fun_table/family/fun_macrofauna_surface_guilds_family_update29-05-24.csv")[,-1]
+
+fun_table_macrofauna_aerial_guilds_family <- read.csv("final_files/fun_table/family/fun_macrofauna_aerial_guilds_family.csv", sep=";")
+
+fun_table_macrofauna_foliar_guilds_family <- read.csv("final_files/fun_table/family/fun_macrofauna_foliar_guilds_family.csv", sep=";")
+
+fun_table_micro_arthropodes_guilds_family <- read.csv("final_files/fun_table/family/fun_micro_arthropodes_guilds_family.csv", sep=";")
+
+fun_table_nematodes_guilds_family <- read.csv("final_files/fun_table/family/fun_nematodes_guilds_family.csv", sep=";")
+
+fun_table_bacteria_guilds_family <- read.csv("final_files/fun_table/family/fun_bacteria_guilds_family.csv", sep=";")
+
+fun_table_fungi_guilds_family <- read.csv("final_files/fun_table/family/fun_fungi_guilds_family.csv", sep=";")
+
+fun_table_protist_guilds_family <- read.csv("final_files/fun_table/family/fun_protists_guilds_family.csv", sep=";")
+
+fun_table_all_guilds_family <- rbind(fun_table_macrofauna_surface_guilds_family, fun_table_macrofauna_aerial_guilds_family, fun_table_macrofauna_foliar_guilds_family, fun_table_micro_arthropodes_guilds_family, fun_table_nematodes_guilds_family, fun_table_bacteria_guilds_family, fun_table_fungi_guilds_family, fun_table_protist_guilds_family)
+
+# Count the number of taxa and guilds
+
+numberofqueryName <- n_distinct(fun_table_all_guilds_family$queryName)
+numberofqueryName # 422 taxa names (50 families) in the Gratin output
+
+numberofmatchName <- n_distinct(fun_table_all_guilds_family$matchName)
+numberofmatchName # 7041 taxa matching theses families in the Gratin output
+
+numberofguildName <- n_distinct(fun_table_all_guilds_family$guildName)
+numberofguildName # 73 guilds assigned to these taxa
+
+# Create a file to keep assignments of family only
+fun_table_all_guilds_familyonly <- fun_table_all_guilds_family[fun_table_all_guilds_family$queryName == fun_table_all_guilds_family$matchName, ]
+
+numberofmatchName_familyonly <- n_distinct(fun_table_all_guilds_familyonly$matchName)
+numberofmatchName_familyonly # 120 families in the Gratin output
+
+numberofguildName_familyonly <- n_distinct(fun_table_all_guilds_familyonly$guildName)
+numberofguildName_familyonly # 23 guilds assigned to these taxa
+```
+
+#### Interactions
+
+```{r}
+# Import fun_table (interactions) and bind them
+fun_table_macrofauna_surface_interactions_family <- read.csv("final_files/fun_table/family/fun_macrofauna_surface_interactions_family_update29-05-24.csv")[,-1]
+
+fun_table_macrofauna_aerial_interactions_family <- read.csv("final_files/fun_table/family/fun_macrofauna_aerial_interactions_family.csv", sep=";")
+
+fun_table_macrofauna_foliar_interactions_family <- read.csv("final_files/fun_table/family/fun_macrofauna_foliar_interactions_family.csv", sep=";")
+
+fun_table_micro_arthropodes_interactions_family <- read.csv("final_files/fun_table/family/fun_micro_arthropodes_interactions_family.csv", sep=";")
+
+fun_table_nematodes_interactions_family <- read.csv("final_files/fun_table/family/fun_nematodes_interactions_family.csv", sep=";")
+
+fun_table_bacteria_interactions_family <- read.csv("final_files/fun_table/family/fun_bacteria_interactions_family.csv") # 0 interaction found
+
+fun_table_fungi_interactions_family <- read.csv("final_files/fun_table/family/fun_fungi_interactions_family.csv", sep=";")
+
+fun_table_protists_interactions_family <- read.csv("final_files/fun_table/family/fun_protists_interactions_family.csv", sep=";")
+
+fun_table_all_interactions_family <- rbind(fun_table_macrofauna_surface_interactions_family, fun_table_macrofauna_aerial_interactions_family, fun_table_macrofauna_foliar_interactions_family, fun_table_micro_arthropodes_interactions_family, fun_table_nematodes_interactions_family, fun_table_fungi_interactions_family, fun_table_protists_interactions_family)
+
+# Count the number of interaction per taxa
+numberofinteractionspertaxa <- aggregate(resourceName ~ matchName, data = fun_table_all_interactions_family, FUN = length)
+numberofinteractionspertaxa
+```
+
+## Prepare linked data
+
+```{r}
+# Prepare an object linking tidy_data, tax_table and fun_table
+## Separate modalities in different columns to use them as factors
+linked_data <- tidy_data %>% separate_wider_delim(code_uhbr, "_", names = c("landuse", "habitat", "block", "replicate"))
+
+linked_data$landuse <- gsub('^F','TP', linked_data$landuse) # Small error in the tidy object (it has been modified in the script but the object has not been regenerated)
+
+linked_data$landuse_habitat <- paste(linked_data$landuse, linked_data$habitat, sep="_")
+```
+
+### All
+
+#### Taxonomic assignment
+
+```{r}
+## Add the taxonomy (columns KPCOFGS of the tax_table) to the tidy_data in a new object called "linked_data"
+linked_data$kingdom <- tax_table$kingdom[match(linked_data$name, tax_table$query)]
+
+linked_data$phylum <- tax_table$phylum[match(linked_data$name, tax_table$query)]
+
+linked_data$class <- tax_table$class[match(linked_data$name, tax_table$query)]
+
+linked_data$order <- tax_table$order[match(linked_data$name, tax_table$query)]
+
+linked_data$family <- tax_table$family[match(linked_data$name, tax_table$query)]
+
+linked_data$genus <- tax_table$genus[match(linked_data$name, tax_table$query)]
+
+linked_data$species <- tax_table$species[match(linked_data$name, tax_table$query)]
+
+# BEWARE # Some individuals are assigned to metagenome (or maybe other strange names) at species level but unassigned at higher level # NEED TO BE SOLVED BEFORE GENERATING TAX_TABLE (and the following lines deleted after)
+replacements <- setNames(c("unassigned"),
+                         c("metagenome"))
+
+linked_data <- linked_data %>%
+  mutate(across(c(11:17), 
+                ~ str_replace_all(., replacements)))
+
+## Check if there is no NA in the taxonomy columns
+rows_with_na <- linked_data[apply(linked_data, 1, function(x) any(is.na(x))), ]
+rows_with_na
+
+which(tax_table == "Belytini")
+which(tax_table == "Euscelis")
+which(tax_table == "Pseudanorophorus isotoma") # 3 taxa names are not recovered in the tax_table so they are removed
+linked_data <- linked_data %>% drop_na(kingdom)
+
+linked_data_tax <- linked_data
+
+# "unassigned" could be replaced here by "unassigned (no tax. data)"
+```
+
+```{r}
+## Filter data
+linked_data_tax <- linked_data_tax[!(linked_data_tax$community == "macrofauna_foliar" & linked_data_tax$phylum == 'Cercozoa'),] # to remove the suspicious Cercozoa in this dataset
+
+linked_data_tax <- linked_data_tax[!(linked_data_tax$community == "bacteria" & linked_data_tax$kingdom != 'Bacteria'),] # to keep only Bacteria
+
+linked_data_tax <- linked_data_tax[!(linked_data_tax$community == "fungi" & linked_data_tax$kingdom != 'Fungi'),] # to keep only Fungi
+
+linked_data_tax <- linked_data_tax[!(linked_data_tax$community == "protists" & linked_data_tax$kingdom != 'Eukaryota'),] # to remove unassigned protists
+```
+
+#### Functional assignment
+
+```{r}
+## Import guild_table and separate ancestors into levels
+guild_table <- read.csv("data/guilds.csv")[,-1]
+
+guild_table$level_all <- paste(guild_table$Ancestors, guild_table$Guild, sep = "|")
+
+guild_table <- guild_table %>% separate_wider_delim(level_all, "|", too_few = "align_start", names = c("guild_level_1", "guild_level_2", "guild_level_3", "guild_level_4", "guild_level_5"))
+
+## Add the guilds (columns of guild levels of the guild_table) in the linked_data_tax
+### step 1: add Gratin output to the guild_table
+guild_table <- merge(guild_table, fun_table_all_guilds_family, by.x='Guild', by.y='guildName')
+
+### step 2: keep graph assignment type
+guild_table <- guild_table[grep("implicit", guild_table$graph), ] # to keep assignment that have been made implicitly with the graph ontology
+
+### step 3: tidy minimal columns
+guild_table <- guild_table[,-c(1,2,9,11:14)] # NB : keep queryName (family level) and matchName (several levels) to match with the whole taxonomy
+guild_table[is.na(guild_table)] <- "unassigned (graph endded)"
+
+### step 4: filter microorganisms from other communities (because the "name" column is an OTU name and can't be used as is)
+
+linked_data_tax_mo <- linked_data_tax[(linked_data_tax$method == "metabarcoding"),]
+linked_data_tax_womo <- linked_data_tax[(linked_data_tax$method != "metabarcoding"),]
+
+### step 5: add guild levels to linked_data_tax
+
+#### table without microorganisms
+linked_data_fun_womo <- left_join(linked_data_tax_womo, guild_table, by = c("name" ="matchName"))
+
+linked_data_fun_womo <- linked_data_fun_womo[,c("landuse_habitat", "block", "replicate", "name", "abundance", "date", "method", "community", "kingdom", "phylum", "class", "order", "family", "genus", "species", "guild_level_1", "guild_level_2", "guild_level_3", "guild_level_4", "guild_level_5")]
+
+#### table with microorganisms
+linked_data_fun_mo <- linked_data_tax_mo %>%
+  mutate(name = case_when(kingdom != "unassigned" & phylum == "unassigned" ~ paste(linked_data_tax_mo$kingdom), 
+                          phylum != "unassigned" & class == "unassigned" ~ paste(linked_data_tax_mo$phylum),
+                          class != "unassigned" & order == "unassigned" ~ paste(linked_data_tax_mo$class),
+                          order != "unassigned" & family == "unassigned" ~ paste(linked_data_tax_mo$order),
+                          family != "unassigned" & genus == "unassigned" ~ paste(linked_data_tax_mo$family),
+                          genus != "unassigned" & species == "unassigned" ~ paste(linked_data_tax_mo$genus),
+                          species != "unassigned" ~ paste(linked_data_tax_mo$species),
+                          kingdom == "unassigned" & phylum == "unassigned" & class == "unassigned" & order == "unassigned" & family == "unassigned" & genus == "unassigned" & species == "unassigned" ~ "unassigned"))
+
+linked_data_fun_mo <- left_join(linked_data_fun_mo, guild_table, by = c("name" ="matchName"))
+
+linked_data_fun_mo <- linked_data_fun_mo[,c("landuse_habitat", "block", "replicate", "name", "abundance", "date", "method", "community", "kingdom", "phylum", "class", "order", "family", "genus", "species", "guild_level_1", "guild_level_2", "guild_level_3", "guild_level_4", "guild_level_5")]
+
+### step 6: join tables and tidy columns
+linked_data_fun <- rbind(linked_data_fun_womo, linked_data_fun_mo)
+linked_data_fun[is.na(linked_data_fun)] <- "unassigned (no fun. data)"
+
+testinter <- linked_data_fun[(linked_data_fun$community == "protists"),] # change to other communities ("macrofauna_surface", "macrofauna_aerial", "macrofauna_foliar", "micro_arthropodes", "nematodes", "bacteria", "fungi", "protists")
+testfinal <- unique(glimpse(testinter$guild_level_1))
+testfinal # check that we have heterotrophs for all communities
+```
+
+#### Export tidytaxfun
+
+```{r}
+write.csv(linked_data_fun,"final_files/tidytaxfun_24-06-12.csv")
+saveRDS(linked_data_fun,"final_files/tidytaxfun_24-06-12.rds")
+```
+
+
+## Plots
+
+### All
+
+#### Taxonomic assignment
+
+```{r}
+# Keep minimal data
+linked_data_tax_min <- linked_data_tax[,-c(1,2,5)]
+
+# Pivot to a long table
+linked_data_tax_long <- pivot_longer(linked_data_tax_min, cols = c(8:14), names_to = "taxa_level", values_to = "taxa_name")
+
+# Aggregate abundances per family
+aggregate_data <- aggregate(linked_data_tax_long$abundance, by=list(landuse_habitat=linked_data_tax_long$landuse_habitat, community=linked_data_tax_long$community, block=linked_data_tax_long$block, replicate=linked_data_tax_long$replicate, taxa_level=linked_data_tax_long$taxa_level, taxa_name=linked_data_tax_long$taxa_name), FUN=sum) %>% rename(total_abundance=x)
+
+# Order levels
+aggregate_data$landuse_habitat <- ordered(aggregate_data$landuse_habitat, order_landuse_habitat)
+aggregate_data$taxa_level <- ordered(aggregate_data$taxa_level, order_taxa_level)
+aggregate_data$community <- ordered(aggregate_data$community, order_community)
+```
+
+```{r}
+# Aggregate abundances per treatment
+aggregate_data_TOT <- aggregate(linked_data_tax_long$abundance, by=list(landuse_habitat=linked_data_tax_long$landuse_habitat, community=linked_data_tax_long$community, block=linked_data_tax_long$block, replicate=linked_data_tax_long$replicate), FUN=sum) %>% rename(TOTAL_abundance=x)
+
+# Order levels
+aggregate_data_TOT$landuse_habitat <- ordered(aggregate_data_TOT$landuse_habitat, order_landuse_habitat)
+aggregate_data_TOT$community <- ordered(aggregate_data_TOT$community, order_community)
+```
+
+```{r}
+# Plot total_abundance community ~ .
+TOTabund <- ggplot(aggregate_data_TOT, aes(x=landuse_habitat, y=TOTAL_abundance)) + geom_boxplot(outlier.shape=NA, fill="cornsilk") + geom_point(aes(shape = block), size = 1, position=position_jitterdodge()) + facet_grid(community ~ ., scales="free_y") + scale_y_continuous(labels = label_scientific(digits = 2))
+TOTabund
+
+#ggsave("results/Analyses_prelimgraphs2/boxplot_totabund_taxo.png", width = 4, height = 10)
+```
+
+```{r}
+# Plot total_abundance community ~ taxa_level
+totabund <- ggplot(aggregate_data, aes(x=landuse_habitat, y=total_abundance, fill=taxa_name)) + geom_bar(stat = "identity", position="stack") + facet_grid(community ~ taxa_level, scales="free_y") + theme(legend.position="none") + scale_y_continuous(labels = label_scientific(digits = 2))
+totabund
+
+#ggsave("results/Analyses_prelimgraphs2/barplot_totabund_tax.png", width = 13, height = 10)
+```
+
+```{r}
+# Calculate relative abundances
+aggregate_data <- aggregate_data %>% group_by(landuse_habitat, community, block, replicate, taxa_level) %>% mutate(sum = sum(total_abundance), relative_abundance = total_abundance*100/sum)
+```
+
+```{r}
+# Plot relative_abundance community ~ taxa_level
+relabund <- ggplot(aggregate_data, aes(x=landuse_habitat, y=relative_abundance, fill=taxa_name)) + geom_bar(stat = "identity", position="fill") + facet_grid(community ~ taxa_level, scales="free_y") + theme(legend.position="none")
+relabund
+
+#ggsave("results/Analyses_prelimgraphs2/barplot_relabund_tax.png", width = 13, height = 10)
+
+pie <- relabund + coord_polar("y", start=0) + theme_minimal() + theme(legend.position="none") + theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+pie
+
+#ggsave("results/Analyses_prelimgraphs2/piechart_tax.png", width = 13, height = 10, bg = 'white')
+```
+
+```{r}
+# Export taxa ranked by abundances and specifying is it is assigned with Gratin
+taxa_list_0 <- aggregate_data[, c("community", "landuse_habitat", "taxa_level", "taxa_name", "total_abundance", "relative_abundance")]
+
+taxa_list_1 <- taxa_list_0 %>% 
+  arrange(desc(total_abundance)) %>% 
+  group_by(community, landuse_habitat, taxa_level, taxa_name) %>%
+  slice(1) # This is the list of all taxa_names in each community and landuse_habitat 
+
+taxa_list_2 <- taxa_list_0 %>% 
+  arrange(desc(total_abundance)) %>% 
+  group_by(community, taxa_level, taxa_name) %>%
+  slice(1) # This is the list of all taxa_names in each community (with results in the landuse_habitat with the highest abundance)
+
+taxa_list_2$assignedwithGratin <- is.element(taxa_list_2$taxa_name, unlist(fun_table_all_guilds_family)) # specify if the taxa has been assigned with Gratin
+
+taxa_list_macrofauna_surface <- taxa_list_2[taxa_list_2$community == "macrofauna_surface",]
+write.csv(taxa_list_macrofauna_surface,"results/Analyses_prelimgraphs2/taxa_list_macrofauna_surface.csv")
+
+taxa_list_macrofauna_aerial <- taxa_list_2[taxa_list_2$community == "macrofauna_aerial",]
+write.csv(taxa_list_macrofauna_aerial,"results/Analyses_prelimgraphs2/taxa_list_macrofauna_aerial.csv")
+
+taxa_list_macrofauna_foliar <- taxa_list_2[taxa_list_2$community == "macrofauna_foliar",]
+write.csv(taxa_list_macrofauna_foliar,"results/Analyses_prelimgraphs2/taxa_list_macrofauna_foliar.csv")
+
+taxa_list_micro_arthropodes <- taxa_list_2[taxa_list_2$community == "micro_arthropodes",]
+write.csv(taxa_list_micro_arthropodes,"results/Analyses_prelimgraphs2/taxa_list_micro_arthropodes.csv")
+
+taxa_list_nematodes <- taxa_list_2[taxa_list_2$community == "nematodes",]
+write.csv(taxa_list_nematodes,"results/Analyses_prelimgraphs2/taxa_list_nematodes.csv")
+
+taxa_list_bacteria <- taxa_list_2[taxa_list_2$community == "bacteria",]
+write.csv(taxa_list_bacteria,"results/Analyses_prelimgraphs2/taxa_list_bacteria.csv")
+
+taxa_list_fungi <- taxa_list_2[taxa_list_2$community == "fungi",]
+write.csv(taxa_list_fungi,"results/Analyses_prelimgraphs2/taxa_list_fungi.csv")
+
+taxa_list_protists <- taxa_list_2[taxa_list_2$community == "protists",]
+write.csv(taxa_list_protists,"results/Analyses_prelimgraphs2/taxa_list_protists.csv")
+```
+
+#### Functionnal assignment
+
+```{r}
+# Keep minimal data
+linked_data_fun_min <- linked_data_fun[, -c(4, 9:15)]
+
+linked_data_fun_min <- linked_data_fun_min[,c("block", "replicate", "date", "method", "community", "abundance", "landuse_habitat", "guild_level_1", "guild_level_2", "guild_level_3", "guild_level_4", "guild_level_5")]
+
+# Pivot to a long table
+linked_data_fun_long <- pivot_longer(linked_data_fun_min, cols = c(8:12), names_to = "guild_level", values_to = "guild_name")
+
+# Aggregate abundances per taxa
+aggregate_data <- aggregate(linked_data_fun_long$abundance, by=list(landuse_habitat=linked_data_fun_long$landuse_habitat, community=linked_data_fun_long$community, block=linked_data_fun_long$block, replicate=linked_data_fun_long$replicate, guild_level=linked_data_fun_long$guild_level, guild_name=linked_data_fun_long$guild_name), FUN=sum) %>% rename(total_abundance=x)
+
+# Order levels
+aggregate_data$landuse_habitat <- ordered(aggregate_data$landuse_habitat, order_landuse_habitat)
+aggregate_data$community <- ordered(aggregate_data$community, order_community)
+```
+
+```{r}
+# Plot total_abundance community ~ taxa_level
+totabund <- ggplot(aggregate_data, aes(x=landuse_habitat, y=total_abundance, fill=guild_name)) + geom_bar(stat = "identity", position="stack") + facet_grid(community ~ guild_level, scales="free_y") + scale_y_continuous(labels = label_scientific(digits = 2)) # + theme(legend.position="none")
+totabund
+
+#ggsave("results/Analyses_prelimgraphs2/barplot_totabund_fun_legend.png", width = 13, height = 10)
+```
+
+```{r}
+# Calculate relative abundances
+aggregate_data <- aggregate_data %>% group_by(landuse_habitat, community, block, replicate, guild_level) %>% mutate(sum = sum(total_abundance), relative_abundance = total_abundance*100/sum)
+```
+
+```{r}
+# Plot relative_abundance community ~ taxa_level
+relabund <- ggplot(aggregate_data, aes(x=landuse_habitat, y=relative_abundance, fill=guild_name)) + geom_bar(stat = "identity", position="fill") + facet_grid(community ~ guild_level, scales="free_y") + theme(legend.position="none")
+relabund
+
+#ggsave("results/Analyses_prelimgraphs2/barplot_relabund_fun.png", width = 13, height = 10)
+
+pie <- relabund + coord_polar("y", start=0) + theme_minimal() + theme(legend.position="none") + theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+pie
+
+#ggsave("results/Analyses_prelimgraphs2/piechart_fun.png", width = 13, height = 10, bg = 'white')
+```
+
+Représenter interactions
+
+Représenter enrichissements (analyse d'abondances différentielles)
+
+Représenter les taxons et guilds communs (cf exemple analyses_prelimgraphs1)
+
+Représenter le graph de l'ontologie
