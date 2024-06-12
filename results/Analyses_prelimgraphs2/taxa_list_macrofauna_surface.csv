@@ -1,0 +1,128 @@
+"","community","landuse_habitat","taxa_level","taxa_name","total_abundance","relative_abundance","assignedwithGratin"
+"1","macrofauna_surface","TP_T","kingdom","Metazoa",57,100,FALSE
+"2","macrofauna_surface","MC_C","phylum","Arthropoda",55,100,FALSE
+"3","macrofauna_surface","TP_T","phylum","Mollusca",4,33.3333333333333,FALSE
+"4","macrofauna_surface","AF_T","class","Arachnida",18,38.2978723404255,FALSE
+"5","macrofauna_surface","TP_T","class","Chilopoda",1,1.75438596491228,FALSE
+"6","macrofauna_surface","TP_T","class","Diplopoda",1,3.03030303030303,FALSE
+"7","macrofauna_surface","TP_T","class","Gastropoda",4,33.3333333333333,FALSE
+"8","macrofauna_surface","MC_C","class","Insecta",51,92.7272727272727,FALSE
+"9","macrofauna_surface","TP_T","class","Malacostraca",13,22.8070175438597,FALSE
+"10","macrofauna_surface","AF_T","order","Araneae",18,38.2978723404255,FALSE
+"11","macrofauna_surface","TP_T","order","Coleoptera",9,15.7894736842105,FALSE
+"12","macrofauna_surface","AF_T","order","Dermaptera",2,16.6666666666667,FALSE
+"13","macrofauna_surface","MC_C","order","Diptera",5,22.7272727272727,FALSE
+"14","macrofauna_surface","TP_T","order","Geophilomorpha",1,1.75438596491228,FALSE
+"15","macrofauna_surface","TP_T","order","Hemiptera",7,21.2121212121212,FALSE
+"16","macrofauna_surface","MC_C","order","Hymenoptera",45,81.8181818181818,FALSE
+"17","macrofauna_surface","TP_T","order","Isopoda",13,22.8070175438597,FALSE
+"18","macrofauna_surface","TP_T","order","Julida",1,3.03030303030303,FALSE
+"19","macrofauna_surface","TP_T","order","Lepidoptera",2,16.6666666666667,FALSE
+"20","macrofauna_surface","AF_T","order","Opiliones",2,14.2857142857143,FALSE
+"21","macrofauna_surface","AF_T","order","Orthoptera",1,5,FALSE
+"22","macrofauna_surface","MC_C","order","Psocoptera",1,8.33333333333333,FALSE
+"23","macrofauna_surface","TP_T","order","Stylommatophora",1,9.09090909090909,FALSE
+"24","macrofauna_surface","AF_T","order","Thysanoptera",3,9.67741935483871,FALSE
+"25","macrofauna_surface","TP_T","order","unassigned",4,33.3333333333333,FALSE
+"26","macrofauna_surface","TP_T","family","Agriolimacidae",1,9.09090909090909,FALSE
+"27","macrofauna_surface","TP_T","family","Anisolabididae",1,1.75438596491228,TRUE
+"28","macrofauna_surface","AF_C","family","Anthicidae",1,4.76190476190476,TRUE
+"29","macrofauna_surface","MC_C","family","Apidae",3,7.89473684210526,TRUE
+"30","macrofauna_surface","AF_T","family","Arionidae",1,3.2258064516129,TRUE
+"31","macrofauna_surface","TP_T","family","Armadillidiidae",13,22.8070175438597,TRUE
+"32","macrofauna_surface","MC_C","family","Carabidae",3,5.45454545454545,TRUE
+"33","macrofauna_surface","AF_C","family","Chloropidae",1,6.66666666666667,TRUE
+"34","macrofauna_surface","AF_C","family","Chrysomelidae",1,11.1111111111111,TRUE
+"35","macrofauna_surface","TP_T","family","Cicadellidae",4,12.1212121212121,TRUE
+"36","macrofauna_surface","TP_T","family","Coccinellidae",2,3.50877192982456,TRUE
+"37","macrofauna_surface","TP_T","family","Corylophidae",3,23.0769230769231,TRUE
+"38","macrofauna_surface","MC_C","family","Cryptophagidae",1,6.25,TRUE
+"39","macrofauna_surface","TP_T","family","Curculionidae",1,3.03030303030303,TRUE
+"40","macrofauna_surface","MC_C","family","Dermestidae",3,12.5,TRUE
+"41","macrofauna_surface","AF_C","family","Elateridae",2,18.1818181818182,TRUE
+"42","macrofauna_surface","TP_T","family","Eucinetidae",1,3.03030303030303,TRUE
+"43","macrofauna_surface","MC_C","family","Formicidae",44,80,TRUE
+"44","macrofauna_surface","MC_C","family","Gnaphosidae",1,2.63157894736842,TRUE
+"45","macrofauna_surface","AF_C","family","Histeridae",1,4.76190476190476,TRUE
+"46","macrofauna_surface","TP_T","family","Julidae",1,3.03030303030303,TRUE
+"47","macrofauna_surface","TP_T","family","Latridiidae",1,1.75438596491228,TRUE
+"48","macrofauna_surface","MC_C","family","Linyphiidae",6,15.7894736842105,TRUE
+"49","macrofauna_surface","TP_T","family","Lycosidae",9,27.2727272727273,TRUE
+"50","macrofauna_surface","TP_T","family","Nitidulidae",5,19.2307692307692,TRUE
+"51","macrofauna_surface","AF_T","family","Phalangiidae",1,6.66666666666667,FALSE
+"52","macrofauna_surface","AF_T","family","Pompilidae",1,4.54545454545455,TRUE
+"53","macrofauna_surface","TP_T","family","Porcellionidae",2,7.69230769230769,TRUE
+"54","macrofauna_surface","TP_T","family","Pyrrhocoridae",1,3.03030303030303,TRUE
+"55","macrofauna_surface","TP_T","family","Salticidae",1,5.88235294117647,TRUE
+"56","macrofauna_surface","AF_T","family","Scarabaeidae",5,35.7142857142857,TRUE
+"57","macrofauna_surface","MC_C","family","Staphylinidae",4,18.1818181818182,TRUE
+"58","macrofauna_surface","MC_C","family","Thomisidae",5,20.8333333333333,TRUE
+"59","macrofauna_surface","AF_T","family","Thripidae",3,9.67741935483871,TRUE
+"60","macrofauna_surface","AF_T","family","Zodariidae",16,34.0425531914894,TRUE
+"61","macrofauna_surface","TP_T","family","unassigned",11,39.2857142857143,FALSE
+"62","macrofauna_surface","TP_T","genus","Alopecosa",8,24.2424242424242,TRUE
+"63","macrofauna_surface","AF_T","genus","Anotylus",3,20,FALSE
+"64","macrofauna_surface","AF_T","genus","Aphodius",1,7.14285714285714,FALSE
+"65","macrofauna_surface","TP_T","genus","Armadillidium",13,22.8070175438597,TRUE
+"66","macrofauna_surface","AF_T","genus","Atheta",1,8.33333333333333,FALSE
+"67","macrofauna_surface","AF_C","genus","Athous",2,18.1818181818182,TRUE
+"68","macrofauna_surface","MC_C","genus","Atomaria",1,6.25,FALSE
+"69","macrofauna_surface","MC_C","genus","Brachinus",1,3.84615384615385,FALSE
+"70","macrofauna_surface","AF_T","genus","Calathus",1,7.14285714285714,TRUE
+"71","macrofauna_surface","AF_C","genus","Camarota",1,6.66666666666667,FALSE
+"72","macrofauna_surface","TP_T","genus","Carpophilus",2,20,FALSE
+"73","macrofauna_surface","AF_C","genus","Cataglyphis",4,44.4444444444444,FALSE
+"74","macrofauna_surface","MC_C","genus","Coccinella",1,2.63157894736842,FALSE
+"75","macrofauna_surface","AF_C","genus","Erigone",4,22.2222222222222,TRUE
+"76","macrofauna_surface","TP_T","genus","Euborellia",1,1.75438596491228,FALSE
+"77","macrofauna_surface","TP_T","genus","Eucinetus",1,3.03030303030303,FALSE
+"78","macrofauna_surface","AF_C","genus","Gastrophysa",1,7.69230769230769,FALSE
+"79","macrofauna_surface","MC_C","genus","Harpalus",3,5.45454545454545,TRUE
+"80","macrofauna_surface","AF_C","genus","Leptaleus",1,4.76190476190476,FALSE
+"81","macrofauna_surface","AF_T","genus","Messor",23,74.1935483870968,TRUE
+"82","macrofauna_surface","MC_C","genus","Microlestes",1,6.25,FALSE
+"83","macrofauna_surface","AF_C","genus","Nomisia",1,6.66666666666667,TRUE
+"84","macrofauna_surface","AF_T","genus","Odiellus",1,6.66666666666667,FALSE
+"85","macrofauna_surface","AF_C","genus","Onthophagus",4,50,FALSE
+"86","macrofauna_surface","MC_C","genus","Oxypoda",3,12.5,FALSE
+"87","macrofauna_surface","MC_C","genus","Oxytelini",1,1.81818181818182,FALSE
+"88","macrofauna_surface","TP_T","genus","Pangus",1,3.03030303030303,FALSE
+"89","macrofauna_surface","MC_C","genus","Pheidole",43,78.1818181818182,TRUE
+"90","macrofauna_surface","TP_T","genus","Plagiolepis",2,7.14285714285714,FALSE
+"91","macrofauna_surface","TP_T","genus","Porcellio",2,7.69230769230769,TRUE
+"92","macrofauna_surface","AF_T","genus","Priocnemis",1,4.54545454545455,TRUE
+"93","macrofauna_surface","TP_T","genus","Pyrrhocoris",1,3.03030303030303,FALSE
+"94","macrofauna_surface","TP_T","genus","Rhyzobius",2,3.50877192982456,FALSE
+"95","macrofauna_surface","AF_C","genus","Scymnus",1,11.1111111111111,FALSE
+"96","macrofauna_surface","AF_T","genus","Sepedophilus",1,3.2258064516129,FALSE
+"97","macrofauna_surface","MC_C","genus","Solenopsis",2,15.3846153846154,TRUE
+"98","macrofauna_surface","MC_C","genus","Tachyporus",1,6.25,FALSE
+"99","macrofauna_surface","TP_T","genus","Tychius",1,3.03030303030303,FALSE
+"100","macrofauna_surface","MC_C","genus","Xysticus",5,20.8333333333333,TRUE
+"101","macrofauna_surface","AF_T","genus","Zodarion",16,34.0425531914894,TRUE
+"102","macrofauna_surface","MC_C","genus","unassigned",19,50,FALSE
+"103","macrofauna_surface","TP_T","species","Alopecosa albofasciata",8,24.2424242424242,TRUE
+"104","macrofauna_surface","TP_T","species","Armadillidium vulgare",12,21.0526315789474,TRUE
+"105","macrofauna_surface","MC_C","species","Brachinus crepitans",1,3.84615384615385,TRUE
+"106","macrofauna_surface","AF_T","species","Calathus fuscipes",1,7.14285714285714,TRUE
+"107","macrofauna_surface","AF_C","species","Cataglyphis pallidula",4,44.4444444444444,FALSE
+"108","macrofauna_surface","MC_C","species","Coccinella septempunctata",1,2.63157894736842,TRUE
+"109","macrofauna_surface","TP_T","species","Euborellia moesta",1,1.75438596491228,TRUE
+"110","macrofauna_surface","TP_T","species","Eucinetus haemorrhoidalis",1,3.03030303030303,FALSE
+"111","macrofauna_surface","AF_T","species","Harpalus affinis",1,7.14285714285714,TRUE
+"112","macrofauna_surface","TP_T","species","Harpalus attenuatus",1,9.09090909090909,TRUE
+"113","macrofauna_surface","TP_T","species","Harpalus decipiens",2,12.5,FALSE
+"114","macrofauna_surface","MC_C","species","Harpalus distinguendus",3,5.45454545454545,TRUE
+"115","macrofauna_surface","AF_C","species","Harpalus luteicornis",1,5.55555555555556,FALSE
+"116","macrofauna_surface","TP_T","species","Harpalus serripes",1,3.03030303030303,FALSE
+"117","macrofauna_surface","AF_C","species","Leptaleus rodriguesi",1,4.76190476190476,FALSE
+"118","macrofauna_surface","AF_T","species","Odiellus troguloides",1,6.66666666666667,FALSE
+"119","macrofauna_surface","TP_T","species","Pangus scaritides",1,3.03030303030303,FALSE
+"120","macrofauna_surface","MC_C","species","Pheidole pallidula",43,78.1818181818182,TRUE
+"121","macrofauna_surface","TP_T","species","Porcellio laevis",2,7.69230769230769,TRUE
+"122","macrofauna_surface","AF_T","species","Priocnemis propinqua",1,4.54545454545455,FALSE
+"123","macrofauna_surface","TP_T","species","Pyrrhocoris apterus",1,3.03030303030303,FALSE
+"124","macrofauna_surface","TP_T","species","Rhyzobius chrysomeloides",2,3.50877192982456,FALSE
+"125","macrofauna_surface","AF_C","species","Scymnus frontalis",1,11.1111111111111,TRUE
+"126","macrofauna_surface","TP_T","species","Tychius medicaginis",1,3.03030303030303,FALSE
+"127","macrofauna_surface","AF_T","species","unassigned",44,93.6170212765958,FALSE
