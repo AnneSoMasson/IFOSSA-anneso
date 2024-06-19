@@ -1,0 +1,21 @@
+queryName;queryId;matchName;matchId;trophicGroupId;trophicGroupName;reference;graph
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000347;Hemiptera.all;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000349;Hemiptera.Sternorrhyncha;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000410;Fungi.all;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000411;Fungi.saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella;"c(""NCBITaxon:108061"", ""NCBITaxon:90690"", ""NCBITaxon:581"", ""IF:19222"", ""NCBI:90690"", ""NCBI:108061"", ""https://tree.opentreeoflife.org/opentree/ottol@973932"", ""NCBI:581"", ""GBIF:2535116"")";SFWO:0000413;Fungi.wood_saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000347;Hemiptera.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000349;Hemiptera.Sternorrhyncha;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000410;Fungi.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000411;Fungi.saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <scale insects>;NCBITaxon:108061;SFWO:0000413;Fungi.wood_saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000347;Hemiptera.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000349;Hemiptera.Sternorrhyncha;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000410;Fungi.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000411;Fungi.saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <basidiomycete fungi>;NCBITaxon:90690;SFWO:0000413;Fungi.wood_saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000347;Hemiptera.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000349;Hemiptera.Sternorrhyncha;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000410;Fungi.all;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000411;Fungi.saprotrophs;NA;onto:implicit
+Morganellaceae;NA;Morganella <enterobacteria>;NCBITaxon:581;SFWO:0000413;Fungi.wood_saprotrophs;NA;onto:implicit
