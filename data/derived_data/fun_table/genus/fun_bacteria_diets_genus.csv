@@ -1,4 +1,0 @@
-"","queryName","queryId","matchName","matchId","dietId","dietName","reference","graph"
-"1","Leptothrix","NA","Leptothrix","c(""NCBITaxon:1907117"", ""GBIF:2134409"", ""https://tree.opentreeoflife.org/opentree/ottol@3568191"", ""NCBI:1907117"")","SFWO:0000477","carnivorous","NA","onto:implicit"
-"2","Leptothrix","NA","Leptothrix <spiders>","NCBITaxon:1907117","SFWO:0000477","carnivorous","NA","onto:implicit"
-"3","Leptothrix","NA","Leptothrix hardyi","c(""NCBITaxon:1907118"", ""NCBI:1907118"", ""https://tree.opentreeoflife.org/opentree/ottol@3568656"", ""GBIF:2134410"")","SFWO:0000477","carnivorous","NA","onto:implicit"

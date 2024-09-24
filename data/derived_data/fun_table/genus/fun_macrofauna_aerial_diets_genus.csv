@@ -1,5 +1,0 @@
-"","queryName","queryId","matchName","matchId","dietId","dietName","reference","graph"
-"1","Anthaxia","NA","Anthaxia nitidula","c(""NCBITaxon:324817"", ""NCBI:324817"", ""GBIF:4431813"", ""https://tree.opentreeoflife.org/opentree/ottol@552596"")","SFWO:0000479","detritivorous","NA","onto:implicit"
-"2","Onthophagus","NA","Onthophagus verticicornis","c(""NCBITaxon:1403723"", ""NCBI:1403723"", ""https://tree.opentreeoflife.org/opentree/ottol@3329067"", ""GBIF:1091163"")","SFWO:0000479","detritivorous","NA","onto:implicit"
-"3","Onthophagus","NA","Onthophagus coenobita","c(""NCBITaxon:166347"", ""NCBI:166347"", ""GBIF:1091924"")","SFWO:0000479","detritivorous","NA","onto:implicit"
-"4","Onthophagus","NA","Onthophagus ovatus","c(""NCBITaxon:166356"", ""NCBI:166356"", ""GBIF:1091524"", ""https://tree.opentreeoflife.org/opentree/ottol@802588"")","SFWO:0000479","detritivorous","NA","onto:implicit"
