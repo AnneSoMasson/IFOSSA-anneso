@@ -1,0 +1,87 @@
+"","Guild","Ancestors","guild_level_1","guild_level_2","guild_level_3","guild_level_4","guild_level_5"
+"1","fungivore","heterotroph|microbivore|microphytophage","heterotroph","microbivore","microphytophage","fungivore",NA
+"2","herbivore","heterotroph","heterotroph","herbivore",NA,NA,NA
+"3","symbiotroph","heterotroph","heterotroph","symbiotroph",NA,NA,NA
+"4","endophyte","heterotroph|symbiotroph","heterotroph","symbiotroph","endophyte",NA,NA
+"5","suspension feeder","heterotroph","heterotroph","suspension feeder",NA,NA,NA
+"6","decomposer","heterotroph","heterotroph","decomposer",NA,NA,NA
+"7","detritivore","heterotroph|decomposer","heterotroph","decomposer","detritivore",NA,NA
+"8","saprotroph","heterotroph|decomposer","heterotroph","decomposer","saprotroph",NA,NA
+"9","folivore","heterotroph|herbivore","heterotroph","herbivore","folivore",NA,NA
+"10","rhizovore","heterotroph|herbivore","heterotroph","herbivore","rhizovore",NA,NA
+"11","parasitoid","heterotroph","heterotroph","parasitoid",NA,NA,NA
+"12","carnivore","heterotroph","heterotroph","carnivore",NA,NA,NA
+"13","predator","heterotroph|carnivore","heterotroph","carnivore","predator",NA,NA
+"14","scavenger","heterotroph|carnivore","heterotroph","carnivore","scavenger",NA,NA
+"15","insectivore","heterotroph|carnivore|predator","heterotroph","carnivore","predator","insectivore",NA
+"16","bacterivore","heterotroph|microbivore|microphytophage","heterotroph","microbivore","microphytophage","bacterivore",NA
+"17","photoheterotroph","heterotroph","heterotroph","photoheterotroph",NA,NA,NA
+"18","frugivore","heterotroph|herbivore","heterotroph","herbivore","frugivore",NA,NA
+"19","palynivore","heterotroph|herbivore","heterotroph","herbivore","palynivore",NA,NA
+"20","nectarivore","heterotroph|herbivore","heterotroph","herbivore","nectarivore",NA,NA
+"21","granivore","heterotroph|herbivore","heterotroph","herbivore","granivore",NA,NA
+"22","xylophage","heterotroph|herbivore","heterotroph","herbivore","xylophage",NA,NA
+"23","gumnivore","heterotroph|herbivore","heterotroph","herbivore","gumnivore",NA,NA
+"24","parasite","heterotroph|symbiotroph","heterotroph","symbiotroph","parasite",NA,NA
+"25","internal parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","internal parasite",NA
+"26","external parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","external parasite",NA
+"27","filter feeder","heterotroph|suspension feeder","heterotroph","suspension feeder","filter feeder",NA,NA
+"28","sanguivore","heterotroph|carnivore","heterotroph","carnivore","sanguivore",NA,NA
+"29","leaf miner","heterotroph|herbivore|folivore","heterotroph","herbivore","folivore","leaf miner",NA
+"30","coprophage","heterotroph|decomposer|detritivore","heterotroph","decomposer","detritivore","coprophage",NA
+"31","geophage","heterotroph|decomposer","heterotroph","decomposer","geophage",NA,NA
+"32","exudativore","heterotroph","heterotroph","exudativore",NA,NA,NA
+"33","saproxylophage","heterotroph|decomposer|detritivore|phytosaprophage","heterotroph","decomposer","detritivore","phytosaprophage","saproxylophage"
+"34","malacophage","heterotroph|carnivore|predator","heterotroph","carnivore","predator","malacophage",NA
+"35","oophage","heterotroph|carnivore|predator","heterotroph","carnivore","predator","oophage",NA
+"36","myrmecophage","heterotroph|carnivore|predator|insectivore","heterotroph","carnivore","predator","insectivore","myrmecophage"
+"37","nematophage","heterotroph|carnivore|predator","heterotroph","carnivore","predator","nematophage",NA
+"38","honeydew feeder","heterotroph|exudativore","heterotroph","exudativore","honeydew feeder",NA,NA
+"39","phloem sap feeder","heterotroph|herbivore","heterotroph","herbivore","phloem sap feeder",NA,NA
+"40","plant parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","plant parasite",NA
+"41","phytosaprophage","heterotroph|decomposer|detritivore","heterotroph","decomposer","detritivore","phytosaprophage",NA
+"42","bryophage","heterotroph|herbivore","heterotroph","herbivore","bryophage",NA,NA
+"43","ophiophage","heterotroph|carnivore|predator","heterotroph","carnivore","predator","ophiophage",NA
+"44","aphidophage","heterotroph|carnivore|predator|insectivore","heterotroph","carnivore","predator","insectivore","aphidophage"
+"45","scraper","heterotroph","heterotroph","scraper",NA,NA,NA
+"46","fluid feeder","heterotroph","heterotroph","fluid feeder",NA,NA,NA
+"47","piercer and sucker","heterotroph|fluid feeder|sucker","heterotroph","fluid feeder","sucker","piercer and sucker",NA
+"48","sucker","heterotroph|fluid feeder","heterotroph","fluid feeder","sucker",NA,NA
+"49","shredder","heterotroph","heterotroph","shredder",NA,NA,NA
+"50","active suspension feeder","heterotroph|suspension feeder","heterotroph","suspension feeder","active suspension feeder",NA,NA
+"51","passive suspension feeder","heterotroph|suspension feeder","heterotroph","suspension feeder","passive suspension feeder",NA,NA
+"52","collector gatherer","heterotroph","heterotroph","collector gatherer",NA,NA,NA
+"53","collector filterer","heterotroph|suspension feeder","heterotroph","suspension feeder","collector filterer",NA,NA
+"54","acariphage","heterotroph|carnivore|predator","heterotroph","carnivore","predator","acariphage",NA
+"55","zooparasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","zooparasite",NA
+"56","entomoparasite","heterotroph|symbiotroph|parasite|zooparasite","heterotroph","symbiotroph","parasite","zooparasite","entomoparasite"
+"57","springtail feeder","heterotroph|carnivore|predator","heterotroph","carnivore","predator","springtail feeder",NA
+"58","microbivore","heterotroph","heterotroph","microbivore",NA,NA,NA
+"59","omnivore","heterotroph|carnivore|predator","heterotroph","carnivore","predator","omnivore",NA
+"60","protistivore","heterotroph|microbivore","heterotroph","microbivore","protistivore",NA,NA
+"61","plant exudate feeder","heterotroph|exudativore","heterotroph","exudativore","plant exudate feeder",NA,NA
+"62","wood saprotroph","heterotroph|decomposer|saprotroph","heterotroph","decomposer","saprotroph","wood saprotroph",NA
+"63","mycoparasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","mycoparasite",NA
+"64","litter saprotroph","heterotroph|decomposer|saprotroph","heterotroph","decomposer","saprotroph","litter saprotroph",NA
+"65","dung saprotroph","heterotroph|decomposer|saprotroph","heterotroph","decomposer","saprotroph","dung saprotroph",NA
+"66","soil saprotroph","heterotroph|decomposer|saprotroph","heterotroph","decomposer","saprotroph","soil saprotroph",NA
+"67","bryophyte parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","bryophyte parasite",NA
+"68","lichen parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","lichen parasite",NA
+"69","protist parasite","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","protist parasite",NA
+"70","true omnivore","heterotroph|herbivore","heterotroph","herbivore","true omnivore",NA,NA
+"71","mycotroph","heterotroph|symbiotroph","heterotroph","symbiotroph","mycotroph",NA,NA
+"72","mycoheterotroph","heterotroph|symbiotroph|parasite|mycoparasite","heterotroph","symbiotroph","parasite","mycoparasite","mycoheterotroph"
+"73","lichenivore","heterotroph","heterotroph","lichenivore",NA,NA,NA
+"74","pathogen","heterotroph|symbiotroph|parasite","heterotroph","symbiotroph","parasite","pathogen",NA
+"75","animal pathogen","heterotroph|symbiotroph|parasite|pathogen","heterotroph","symbiotroph","parasite","pathogen","animal pathogen"
+"76","plant pathogen","heterotroph|symbiotroph|parasite|pathogen","heterotroph","symbiotroph","parasite","pathogen","plant pathogen"
+"77","leaf saprotroph","heterotroph|decomposer|saprotroph|litter saprotroph","heterotroph","decomposer","saprotroph","litter saprotroph","leaf saprotroph"
+"78","macrodetritivore","heterotroph|decomposer|detritivore","heterotroph","decomposer","detritivore","macrodetritivore",NA
+"79","microdetritivore","heterotroph|decomposer|detritivore","heterotroph","decomposer","detritivore","microdetritivore",NA
+"80","litter feeder","heterotroph|decomposer|detritivore|phytosaprophage","heterotroph","decomposer","detritivore","phytosaprophage","litter feeder"
+"81","microalgivore","heterotroph|microbivore|microphytophage","heterotroph","microbivore","microphytophage","microalgivore",NA
+"82","browser","heterotroph","heterotroph","browser",NA,NA,NA
+"83","grazer","heterotroph","heterotroph","grazer",NA,NA,NA
+"84","protozoan feeder","heterotroph|microbivore|protistivore","heterotroph","microbivore","protistivore","protozoan feeder",NA
+"85","microphytophage","heterotroph|microbivore","heterotroph","microbivore","microphytophage",NA,NA
+"86","lichenized fungus","heterotroph|symbiotroph","heterotroph","symbiotroph","lichenized fungus",NA,NA
