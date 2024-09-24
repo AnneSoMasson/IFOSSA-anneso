@@ -1,0 +1,2 @@
+queryName,queryId,matchName,matchId,interactionId,interactionName,resourceId,resourceName,reference,graph,level,community
+Rhizobiales,NA,Rhizobiales,,RO:0002440,symbiotically interacts with,NCBI:3803,Fabaceae,NA,gratin:hedde_misc1,order,bacteria
