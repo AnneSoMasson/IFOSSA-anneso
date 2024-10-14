@@ -1,0 +1,110 @@
+Guild;guild_level_1;guild_level_2;guild_level_3;guild_level_4;guild_level_5
+acariphage;heterotroph;carnivore;predator;acariphage;NA
+active suspension feeder;heterotroph;suspension feeder;active suspension feeder;NA;NA
+animal pathogen;heterotroph;symbiotroph;parasite;pathogen;animal pathogen
+aphidophage;heterotroph;carnivore;predator;insectivore;aphidophage
+autotroph;autotroph;NA;NA;NA;NA
+bacterivore;heterotroph;microbivore;microphytophage;bacterivore;NA
+browser;heterotroph;browser;NA;NA;NA
+bryophage;heterotroph;herbivore;bryophage;NA;NA
+bryophyte parasite;heterotroph;symbiotroph;parasite;bryophyte parasite;NA
+carnivore;heterotroph;carnivore;NA;NA;NA
+chemoautotroph;chemotroph;chemoautotroph;NA;NA;NA
+chemoheterotroph;chemotroph;chemoheterotroph;NA;NA;NA
+chemolithoautotroph;chemotroph;chemoautotroph;chemolithoautotroph;NA;NA
+chemolithoheterotroph;chemotroph;chemoheterotroph;chemolithoheterotroph;NA;NA
+chemoorganoautotroph;organotroph;chemoorganoautotroph;NA;NA;NA
+chemoorganoheterotroph;organotroph;chemoorganoheterotroph;;NA;NA
+chemotroph;chemotroph;NA;NA;NA;NA
+collector filterer;heterotroph;suspension feeder;collector filterer;NA;NA
+collector gatherer;heterotroph;collector gatherer;NA;NA;NA
+coprophage;heterotroph;decomposer;detritivore;coprophage;NA
+decomposer;heterotroph;decomposer;NA;NA;NA
+detritivore;heterotroph;decomposer;detritivore;NA;NA
+dung saprotroph;heterotroph;decomposer;saprotroph;dung saprotroph;NA
+endophyte;heterotroph;symbiotroph;endophyte;NA;NA
+entomoparasite;heterotroph;symbiotroph;parasite;zooparasite;entomoparasite
+external parasite;heterotroph;symbiotroph;parasite;external parasite;NA
+exudativore;heterotroph;exudativore;NA;NA;NA
+filter feeder;heterotroph;suspension feeder;filter feeder;NA;NA
+fluid feeder;heterotroph;fluid feeder;NA;NA;NA
+folivore;heterotroph;herbivore;folivore;NA;NA
+frugivore;heterotroph;herbivore;frugivore;NA;NA
+fungivore;heterotroph;microbivore;microphytophage;fungivore;NA
+geophage;heterotroph;decomposer;geophage;NA;NA
+granivore;heterotroph;herbivore;granivore;NA;NA
+grazer;heterotroph;grazer;NA;NA;NA
+gumnivore;heterotroph;herbivore;gumnivore;NA;NA
+human pathogen;heterotroph;symbiotroph;parasite;pathogen;human pathogen
+herbivore;heterotroph;herbivore;NA;NA;NA
+heterotroph;heterotroph;NA;NA;NA;NA
+honeydew feeder;heterotroph;exudativore;honeydew feeder;NA;NA
+insectivore;heterotroph;carnivore;predator;insectivore;NA
+internal parasite;heterotroph;symbiotroph;parasite;internal parasite;NA
+invertebrate;invertebrate;NA;NA;NA;NA
+invertebrate parasite;heterotroph;symbiotroph;parasite;invertebrate parasite;NA
+leaf miner;heterotroph;herbivore;folivore;leaf miner;NA
+leaf saprotroph;heterotroph;decomposer;saprotroph;litter saprotroph;leaf saprotroph
+lichen parasite;heterotroph;symbiotroph;parasite;lichen parasite;NA
+lichenivore;heterotroph;lichenivore;NA;NA;NA
+lichenized fungus;heterotroph;symbiotroph;lichenized fungus;NA;NA
+lithotroph;lithotroph;NA;NA;NA;NA
+litter feeder;heterotroph;decomposer;detritivore;phytosaprophage;litter feeder
+litter saprotroph;heterotroph;decomposer;saprotroph;litter saprotroph;NA
+macrodetritivore;heterotroph;decomposer;detritivore;macrodetritivore;NA
+malacophage;heterotroph;carnivore;predator;malacophage;NA
+microalgivore;heterotroph;microbivore;microphytophage;microalgivore;NA
+microbivore;heterotroph;microbivore;NA;NA;NA
+microdetritivore;heterotroph;decomposer;detritivore;microdetritivore;NA
+microorganism;microorganism;NA;NA;NA;NA
+microphytophage;heterotroph;microbivore;microphytophage;NA;NA
+mixotroph;heterotroph;microbivore;mixotroph;NA;NA
+mycoheterotroph;heterotroph;symbiotroph;parasite;mycoparasite;mycoheterotroph
+mycoparasite;heterotroph;symbiotroph;parasite;mycoparasite;NA
+mycotroph;heterotroph;symbiotroph;mycotroph;NA;NA
+myrmecophage;heterotroph;carnivore;predator;insectivore;myrmecophage
+nectarivore;heterotroph;herbivore;nectarivore;NA;NA
+nematophage;heterotroph;carnivore;predator;nematophage;NA
+omnivore;heterotroph;carnivore;predator;omnivore;NA
+oophage;heterotroph;carnivore;predator;oophage;NA
+ophiophage;heterotroph;carnivore;predator;ophiophage;NA
+organotroph;organotroph;NA;NA;NA;NA
+palynivore;heterotroph;herbivore;palynivore;NA;NA
+parasite;heterotroph;symbiotroph;parasite;NA;NA
+parasitoid;heterotroph;parasitoid;NA;NA;NA
+passive suspension feeder;heterotroph;suspension feeder;passive suspension feeder;NA;NA
+pathogen;heterotroph;symbiotroph;parasite;pathogen;NA
+pathotroph;organotroph;chemoorganoautotroph;pathotroph;NA;NA
+phloem sap feeder;heterotroph;herbivore;phloem sap feeder;NA;NA
+photoautotroph;phototroph;photoautotroph;NA;NA;NA
+photoheterotroph;heterotroph;photoheterotroph;NA;NA;NA
+photolithoautotroph;lithotroph;photolithoautotroph;NA;NA;NA
+photoorganoheterotroph;organotroph;chemoorganoheterotroph;photoorganoheterotroph;NA;NA
+phototroph;phototroph;NA;NA;NA;NA
+phytosaprophage;heterotroph;decomposer;detritivore;phytosaprophage;NA
+piercer and sucker;heterotroph;fluid feeder;sucker;piercer and sucker;NA
+plant exudate feeder;heterotroph;exudativore;plant exudate feeder;NA;NA
+plant parasite;heterotroph;symbiotroph;parasite;plant parasite;NA
+plant pathogen;heterotroph;symbiotroph;parasite;pathogen;plant pathogen
+predator;heterotroph;carnivore;predator;NA;NA
+protist;microorganism;protist;NA;NA;NA
+protist parasite;heterotroph;symbiotroph;parasite;protist parasite;NA
+protistivore;heterotroph;microbivore;protistivore;NA;NA
+protozoan feeder;heterotroph;microbivore;protistivore;protozoan feeder;NA
+rhizovore;heterotroph;herbivore;rhizovore;NA;NA
+sanguivore;heterotroph;carnivore;sanguivore;NA;NA
+saprotroph;heterotroph;decomposer;saprotroph;NA;NA
+saproxylophage;heterotroph;decomposer;detritivore;phytosaprophage;saproxylophage
+scavenger;heterotroph;carnivore;scavenger;NA;NA
+scraper;heterotroph;scraper;NA;NA;NA
+shredder;heterotroph;shredder;NA;NA;NA
+soil saprotroph;heterotroph;decomposer;saprotroph;soil saprotroph;NA
+springtail feeder;heterotroph;carnivore;predator;springtail feeder;NA
+sucker;heterotroph;fluid feeder;sucker;NA;NA
+suspension feeder;heterotroph;suspension feeder;NA;NA;NA
+symbiotroph;heterotroph;symbiotroph;NA;NA;NA
+testate amoebae;microorganism;protist;testate amoebae;NA;NA
+true omnivore;heterotroph;herbivore;true omnivore;NA;NA
+wood saprotroph;heterotroph;decomposer;saprotroph;wood saprotroph;NA
+xylophage;heterotroph;herbivore;xylophage;NA;NA
+zooparasite;heterotroph;symbiotroph;parasite;zooparasite;NA
