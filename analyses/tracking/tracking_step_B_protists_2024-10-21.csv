@@ -1,0 +1,8 @@
+"community","step","observation_number","OTU_number","blast_number","rdp_number","total_abundance"
+"protists","raw data",581820,9697,252,6221,1383974
+"protists","no blast data",2220,37,1,37,1945
+"protists","blast results",581820,9697,252,6221,1383974
+"protists","blast results_cleaned_taxo",581820,9697,234,6221,1383974
+"protists","blast results_cleaned_filter 1 (keep Cercozoa)",574260,9571,193,6106,1381597
+"protists","blast results_cleaned_filter 2 (remove low abundant)",8468,1060,142,859,1102750
+"protists","blast results_cleaned_filtered_finest_name",8468,1060,142,859,1102750

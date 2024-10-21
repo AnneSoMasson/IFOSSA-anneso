@@ -1,0 +1,8 @@
+"community","step","observation_number","OTU_number","blast_number","rdp_number","total_abundance"
+"fungi","raw data",202500,3375,960,2833,1263924
+"fungi","no blast data",16320,272,1,89,13422
+"fungi","blast results",202500,3375,960,2833,1263924
+"fungi","blast results_cleaned_taxo",202500,3375,707,2833,1263924
+"fungi","blast results_cleaned_filter 1 (keep Fungi)",186180,3103,706,2784,1250502
+"fungi","blast results_cleaned_filter 2 (remove low abundant)",4967,858,256,807,1163682
+"fungi","blast results_cleaned_filtered_finest_name",4967,858,256,807,1163682

@@ -1,0 +1,23 @@
+"community","step","observation_number","OTU_number","blast_number","rdp_number","total_abundance"
+"bacteria","raw data",3557700,59295,3715,32968,3858868
+"bacteria","no blast data",6660,111,1,111,578
+"bacteria","blast results",3557700,59295,3715,32968,3858868
+"bacteria","blast results_cleaned_taxo",3557700,59295,3449,32968,3858868
+"bacteria","blast results_cleaned_filter 1.1 (keep Bacteria)",3538500,58975,3430,32711,3816694
+"bacteria","blast results_cleaned_filter 1.2 (remove Chloroplasts)",3516960,58616,3367,32416,3778578
+"bacteria","blast results_cleaned_filter 2 (remove low abundant)",7744,1491,497,1205,1179854
+"bacteria","blast results_cleaned_filtered_finest_name",7744,1491,497,1205,1179854
+"fungi","raw data",202500,3375,960,2833,1263924
+"fungi","no blast data",16320,272,1,89,13422
+"fungi","blast results",202500,3375,960,2833,1263924
+"fungi","blast results_cleaned_taxo",202500,3375,707,2833,1263924
+"fungi","blast results_cleaned_filter 1 (keep Fungi)",186180,3103,706,2784,1250502
+"fungi","blast results_cleaned_filter 2 (remove low abundant)",4967,858,256,807,1163682
+"fungi","blast results_cleaned_filtered_finest_name",4967,858,256,807,1163682
+"protists","raw data",581820,9697,252,6221,1383974
+"protists","no blast data",2220,37,1,37,1945
+"protists","blast results",581820,9697,252,6221,1383974
+"protists","blast results_cleaned_taxo",581820,9697,234,6221,1383974
+"protists","blast results_cleaned_filter 1 (keep Cercozoa)",574260,9571,193,6106,1381597
+"protists","blast results_cleaned_filter 2 (remove low abundant)",8468,1060,142,859,1102750
+"protists","blast results_cleaned_filtered_finest_name",8468,1060,142,859,1102750
